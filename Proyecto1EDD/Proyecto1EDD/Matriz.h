@@ -12,18 +12,17 @@ public:
 	int contador;
 
 	Matriz();
-	Nodo* buscarDia(string dia);
-	Nodo* buscarHora(string hora);
+	Nodo* buscarX(int x);
+	Nodo* buscarY(int y);
 
-	Nodo* agregarDia(Nodo *dia, Nodo *cabeza);
-	Nodo* agregarHora(Nodo *hora, Nodo *cabeza);
-	Nodo* crearDia(string dia);
-	Nodo* crearHora(string hora);
+	Nodo* agregarX(Nodo *dia, Nodo *cabeza);
+	Nodo* agregarY(Nodo *hora, Nodo *cabeza);
+	Nodo* crearX(int x);
+	Nodo* crearY(int y);
 
-	void agregarA(string dia, string hora, string actividad);
+	void agregarNodo(int x, int y, string codigo);
 	void imprimir();
-	void imprimird(string dia);
-	void csv(string dia);
+	void csv(string direccion);
 	void graficar();
 
 	~Matriz();

@@ -6,9 +6,7 @@ using namespace std;
 class Nodo
 {
 public:
-	string dia;
-	string hora;
-	string actividad;
+	string codigo;
 	int x;
 	int y;
 
@@ -18,8 +16,7 @@ public:
 	Nodo *abajo;
 
 	Nodo();
-	void adia(string dia);
-	void ahora(string hora);
+	Nodo(int x, int y, string codigo);
 
 
 	~Nodo();

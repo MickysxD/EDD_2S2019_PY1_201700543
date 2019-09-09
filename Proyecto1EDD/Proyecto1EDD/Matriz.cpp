@@ -24,11 +24,11 @@ Matriz::Matriz()
 	this->contador = 0;
 }
 
-Nodo* Matriz::buscarDia(string dia)
+Nodo* Matriz::buscarX(int x)
 {
 	Nodo *temp = this->root->siguiente;
 	while (temp != NULL) {
-		if (dia.compare(temp->dia) == 0)
+		if (temp->x == x)
 		{
 			return temp;
 		}
@@ -38,11 +38,11 @@ Nodo* Matriz::buscarDia(string dia)
 	return temp;
 }
 
-Nodo* Matriz::buscarHora(string hora)
+Nodo* Matriz::buscarY(int y)
 {
 	Nodo *temp = this->root->abajo;
 	while (temp != NULL) {
-		if (hora.compare(temp->hora) == 0)
+		if (temp->y == y)
 		{
 			return temp;
 		}
@@ -52,17 +52,17 @@ Nodo* Matriz::buscarHora(string hora)
 	return temp;
 }
 
-Nodo* Matriz::agregarDia(Nodo *dia, Nodo *cabeza)
+Nodo* Matriz::agregarX(Nodo *x, Nodo *cabeza)
 {
 	Nodo *tem = cabeza;
-	Nodo *nuevo = dia;
+	Nodo *nuevo = x;
 	bool bandera = false;
 	bool entra = true;
 
 	while (entra) {
 		if (tem->x == nuevo->x) {
 			tem->y = nuevo->y;
-			tem->dia = nuevo->dia;
+			tem->codigo = nuevo->codigo;
 			return tem;
 		}
 		else if (tem->x > nuevo->x) {
@@ -90,40 +90,19 @@ Nodo* Matriz::agregarDia(Nodo *dia, Nodo *cabeza)
 
 	return nuevo;
 
-
-	/*
-	if(tem == NULL){
-		this->root->siguiente = nuevo;
-		return *nuevo;
-	}else {
-		Nodo *ant = tem;
-		while(tem != NULL){
-			if(nuevo->id > tem->id){
-				ant = tem;
-				tem = tem->siguiente;
-			}else if(tem->id > nuevo->id){
-				nuevo->siguiente = tem;
-				ant->siguiente = nuevo;
-				return *nuevo;
-			}
-		}
-	}
-	return *nuevo;
-	*/
-
 }
 
-Nodo* Matriz::agregarHora(Nodo *hora, Nodo *cabeza)
+Nodo* Matriz::agregarY(Nodo *y, Nodo *cabeza)
 {
 	Nodo *tem = cabeza;
-	Nodo *nuevo = hora;
+	Nodo *nuevo = y;
 	bool bandera = false;
 	bool entra = true;
 
 	while (entra) {
 		if (tem->y == nuevo->y) {
 			tem->x = nuevo->x;
-			tem->hora = nuevo->hora;
+			tem->codigo = nuevo->codigo;
 			return tem;
 		}
 		else if (tem->y > nuevo->y) {
@@ -151,121 +130,76 @@ Nodo* Matriz::agregarHora(Nodo *hora, Nodo *cabeza)
 
 	return nuevo;
 
-
-	/*
-	if(tem == NULL){
-		this->root->siguiente = nuevo;
-		return *nuevo;
-	}else {
-		Nodo *ant = tem;
-		while(tem != NULL){
-			if(nuevo->id > tem->id){
-				ant = tem;
-				tem = tem->siguiente;
-			}else if(tem->id > nuevo->id){
-				nuevo->siguiente = tem;
-				ant->siguiente = nuevo;
-				return *nuevo;
-			}
-		}
-	}
-	return *nuevo;
-	*/
-
 }
 
-Nodo* Matriz::crearDia(string dia) {
-	Nodo *adia = new Nodo();
-	adia->adia(dia);
+Nodo* Matriz::crearX(int x) {
+	Nodo *nX = new Nodo();
+	nX->x = x;
 	Nodo *cabeza = this->root;
-	return this->agregarDia(adia, cabeza);
+	return this->agregarX(nX, cabeza);
 }
 
-Nodo* Matriz::crearHora(string hora) {
-	Nodo *ahora = new Nodo();
-	ahora->ahora(hora);
+Nodo* Matriz::crearY(int y) {
+	Nodo *nY = new Nodo();
+	nY->y = y;
 	Nodo *cabeza = this->root;
-	return this->agregarHora(ahora, cabeza);
+	return this->agregarY(nY, cabeza);
 }
 
-void Matriz::agregarA(string dia, string hora, string actividad)
+void Matriz::agregarNodo(int x, int y, string codigo)
 {
 	Nodo *nuevo = new Nodo();
-	nuevo->actividad = actividad;
-	nuevo->adia(dia);
-	nuevo->ahora(hora);
+	nuevo->codigo = codigo;
+	nuevo->x = x;
+	nuevo->y = y;
 
-	Nodo *diaa = this->buscarDia(dia);
-	Nodo *horaa = this->buscarHora(hora);
+	Nodo *nodoX = this->buscarX(x);
+	Nodo *nodoY = this->buscarY(y);
 
-	if (diaa == NULL && horaa == NULL) {
-		diaa = this->crearDia(dia);
-		horaa = this->crearHora(hora);
-		nuevo = this->agregarDia(nuevo, horaa);
-		nuevo = this->agregarHora(nuevo, diaa);
-
-	}
-	else if (diaa != NULL && horaa == NULL) {
-		horaa = this->crearHora(hora);
-		nuevo = this->agregarDia(nuevo, horaa);
-		nuevo = this->agregarHora(nuevo, diaa);
+	if (nodoX == NULL && nodoY == NULL) {
+		nodoX = this->crearX(x);
+		nodoY = this->crearY(y);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
 
 	}
-	else if (diaa == NULL && horaa != NULL) {
-		diaa = this->crearDia(dia);
-		nuevo = this->agregarDia(nuevo, horaa);
-		nuevo = this->agregarHora(nuevo, diaa);
+	else if (nodoX != NULL && nodoY == NULL) {
+		nodoY = this->crearY(y);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
 
 	}
-	else if (diaa != NULL && horaa != NULL) {
-		nuevo = this->agregarDia(nuevo, horaa);
-		nuevo = this->agregarHora(nuevo, diaa);
+	else if (nodoX == NULL && nodoY != NULL) {
+		nodoX = this->crearX(x);
+		nuevo = this->agregarX(nuevo, nodoX);
+		nuevo = this->agregarY(nuevo, nodoY);
+
+	}
+	else if (nodoX != NULL && nodoY != NULL) {
+		nuevo = this->agregarX(nuevo, nodoX);
+		nuevo = this->agregarY(nuevo, nodoY);
 	}
 
 }
 
 void Matriz::imprimir()
 {
-	Nodo *dia = this->root->siguiente;
-	while (dia != NULL) {
-		Nodo *actividad = dia->abajo;
-		cout << "Dia: " << actividad->dia << endl;
-		while (actividad != NULL) {
-			cout << "	Hora: " << actividad->hora << "		Actividad: " << actividad->actividad << endl;
-			actividad = actividad->abajo;
+	Nodo *nodoX = this->root->siguiente;
+	while (nodoX != NULL) {
+		Nodo *nodo = nodoX->abajo;
+		cout << "X: " << nodo->x << endl;
+		while (nodo != NULL) {
+			cout << "	Y: " << nodo->y << "		Codigo: " << nodo->codigo << endl;
+			nodo = nodo->abajo;
 		}
-		dia = dia->siguiente;
+		nodoX = nodoX->siguiente;
 	}
 }
 
-void Matriz::imprimird(string dia)
-{
-
-	Nodo *diat = this->root->siguiente;
-	while (dia.compare(diat->dia) != 0) {
-
-		diat = diat->siguiente;
-	}
-
-	if (diat != NULL) {
-		Nodo *actividad = diat->abajo;
-		cout << "Dia: " << actividad->dia << endl;
-		while (actividad != NULL) {
-			cout << "	Hora: " << actividad->hora << "		Actividad: " << actividad->actividad << endl;
-			actividad = actividad->abajo;
-		}
-	}
-	else
-	{
-		cout << "Dia no existe " << endl;
-	}
-
-}
-
-void Matriz::csv(string dia) {
+void Matriz::csv(string direccion) {
 
 	ifstream lectura;
-	lectura.open(dia, ios::in);
+	lectura.open(direccion, ios::in);
 
 	if (!lectura.fail()) {
 		int p = 0;
