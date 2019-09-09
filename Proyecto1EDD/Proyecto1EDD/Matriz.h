@@ -11,7 +11,6 @@ public:
 	Nodo *root;
 	int contador;
 
-	Matriz();
 	Nodo* buscarX(int x);
 	Nodo* buscarY(int y);
 
