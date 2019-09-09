@@ -151,13 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ABB.h" />
     <ClInclude Include="Matriz.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="NodoABB.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ABB.cpp" />
     <ClCompile Include="Matriz.cpp" />
     <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="NodoABB.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
