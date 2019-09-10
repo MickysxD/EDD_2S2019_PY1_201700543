@@ -107,7 +107,7 @@ void insertarImagen() {
 	if (nombre[1] != ".csv")
 	{
 		direccion = "";
-		cout << "ERROR: extencion del archivo no valido \n";
+		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
 	}
 	else
 	{
@@ -118,10 +118,10 @@ void insertarImagen() {
 	ifstream lectura;
 	lectura.open(direccion, ios::in);
 
+	bool ordenado = true;
+
 	if (!lectura.fail()) {
 		
-		
-
 		for (string linea; getline(lectura, linea); )
 		{
 			
@@ -139,9 +139,35 @@ void insertarImagen() {
 
 		for (int i = 0; i < lista.size(); i++)
 		{
-			if (lista[i].compare("x") != 0)
+			if (lista[i].compare("Layer") == 0 && lista[i + 1].compare("File") == 0)
 			{
-				("lunes", lista[0], lista[i]);
+				ordenado = true;
+			}
+			else if (lista[i].compare("File") == 0 && lista[i + 1].compare("Layer") == 0)
+			{
+				ordenado = false;
+			}
+			else if (ordenado)
+			{
+				if (lista[i].compare("0") == 0 && lista[i+1].compare("config.csv") == 0)
+				{
+					agregarConfig(actual, lista[i+1]);
+				}
+				else
+				{
+					agregarCapa(actual, lista[i], lista[i+1]);
+				}
+			}
+			else
+			{
+				if (lista[i+1].compare("0") == 0 && lista[i].compare("config.csv") == 0)
+				{
+					agregarConfig(actual, lista[i]);
+				}
+				else
+				{
+					agregarCapa(actual, lista[i+1], lista[i]);
+				}
 			}
 		}
 	}
@@ -150,4 +176,123 @@ void insertarImagen() {
 		cout << "ERROR: archivo no encontrado\n";
 	}
 	cout << "-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
+}
+
+void agregarConfig(NodoABB *actual, string direccion) {
+	NodoABB *actual = actual;
+	vector<string> lista;
+	size_t found;
+
+	vector<string> nombre;
+	found = direccion.find(".");
+
+	nombre.push_back(direccion.substr(0, found));
+	nombre.push_back(direccion.substr(found, direccion.length()));
+
+	if (nombre[1] != ".csv")
+	{
+		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+		direccion = "";
+	}
+
+	ifstream lectura;
+	lectura.open(direccion, ios::in);
+
+	if (!lectura.fail()) {
+
+		for (string linea; getline(lectura, linea); )
+		{
+
+			found = linea.find(",");
+
+			while (found != 4294967295) {
+				lista.push_back(linea.substr(0, found));
+				linea = linea.substr(found + 1, linea.length());
+				found = linea.find(",");
+			}
+
+			lista.push_back(linea.substr(0, linea.length()));
+
+			for (int i = 0; i < lista.size(); i++)
+			{
+				if (lista[i].compare("image_width") == 0)
+				{
+					actual->image_width = stoi(lista[i + 1]);
+				}
+				else if (lista[i].compare("image_height") == 0)
+				{
+					actual->image_height = stoi(lista[i + 1]);
+				}
+				else if (lista[i].compare("pixel_width") != 0)
+				{
+					actual->pixel_width = stoi(lista[i + 1]);
+				}
+				else if (lista[i].compare("pixel_height") != 0)
+				{
+					actual->pixel_height = stoi(lista[i + 1]);
+				}
+			}
+
+		}
+
+	}
+	else if (direccion != "")
+	{
+		cout << "ERROR: "<< direccion <<" archivo no encontrado\n";
+	}
+}
+
+void agregarCapa(NodoABB *actual, int ncapa, string direccion) {
+	NodoABB *actual = actual;
+	Matriz *nueva = new Matriz();
+	vector<string> lista;
+	size_t found;
+
+	vector<string> nombre;
+	found = direccion.find(".");
+
+	nombre.push_back(direccion.substr(0, found));
+	nombre.push_back(direccion.substr(found, direccion.length()));
+
+	if (nombre[1] != ".csv")
+	{
+		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+		direccion = "";
+	}
+
+	ifstream lectura;
+	lectura.open(direccion, ios::in);
+
+	if (!lectura.fail()) {
+		int fila = 0;
+		for (string linea; getline(lectura, linea); )
+		{
+
+			found = linea.find(",");
+
+			while (found != 4294967295) {
+				lista.push_back(linea.substr(0, found));
+				linea = linea.substr(found + 1, linea.length());
+				found = linea.find(",");
+			}
+
+			lista.push_back(linea.substr(0, linea.length()));
+
+			for (int i = 0; i < lista.size(); i++)
+			{
+				if (lista[i].compare("x") != 0)
+				{
+					nueva->agregarNodo(i, fila, lista[i]);
+				}
+			}
+
+			fila += 1;
+
+		}
+
+	}
+	else if (direccion != "")
+	{
+		cout << "ERROR: " << direccion << " archivo no encontrado\n";
+	}
 }
