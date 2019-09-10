@@ -12,23 +12,23 @@ void insertarImagen();
 
 int main()
 {
-	/*string a = "aaaa";
-	string b = "aaab";
-	string c = "aaaa";
+	/*string a = "aaa";
+	string b = "aa";
+	string c = "aa";
 
-	if (b > a)
+	if (a < b)
 	{
-		cout << "menor";
+		cout << "b mayor a a\n";
 	}
-	if(a < b)
+	if(a > b)
 	{
-		cout << "mayor";
+		cout << "a mayor a b\n";
 	}
-	if (a == a)
+	if (a == b)
 	{
-		cout << "igual";
-	}*/
-
+		cout << "igual\n";
+	}
+*/
 
 	while (true)
 	{

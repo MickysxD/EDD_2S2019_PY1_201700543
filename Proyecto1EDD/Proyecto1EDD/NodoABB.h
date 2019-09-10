@@ -1,20 +1,26 @@
 #pragma once
 #include <string>
+#include "Capas.h"
 
 using namespace std;
 
 class NodoABB
 {
 public:
-	string nombre;
+	string nombreImagen;
 	NodoABB *izq;
 	NodoABB *der;
-	
+	Capas *listaCapas;
+
+	int image_width;
+	int image_height;
+	int pixel_width;
+	int pixel_height;
+
 	NodoABB();
 
-	NodoABB(string nombre);
-	NodoABB(string nombre, NodoABB *izq, NodoABB *der);
-
+	NodoABB(string nombreImagen);
+	
 	~NodoABB();
 };
 

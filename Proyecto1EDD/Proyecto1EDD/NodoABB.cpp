@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "NodoABB.h"
+#include "Capas.h"
 #include <string>
+
 
 using namespace std;
 
@@ -8,16 +10,10 @@ NodoABB::NodoABB()
 {
 }
 
-NodoABB::NodoABB(string nombre)
+NodoABB::NodoABB(string nombreImagen)
 {
-	this->nombre = nombre;
-}
-
-NodoABB::NodoABB(string nombre, NodoABB *izq, NodoABB *der)
-{
-	this->nombre = nombre;
-	this->izq = izq;
-	this->der = der;
+	this->nombreImagen = nombreImagen;
+	this->listaCapas = new Capas();
 }
 
 NodoABB::~NodoABB()
