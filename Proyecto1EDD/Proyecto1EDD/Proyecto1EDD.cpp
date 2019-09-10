@@ -4,8 +4,12 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include "ABB.h"
+#include "NodoABB.h"
 
 using namespace std;
+
+ABB *arbol = new ABB();
 
 void menu();
 void insertarImagen();
@@ -48,7 +52,8 @@ void menu() {
 	cout << "6. Reportes\n\n";
 	cout << "Ingrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
-	cout << "\n\n\n\n\n";
+	cout << "-------------------- Menu PhotGen++ --------------------\n";
+	cout << "\n\n\n\n\n\n\n\n\n";
 
 
 	switch (eleccion)
@@ -83,46 +88,66 @@ void menu() {
 }
 
 void insertarImagen() {
+	cout << "-------------------- Insertar Imagen --------------------\n";
 	string direccion;
 	cout << "	Ingrese la direccion del archivo csv: ";
 	cin >> direccion;
-	cout << "\n\n\n\n\n";
+	cout << "\n\n";
+
+	NodoABB *actual = new NodoABB();
+	vector<string> lista;
+	size_t found;
+
+	vector<string> nombre;
+	found = direccion.find(".");
+
+	nombre.push_back(direccion.substr(0, found));
+	nombre.push_back(direccion.substr(found, direccion.length()));
+
+	if (nombre[1] != ".csv")
+	{
+		direccion = "";
+		cout << "ERROR: extencion del archivo no valido \n";
+	}
+	else
+	{
+		found = direccion.find("/");
+		actual->nombreImagen = direccion.substr(0, found);
+	}
 
 	ifstream lectura;
 	lectura.open(direccion, ios::in);
 
 	if (!lectura.fail()) {
-		int p = 0;
+		
+		
+
 		for (string linea; getline(lectura, linea); )
 		{
-			string temp;
-			vector<string> lista;
-			size_t found;
-
+			
 			found = linea.find(",");
-			lista.push_back(linea.substr(0, found));
 
 			while (found != 4294967295) {
-				lista.push_back(temp.substr(0, found));
-				temp = temp.substr(found + 1, linea.length());
-				found = temp.find(",");
+				lista.push_back(linea.substr(0, found));
+				linea = linea.substr(found + 1, linea.length());
+				found = linea.find(",");
 			}
 
-			lista.push_back(temp.substr(0, linea.length()));
-
-			for (int i = 0; i < 8; i++)
-			{
-				if (lista[i].compare("x") != 0)
-				{
-					("lunes", lista[0], lista[i]);
-				}
-			}
+			lista.push_back(linea.substr(0, linea.length()));
 
 		}
-	}
-	else
-	{
-		cout << "Archivo no entontrado" << endl;
-	}
 
+		for (int i = 0; i < lista.size(); i++)
+		{
+			if (lista[i].compare("x") != 0)
+			{
+				("lunes", lista[0], lista[i]);
+			}
+		}
+	}
+	else if(direccion != "")
+	{
+		cout << "ERROR: archivo no encontrado\n";
+	}
+	cout << "-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }
