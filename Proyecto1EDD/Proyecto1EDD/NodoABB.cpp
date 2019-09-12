@@ -8,6 +8,7 @@ using namespace std;
 
 NodoABB::NodoABB()
 {
+	this->listaCapas = new Capas();
 }
 
 NodoABB::NodoABB(string nombreImagen)

@@ -9,7 +9,6 @@ public:
 	Matriz();
 
 	Nodo *root;
-	int contador;
 
 	Nodo* buscarX(int x);
 	Nodo* buscarY(int y);

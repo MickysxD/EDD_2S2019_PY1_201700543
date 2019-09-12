@@ -99,9 +99,10 @@ void insertarImagen() {
 	NodoABB *actual = new NodoABB();
 	vector<string> lista;
 	size_t found;
+	string st;
 
 	vector<string> nombre;
-	found = direccion.find(".");
+	found = direccion.find_last_of(".");
 
 	nombre.push_back(direccion.substr(0, found));
 	nombre.push_back(direccion.substr(found, direccion.length()));
@@ -113,8 +114,10 @@ void insertarImagen() {
 	}
 	else
 	{
-		found = direccion.find("/");
-		actual->nombreImagen = direccion.substr(0, found);
+		st = nombre[0];
+		found = st.find_last_of("/");
+
+		actual->nombreImagen = st.substr(found+1, st.length());
 	}
 
 	ifstream lectura;
@@ -126,7 +129,6 @@ void insertarImagen() {
 		
 		for (string linea; getline(lectura, linea); )
 		{
-			
 			found = linea.find(",");
 
 			while (found != 4294967295) {
@@ -179,6 +181,7 @@ void insertarImagen() {
 	{
 		cout << "ERROR: archivo no encontrado\n";
 	}
+
 	arbol->agregar(actual);
 
 	cout << "-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
@@ -189,13 +192,10 @@ void agregarConfig(NodoABB *actual, string direccion) {
 	size_t found;
 
 	vector<string> nombre;
-	found = direccion.find(".");
+	found = direccion.find_last_of(".");
 
-	if (found != 4294967295)
-	{
-		nombre.push_back(direccion.substr(0, found));
-		nombre.push_back(direccion.substr(found, direccion.length()));
-	}
+	nombre.push_back(direccion.substr(0, found));
+	nombre.push_back(direccion.substr(found, direccion.length()));
 	
 	if (nombre[1] != ".csv")
 	{
@@ -252,59 +252,60 @@ void agregarConfig(NodoABB *actual, string direccion) {
 
 void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 	Matriz *nueva = new Matriz();
-	vector<string> lista;
+	
 	size_t found;
 
 	vector<string> nombre;
-	found = direccion.find(".");
+	found = direccion.find_last_of(".");
 
-	if (found != 4294967295)
-	{
-		nombre.push_back(direccion.substr(0, found));
-		nombre.push_back(direccion.substr(found, direccion.length()));
-	}
+	nombre.push_back(direccion.substr(0, found));
+	nombre.push_back(direccion.substr(found, direccion.length()));
 	
 	if (nombre[1] != ".csv")
 	{
 		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
 		direccion = "";
 	}
+	else {
 
-	ifstream lectura;
-	lectura.open(direccion, ios::in);
+		ifstream lectura;
+		lectura.open(direccion, ios::in);
 
-	if (!lectura.fail()) {
-		int fila = 0;
-		for (string linea; getline(lectura, linea); )
-		{
-
-			found = linea.find(",");
-
-			while (found != 4294967295) {
-				lista.push_back(linea.substr(0, found));
-				linea = linea.substr(found + 1, linea.length());
-				found = linea.find(",");
-			}
-
-			lista.push_back(linea.substr(0, linea.length()));
-
-			for (int i = 0; i < lista.size(); i++)
+		if (!lectura.fail()) {
+			int fila = 0;
+			for (string linea; getline(lectura, linea); )
 			{
-				if (lista[i].compare("x") != 0)
-				{
-					nueva->agregarNodo(i, fila, lista[i]);
-				}
-			}
+				vector<string> lista;
+				found = linea.find(",");
 
-			fila += 1;
+				while (found != 4294967295) {
+					lista.push_back(linea.substr(0, found));
+					linea = linea.substr(found + 1, linea.length());
+					found = linea.find(",");
+				}
+
+				lista.push_back(linea.substr(0, linea.length()));
+
+				for (int i = 0; i < lista.size(); i++)
+				{
+					if (lista[i].compare("x") != 0)
+					{
+						nueva->agregarNodo(i, fila, lista[i]);
+					}
+				}
+
+				fila += 1;
+
+			}
 
 		}
-
+		else if (direccion != "")
+		{
+			cout << "ERROR: " << direccion << " archivo no encontrado\n";
+		}
 	}
-	else if (direccion != "")
-	{
-		cout << "ERROR: " << direccion << " archivo no encontrado\n";
-	}
 
-	actual->listaCapas->agregarNodo(new NodoCapa(nombre[0], stoi(ncapa), nueva));
+	nueva->graficar();
+
+	actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
 }

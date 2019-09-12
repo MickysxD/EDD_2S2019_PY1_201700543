@@ -21,7 +21,6 @@ Matriz::Matriz()
 	rot->y = 0;
 	rot->codigo = "Root";
 	this->root = rot;
-	this->contador = 0;
 }
 
 Nodo* Matriz::buscarX(int x)
@@ -68,8 +67,7 @@ Nodo* Matriz::agregarX(Nodo *x, Nodo *cabeza)
 		else if (tem->x > nuevo->x) {
 			bandera = true;
 			entra = false;
-		}
-		if (tem->siguiente != NULL) {
+		}else if (tem->siguiente != NULL) {
 			tem = tem->siguiente;
 		}
 		else {
@@ -108,8 +106,7 @@ Nodo* Matriz::agregarY(Nodo *y, Nodo *cabeza)
 		else if (tem->y > nuevo->y) {
 			bandera = true;
 			entra = false;
-		}
-		if (tem->abajo != NULL) {
+		}else if (tem->abajo != NULL) {
 			tem = tem->abajo;
 		}
 		else {
@@ -171,13 +168,13 @@ void Matriz::agregarNodo(int x, int y, string codigo)
 	}
 	else if (nodoX == NULL && nodoY != NULL) {
 		nodoX = this->crearX(x);
-		nuevo = this->agregarX(nuevo, nodoX);
-		nuevo = this->agregarY(nuevo, nodoY);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
 
 	}
 	else if (nodoX != NULL && nodoY != NULL) {
-		nuevo = this->agregarX(nuevo, nodoX);
-		nuevo = this->agregarY(nuevo, nodoY);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
 	}
 
 }
@@ -277,169 +274,185 @@ void Matriz::imprimir()
 //
 //}
 
-//void Matriz::graficar() {
-//	ofstream grafica;
-//
-//	grafica.open("grafica.dot", ios::out);
-//
-//	if (!grafica.fail()) {
-//		grafica << "digraph  Grafico {" << endl << "node [shape = rectangle];" << endl << "node[nodesep = 1];" << endl << "rankdir=TB;" << endl;
-//
-//		Nodo *tempA = this->root;
-//		Nodo *temp = this->root;
-//		bool primero = true;
-//
-//		while (tempA != NULL)
-//		{
-//			if (tempA == this->root)
-//			{
-//				//imprime primer nodo con abajo y derecho
-//				if (temp == this->root) {
-//					grafica << "" << temp->actividad << "->" << temp->siguiente->dia << "[dir=both];" << endl;
-//					grafica << "" << temp->actividad << "->" << temp->abajo->hora << "[dir=both];" << endl;
-//					temp = temp->abajo;
-//				}
-//				else {
-//					//imprime nodo arriba
-//					/*if (temp->arriba == this->root)
-//					{
-//						grafica << "" << temp->hora << "->" << temp->arriba->actividad << ";" << endl;
-//					}
-//					else
-//					{
-//						grafica << "" << temp->hora << "->" << temp->arriba->hora << ";" << endl;
-//					}*/
-//
-//					//imprime nodo derecho
-//					if (temp->siguiente != NULL)
-//					{
-//						grafica << "" << temp->hora << "->\"" << temp->siguiente->actividad << "\"[dir=both];" << endl;
-//					}
-//
-//					//imprime nodo abajo
-//					if (temp->abajo == NULL)
-//					{
-//						tempA = tempA->siguiente;
-//						temp = tempA;
-//					}
-//					else
-//					{
-//						grafica << "" << temp->hora << "->" << temp->abajo->hora << "[dir=both];" << endl;
-//						temp = temp->abajo;
-//					}
-//
-//				}
-//
-//			}
-//			else
-//			{
-//				//imprime primer nodo cabezera con arriba 
-//				if (tempA == temp) {
-//					//imprime nodo izquierdo
-//					/*if (temp->anterior == this->root)
-//					{
-//						grafica << "" << temp->dia << "->" << temp->anterior->actividad << ";" << endl;
-//					}
-//					else
-//					{
-//						grafica << "" << temp->dia << "->" << temp->anterior->dia << ";" << endl;
-//					}*/
-//
-//					//imprime nodo derecho
-//					if (temp->siguiente != NULL)
-//					{
-//						grafica << "" << temp->dia << "->" << temp->siguiente->dia << "[dir=both];" << endl;
-//					}
-//
-//					//imprime nodo abajo
-//					grafica << "" << temp->dia << "->\"" << temp->abajo->actividad << "\"[dir=both];" << endl;
-//					temp = temp->abajo;
-//				}
-//				else
-//				{
-//					//if (temp->anterior->x == 0)//imprime nodo izquierdo
-//					//{
-//					//	grafica << "\"" << temp->actividad << "\"->" << temp->anterior->hora << ";" << endl;
-//					//}
-//					//else
-//					//{
-//					//	grafica << "\"" << temp->actividad << "\"->\"" << temp->anterior->actividad << "\";" << endl;
-//					//}
-//
-//					if (temp->siguiente != NULL)//imprime nodo derecho
-//					{
-//						grafica << "\"" << temp->actividad << "\"->\"" << temp->siguiente->actividad << "\"[dir=both];" << endl;
-//					}
-//
-//					//grafica << "\"" << temp->actividad << "\"->" << temp->arriba->dia << ";" << endl; //imprime nodo arriba
-//
-//					if (temp->abajo == NULL)//imprime nodo abajo
-//					{
-//						tempA = tempA->siguiente;
-//						temp = tempA;
-//					}
-//					else
-//					{
-//						grafica << "\"" << temp->actividad << "\"->\"" << temp->abajo->actividad << "\"[dir=both];" << endl;
-//						temp = temp->abajo;
-//					}
-//				}
-//			}
-//		}
-//
-//		tempA = this->root;
-//		temp = tempA;
-//
-//		while (tempA != NULL)
-//		{
-//			if (tempA == this->root)
-//			{
-//				grafica << "{ rank=same; ";
-//
-//				grafica << temp->actividad << " ";
-//				temp = temp->siguiente;
-//
-//				while (temp != NULL)
-//				{
-//					grafica << temp->dia << " ";
-//					temp = temp->siguiente;
-//				}
-//
-//				grafica << "};" << endl;
-//				tempA = tempA->abajo;
-//				temp = tempA;
-//			}
-//			else {
-//				grafica << "{ rank=same; ";
-//
-//				grafica << temp->hora << " ";
-//				temp = temp->siguiente;
-//
-//				while (temp != NULL)
-//				{
-//					grafica << "\"" << temp->actividad << "\" ";
-//					temp = temp->siguiente;
-//				}
-//
-//				grafica << "};" << endl;
-//				tempA = tempA->abajo;
-//				temp = tempA;
-//			}
-//		}
-//
-//		grafica << "} ";
-//
-//
-//		system("dot -Tjpg grafica.dot -o grafica.jpg");
-//		system("grafica.jpg");
-//
-//	}
-//
-//
-//	grafica.close();
-//
-//
-//}
+void Matriz::graficar() {
+	ofstream grafica;
+
+	grafica.open("grafica.dot", ios::out);
+
+	if (!grafica.fail()) {
+		grafica << "digraph  Grafico {" << endl << "node [shape = rectangle];" << endl << "node[nodesep = 1];" << endl << "rankdir=TB;" << endl;
+
+		Nodo *tempA = this->root;
+		Nodo *temp = this->root;
+		bool primero = true;
+
+		while (tempA != NULL)
+		{
+			if (tempA == this->root)
+			{
+				if (temp == this->root) {
+					grafica << temp->x << "-" << temp->y << "[label=\"" << temp->codigo << "\"];" << endl;
+					temp = temp->abajo;
+				}
+				else if(temp != NULL)
+				{
+					grafica << temp->x << "-" << temp->y << "[label=\"" << temp->codigo << "\"];" << endl;
+					temp = temp->abajo;
+				}
+				else
+				{
+					tempA = tempA->siguiente;
+					temp = tempA;
+				}
+			}
+			else {
+				if (temp != NULL) {
+					grafica << temp->x << "-" << temp->y << "[label=\"" << temp->codigo << "\"];" << endl;
+					temp = temp->abajo;
+				}
+				else
+				{
+					tempA = tempA->siguiente;
+					temp = tempA;
+				}
+			}
+		}
+
+		tempA = this->root;
+		temp = tempA;
+
+		while (tempA != NULL)
+		{
+			if (tempA == this->root)
+			{
+				//imprime primer nodo con abajo y derecho
+				if (temp == this->root) {
+					grafica << "" << temp->x << "-" << temp->y << "->" << temp->siguiente->x << "-" << temp->siguiente->y << "[dir=both];" << endl;
+					grafica << "" << temp->x << "-" << temp->y << "->" << temp->abajo->x << "-" << temp->abajo->y << "[dir=both];" << endl;
+					temp = temp->abajo;
+				}
+				else {
+					//imprime nodo derecho
+					if (temp->siguiente != NULL)
+					{
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->siguiente->x << "-" << temp->siguiente->y << "[dir=both];" << endl;
+					}
+
+					//imprime nodo abajo
+					if (temp->abajo != NULL)
+					{
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->abajo->x << "-" << temp->abajo->x << "[dir=both];" << endl;
+						temp = temp->abajo;
+					}
+					else
+					{
+						tempA = tempA->siguiente;
+						temp = tempA;
+					}
+
+				}
+
+			}
+			else
+			{
+				//imprime primer nodo cabezera con arriba 
+				if (tempA == temp) {
+
+					//imprime nodo derecho
+					if (temp->siguiente != NULL)
+					{
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->siguiente->x << "-" << temp->siguiente->y << "[dir=both];" << endl;
+					}
+
+					//imprime nodo abajo
+
+					if (temp->abajo != NULL){
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->abajo->x << "-" << temp->abajo->y << "[dir=both];" << endl;
+						temp = temp->abajo;
+					}
+					else
+					{
+						tempA = tempA->siguiente;
+						temp = tempA;
+					}
+				}
+				else
+				{
+
+					if (temp->siguiente != NULL)//imprime nodo derecho
+					{
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->siguiente->x << "-" << temp->siguiente->y << "[dir=both];" << endl;
+					}
+
+					//grafica << "\"" << temp->actividad << "\"->" << temp->arriba->dia << ";" << endl; //imprime nodo arriba
+
+					if (temp->abajo != NULL)//imprime nodo abajo
+					{
+						grafica << "" << temp->x << "-" << temp->y << "->" << temp->abajo->x << "-" << temp->abajo->y << "[dir=both];" << endl;
+						temp = temp->abajo;
+					}
+					else
+					{
+						tempA = tempA->siguiente;
+						temp = tempA;
+					}
+				}
+			}
+		}
+
+		tempA = this->root;
+		temp = tempA;
+
+		while (tempA != NULL)
+		{
+			if (tempA == this->root)
+			{
+				grafica << "{ rank=same; ";
+
+				grafica << temp->x << "-" << temp->y << " ";
+				temp = temp->siguiente;
+
+				while (temp != NULL)
+				{
+					grafica << temp->x << "-" << temp->y << " ";
+					temp = temp->siguiente;
+				}
+
+				grafica << "};" << endl;
+				tempA = tempA->abajo;
+				temp = tempA;
+			}
+			else {
+				grafica << "{ rank=same; ";
+
+				grafica << temp->x << "-" << temp->y << " ";
+				temp = temp->siguiente;
+
+				while (temp != NULL)
+				{
+					grafica << "" << temp->x << "-" << temp->y << " ";
+					temp = temp->siguiente;
+				}
+
+				grafica << "};" << endl;
+				tempA = tempA->abajo;
+				temp = tempA;
+			}
+		}
+
+		grafica << "} ";
+
+
+		system("dot -Tjpg grafica.dot -o grafica.jpg");
+		system("grafica.jpg");
+
+	}
+
+
+	grafica.close();
+
+
+}
 
 Matriz::~Matriz()
 {

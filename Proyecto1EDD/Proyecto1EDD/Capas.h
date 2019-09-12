@@ -8,7 +8,7 @@ public:
 
 	NodoCapa *primero;
 
-	void agregarNodo(NodoCapa *nuevo);
+	void agregarNodo(string nombreCapa, int noCapa, Matriz *capa);
 
 	~Capas();
 };
