@@ -13,6 +13,8 @@ ABB *arbol = new ABB();
 
 void menu();
 void insertarImagen();
+void agregarConfig(NodoABB *actual, string direccion);
+void agregarCapa(NodoABB *actual, string ncapa, string direccion);
 
 int main()
 {
@@ -149,6 +151,7 @@ void insertarImagen() {
 			}
 			else if (ordenado)
 			{
+
 				if (lista[i].compare("0") == 0 && lista[i+1].compare("config.csv") == 0)
 				{
 					agregarConfig(actual, lista[i+1]);
@@ -169,26 +172,31 @@ void insertarImagen() {
 					agregarCapa(actual, lista[i+1], lista[i]);
 				}
 			}
+			i++;
 		}
 	}
 	else if(direccion != "")
 	{
 		cout << "ERROR: archivo no encontrado\n";
 	}
+	arbol->agregar(actual);
+
 	cout << "-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }
 
 void agregarConfig(NodoABB *actual, string direccion) {
-	NodoABB *actual = actual;
-	vector<string> lista;
+	
 	size_t found;
 
 	vector<string> nombre;
 	found = direccion.find(".");
 
-	nombre.push_back(direccion.substr(0, found));
-	nombre.push_back(direccion.substr(found, direccion.length()));
-
+	if (found != 4294967295)
+	{
+		nombre.push_back(direccion.substr(0, found));
+		nombre.push_back(direccion.substr(found, direccion.length()));
+	}
+	
 	if (nombre[1] != ".csv")
 	{
 		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
@@ -202,7 +210,7 @@ void agregarConfig(NodoABB *actual, string direccion) {
 
 		for (string linea; getline(lectura, linea); )
 		{
-
+			vector<string> lista;
 			found = linea.find(",");
 
 			while (found != 4294967295) {
@@ -223,11 +231,11 @@ void agregarConfig(NodoABB *actual, string direccion) {
 				{
 					actual->image_height = stoi(lista[i + 1]);
 				}
-				else if (lista[i].compare("pixel_width") != 0)
+				else if (lista[i].compare("pixel_width") == 0)
 				{
 					actual->pixel_width = stoi(lista[i + 1]);
 				}
-				else if (lista[i].compare("pixel_height") != 0)
+				else if (lista[i].compare("pixel_height") == 0)
 				{
 					actual->pixel_height = stoi(lista[i + 1]);
 				}
@@ -242,8 +250,7 @@ void agregarConfig(NodoABB *actual, string direccion) {
 	}
 }
 
-void agregarCapa(NodoABB *actual, int ncapa, string direccion) {
-	NodoABB *actual = actual;
+void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 	Matriz *nueva = new Matriz();
 	vector<string> lista;
 	size_t found;
@@ -251,9 +258,12 @@ void agregarCapa(NodoABB *actual, int ncapa, string direccion) {
 	vector<string> nombre;
 	found = direccion.find(".");
 
-	nombre.push_back(direccion.substr(0, found));
-	nombre.push_back(direccion.substr(found, direccion.length()));
-
+	if (found != 4294967295)
+	{
+		nombre.push_back(direccion.substr(0, found));
+		nombre.push_back(direccion.substr(found, direccion.length()));
+	}
+	
 	if (nombre[1] != ".csv")
 	{
 		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
@@ -295,4 +305,6 @@ void agregarCapa(NodoABB *actual, int ncapa, string direccion) {
 	{
 		cout << "ERROR: " << direccion << " archivo no encontrado\n";
 	}
+
+	actual->listaCapas->agregarNodo(new NodoCapa(nombre[0], stoi(ncapa), nueva));
 }

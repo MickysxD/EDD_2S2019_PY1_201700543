@@ -5,7 +5,6 @@
 
 Capas::Capas()
 {
-	this->primero = NULL;
 }
 
 void Capas::agregarNodo(NodoCapa *nuevo)

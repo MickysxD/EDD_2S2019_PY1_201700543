@@ -7,11 +7,11 @@ class NodoCapa
 public:
 	NodoCapa();
 
-	NodoCapa(string nombreCapa);
+	NodoCapa(string nombreCapa, int noCapa, Matriz *capa);
 	NodoCapa *siguiente;
 	Matriz *capa;
 	string nombreCapa;
-	int id;
+	int noCapa;
 
 	void agregarMatriz(Matriz *capa);
 	void agregarSiguiente(NodoCapa *siguiente);
