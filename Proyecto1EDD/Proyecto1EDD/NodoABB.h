@@ -11,6 +11,7 @@ public:
 	NodoABB *izq;
 	NodoABB *der;
 	Capas *listaCapas;
+	int *idt;
 
 	int image_width;
 	int image_height;

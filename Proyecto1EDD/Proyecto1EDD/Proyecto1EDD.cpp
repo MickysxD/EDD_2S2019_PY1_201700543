@@ -10,11 +10,13 @@
 using namespace std;
 
 ABB *arbol = new ABB();
+NodoABB *imagen;
 
 void menu();
 void insertarImagen();
 void agregarConfig(NodoABB *actual, string direccion);
 void agregarCapa(NodoABB *actual, string ncapa, string direccion);
+void escogerImagen();
 
 int main()
 {
@@ -45,7 +47,7 @@ int main()
 void menu() {
 	int eleccion;
 
-	cout << "-------------------- Menu PhotGen++ --------------------\n";
+	cout << "-------------------- Menu PhotGen++ --------------------\n\n";
 	cout << "1. Insertar Imagen\n";
 	cout << "2. Seleccionar Imagen\n";
 	cout << "3. Aplicar Filtros\n";
@@ -54,7 +56,7 @@ void menu() {
 	cout << "6. Reportes\n\n";
 	cout << "Ingrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
-	cout << "-------------------- Menu PhotGen++ --------------------\n";
+	cout << "\n-------------------- Menu PhotGen++ --------------------\n";
 	cout << "\n\n\n\n\n\n\n\n\n";
 
 
@@ -65,7 +67,7 @@ void menu() {
 			break;
 
 		case 2:
-
+			escogerImagen();
 			break;
 
 		case 3:
@@ -90,11 +92,11 @@ void menu() {
 }
 
 void insertarImagen() {
-	cout << "-------------------- Insertar Imagen --------------------\n";
+	cout << "-------------------- Insertar Imagen --------------------\n\n";
 	string direccion;
 	cout << "	Ingrese la direccion del archivo csv: ";
 	cin >> direccion;
-	cout << "\n\n";
+	cout << "\n";
 
 	NodoABB *actual = new NodoABB();
 	vector<string> lista;
@@ -104,20 +106,20 @@ void insertarImagen() {
 	vector<string> nombre;
 	found = direccion.find_last_of(".");
 
-	nombre.push_back(direccion.substr(0, found));
-	nombre.push_back(direccion.substr(found, direccion.length()));
+	if (found != 4294967295)
+	{
+		nombre.push_back(direccion.substr(0, found));
+		nombre.push_back(direccion.substr(found, direccion.length()));
 
-	if (nombre[1] != ".csv")
-	{
-		direccion = "";
-		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
-	}
-	else
-	{
 		st = nombre[0];
 		found = st.find_last_of("/");
 
-		actual->nombreImagen = st.substr(found+1, st.length());
+		actual->nombreImagen = st.substr(found + 1, st.length());
+	}
+	else
+	{
+		direccion = "";
+		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
 	}
 
 	ifstream lectura;
@@ -179,12 +181,12 @@ void insertarImagen() {
 	}
 	else if(direccion != "")
 	{
-		cout << "ERROR: archivo no encontrado\n";
+		cout << "ERROR: archivo no encontrado";
 	}
 
 	arbol->agregar(actual);
 
-	cout << "-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }
 
 void agregarConfig(NodoABB *actual, string direccion) {
@@ -258,9 +260,13 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 	vector<string> nombre;
 	found = direccion.find_last_of(".");
 
-	nombre.push_back(direccion.substr(0, found));
-	nombre.push_back(direccion.substr(found, direccion.length()));
 	
+	if (found != 4294967295)
+	{
+		nombre.push_back(direccion.substr(0, found));
+		nombre.push_back(direccion.substr(found, direccion.length()));
+	}
+
 	if (nombre[1] != ".csv")
 	{
 		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
@@ -305,7 +311,8 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 				fila += 1;
 
 			}
-
+			//nueva->graficar(ncapa);
+			actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
 		}
 		else if (direccion != "")
 		{
@@ -313,7 +320,25 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 		}
 	}
 
-	nueva->graficar("prueba");
+}
 
-	actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
+void escogerImagen() {
+
+	cout << "-------------------- Escoger Imagen --------------------\n\n";
+	int x = 1;
+	arbol->inorder(arbol->root, &x);
+	string direccion;
+	cout << "\n		Ingrese el numero de imagen a elegir: ";
+	cin >> direccion;
+	cout << "\n\n";
+
+	int f = stoi(direccion);
+	imagen = arbol->buscar(arbol->root, f);
+
+	if (imagen == NULL)
+	{
+		cout << "ERROR: Imagen no encontrada\n\n";
+	}
+
+	cout << "-------------------- Escoger Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }

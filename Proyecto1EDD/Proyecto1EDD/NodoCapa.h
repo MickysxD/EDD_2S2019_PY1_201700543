@@ -9,6 +9,7 @@ public:
 
 	NodoCapa(string nombreCapa, int noCapa, Matriz *capa);
 	NodoCapa *siguiente;
+	NodoCapa *anterior;
 	Matriz *capa;
 	string nombreCapa;
 	int noCapa;
