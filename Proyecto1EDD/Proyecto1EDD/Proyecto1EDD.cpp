@@ -290,7 +290,15 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 				{
 					if (lista[i].compare("x") != 0)
 					{
-						nueva->agregarNodo(i, fila, lista[i]);
+						if (i == 0)
+						{
+							nueva->crearY(fila+1);
+						}
+						if (fila == 0)
+						{
+							nueva->crearX(i + 1);
+						}
+						nueva->agregarNodo(i+1, fila+1, lista[i]);
 					}
 				}
 
@@ -305,7 +313,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 		}
 	}
 
-	nueva->graficar();
+	nueva->graficar("prueba");
 
 	actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
 }

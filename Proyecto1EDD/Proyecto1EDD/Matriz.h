@@ -21,7 +21,7 @@ public:
 	void agregarNodo(int x, int y, string codigo);
 	void imprimir();
 	void csv(string direccion);
-	void graficar();
+	void graficar(string nombre);
 
 	~Matriz();
 };
