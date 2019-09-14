@@ -17,6 +17,13 @@ void insertarImagen();
 void agregarConfig(NodoABB *actual, string direccion);
 void agregarCapa(NodoABB *actual, string ncapa, string direccion);
 void escogerImagen();
+void filtros();
+void edicion();
+void exportarCSS();
+void exportarHTML();
+void reportes();
+string hex(string codigo);
+string RGBToHex(int rNum, int gNum, int bNum);
 
 int main()
 {
@@ -71,15 +78,26 @@ void menu() {
 			break;
 
 		case 3:
-
+			filtros();
 			break;
 
 		case 4:
-
+			edicion();
 			break;
 
 		case 5:
-
+			cout << "-------------------- Exportar Imagen --------------------\n\n";
+			if (imagen != NULL)
+			{
+				exportarHTML();
+				exportarCSS();
+				cout << "	Termino de exportar\n";
+			}
+			else
+			{
+				cout << "	Imagen sin seleccionar\n";
+			}
+			cout << "\n\n-------------------- Exportar Imagen --------------------\n\n\n\n\n\n\n\n\n\n";
 			break;
 
 		case 6:
@@ -265,61 +283,60 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 	{
 		nombre.push_back(direccion.substr(0, found));
 		nombre.push_back(direccion.substr(found, direccion.length()));
-	}
 
-	if (nombre[1] != ".csv")
-	{
-		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
-		direccion = "";
-	}
-	else {
-
-		ifstream lectura;
-		lectura.open(direccion, ios::in);
-
-		if (!lectura.fail()) {
-			int fila = 0;
-			for (string linea; getline(lectura, linea); )
-			{
-				vector<string> lista;
-				found = linea.find(",");
-
-				while (found != 4294967295) {
-					lista.push_back(linea.substr(0, found));
-					linea = linea.substr(found + 1, linea.length());
-					found = linea.find(",");
-				}
-
-				lista.push_back(linea.substr(0, linea.length()));
-
-				for (int i = 0; i < lista.size(); i++)
-				{
-					if (lista[i].compare("x") != 0)
-					{
-						if (i == 0)
-						{
-							nueva->crearY(fila+1);
-						}
-						if (fila == 0)
-						{
-							nueva->crearX(i + 1);
-						}
-						nueva->agregarNodo(i+1, fila+1, lista[i]);
-					}
-				}
-
-				fila += 1;
-
-			}
-			//nueva->graficar(ncapa);
-			actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
-		}
-		else if (direccion != "")
+		if (nombre[1] != ".csv")
 		{
-			cout << "ERROR: " << direccion << " archivo no encontrado\n";
+			cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+			direccion = "";
+		}
+		else {
+
+			ifstream lectura;
+			lectura.open(direccion, ios::in);
+
+			if (!lectura.fail()) {
+				int fila = 0;
+				for (string linea; getline(lectura, linea); )
+				{
+					vector<string> lista;
+					found = linea.find(",");
+
+					while (found != 4294967295) {
+						lista.push_back(linea.substr(0, found));
+						linea = linea.substr(found + 1, linea.length());
+						found = linea.find(",");
+					}
+
+					lista.push_back(linea.substr(0, linea.length()));
+
+					for (int i = 0; i < lista.size(); i++)
+					{
+						if (lista[i].compare("x") != 0)
+						{
+							if (i == 0)
+							{
+								nueva->crearY(fila + 1);
+							}
+							if (fila == 0)
+							{
+								nueva->crearX(i + 1);
+							}
+							nueva->agregarNodo(i + 1, fila + 1, lista[i]);
+						}
+					}
+
+					fila += 1;
+
+				}
+				//nueva->graficar(ncapa);
+				actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
+			}
+			else if (direccion != "")
+			{
+				cout << "ERROR: " << direccion << " archivo no encontrado\n";
+			}
 		}
 	}
-
 }
 
 void escogerImagen() {
@@ -335,10 +352,175 @@ void escogerImagen() {
 	int f = stoi(direccion);
 	imagen = arbol->buscar(arbol->root, f);
 
+
 	if (imagen == NULL)
 	{
-		cout << "ERROR: Imagen no encontrada\n\n";
+		cout << "ERROR: Imagen no encontrada";
 	}
 
-	cout << "-------------------- Escoger Imagen --------------------\n\n\n\n\n\n\n\n\n";
+	cout << "\n\n-------------------- Escoger Imagen --------------------\n\n\n\n\n\n\n\n\n";
+}
+
+void filtros() {
+
+}
+
+void edicion() {
+
+}
+
+void exportarHTML() {
+	ofstream lectura;
+	lectura.open("Exports/" + imagen->nombreImagen + ".html", ios::out);
+
+	if (!lectura.fail())
+	{
+		lectura << "<!DOCTYPE html>\n";
+		lectura << "<html>\n";
+		lectura << "<head>\n";
+		lectura << "	<link rel=\"stylesheet\" href=\"" << imagen->nombreImagen << ".css\">\n";
+		lectura << "</head>\n";
+		lectura << "<body>\n\n";
+		
+		lectura << "<div class=\"canvas\">\n";
+			
+		for (int i = 0; i < imagen->image_height * imagen->image_height; i++)
+		{
+			lectura << "	<div class=\"pixel\"></div>\n";
+		}
+			
+		lectura << "</div>\n";
+		lectura << "</body>\n";
+		lectura << "</html>\n";
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el html\n\n";
+	}
+}
+
+void exportarCSS() {
+	ofstream lectura;
+	lectura.open("Exports/" + imagen->nombreImagen + ".css", ios::out);
+
+
+	if (!lectura.fail())
+	{
+		lectura << "body {\n";
+		lectura << "background: #333333;\n";
+		lectura << "height: 100vh;\n";
+		lectura << "display: flex;\n";
+		lectura << "justify-content: center;\n";
+		lectura << "align-items: center;\n";
+		lectura << "}\n\n";
+
+		int w = imagen->image_width * imagen->pixel_width;
+		int h = imagen->image_height * imagen->pixel_height;
+
+		lectura << ".canvas {\n";
+		lectura << "width: " << w << "px;\n";
+		lectura << "height: " << h << "px;\n";
+		lectura << "}\n\n";
+
+		lectura << ".pixel {\n";
+		lectura << "width: " << imagen->pixel_width << "px;\n";
+		lectura << "height: " << imagen->pixel_height << "px;\n";
+		lectura << "float: left; \n";
+		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
+		lectura << "}\n\n";
+
+		NodoCapa *temp = imagen->listaCapas->primero;
+		while (temp != NULL) 
+		{
+			Matriz *mtz = temp->capa;
+
+			if (mtz != NULL)
+			{
+				Nodo *fila = mtz->root;
+				Nodo *col = fila->siguiente;
+				col = col->abajo;
+				while (fila != NULL)
+				{
+					
+					if (col != NULL)
+					{
+						int pos = (col->y-1)*imagen->image_height + col->x;
+
+						if (col->abajo == NULL && fila->siguiente == NULL)
+						{
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
+						}
+						else
+						{
+							lectura << ".pixel:nth-child(" << pos << "),\n";
+						}
+						col = col->abajo;
+					}
+					else
+					{
+						fila = fila->siguiente;
+						if (fila != NULL)
+						{
+							col = fila->abajo;
+						}
+						else
+						{
+							col = NULL;
+						}
+					}
+					
+				}
+			}
+
+			temp = temp->siguiente;
+		}
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el css\n\n";
+	}
+}
+
+void reportes() {
+
+}
+
+string hex(string codigo) {
+	int r, g, b;
+	string cadena = codigo;
+	size_t found;
+
+	vector<string> nombre;
+	found = cadena.find("-");
+
+	nombre.push_back(cadena.substr(0, found));
+	cadena = cadena.substr(found+1, cadena.length());
+
+	found = cadena.find("-");
+	nombre.push_back(cadena.substr(0, found));
+	nombre.push_back(cadena.substr(found+1, cadena.length()));
+
+	r = stoi(nombre[0]);
+	g = stoi(nombre[1]);
+	b = stoi(nombre[2]);
+
+	return RGBToHex(r, g, b);
+}
+
+string RGBToHex(int rNum, int gNum, int bNum)
+{
+	string result;
+	char r[255];
+	sprintf_s(r, "%.2X", rNum);
+	result.append(r);
+	char g[255];
+	sprintf_s(g, "%.2X", gNum);
+	result.append(g);
+	char b[255];
+	sprintf_s(b, "%.2X", bNum);
+	result.append(b);
+	return result;
 }
