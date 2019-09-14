@@ -6,11 +6,13 @@
 #include <vector>
 #include "ABB.h"
 #include "NodoABB.h"
+#include "Filtros.h"
 
 using namespace std;
 
 ABB *arbol = new ABB();
 NodoABB *imagen;
+Filtros *fil = new Filtros();
 
 void menu();
 void insertarImagen();
@@ -321,7 +323,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 							{
 								nueva->crearX(i + 1);
 							}
-							nueva->agregarNodo(i + 1, fila + 1, lista[i]);
+							nueva->agregarNodo(i + 1, fila + 1, hex(lista[i]));
 						}
 					}
 
@@ -450,7 +452,7 @@ void exportarCSS() {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
+							lectura << "{\nbackground: #" << col->codigo << ";\n}\n\n";
 						}
 						else
 						{

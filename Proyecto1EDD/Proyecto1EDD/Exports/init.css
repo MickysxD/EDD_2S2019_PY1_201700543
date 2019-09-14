@@ -4,6 +4,7 @@ height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+filter: invert(100%);
 }
 
 .canvas {
