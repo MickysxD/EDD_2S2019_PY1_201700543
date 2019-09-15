@@ -52,7 +52,7 @@ void ABB::inorder(NodoABB *root, int *pos) {
 		inorder(root->izq, pos);
 	}
 	cout << (*pos) << ". "<< root->nombreImagen << endl;
-	root->idt = int(*pos);
+	root->idt = *pos;
 	(*pos)++;
 	if (root->der != NULL)
 	{
@@ -74,7 +74,7 @@ NodoABB* ABB::buscar(NodoABB *root, int posb) {
 
 	if (posb == root->idt)
 	{
-		cout << "Elegido: " << root->nombreImagen << endl;
+		cout << "\nElegido: " << root->nombreImagen << endl;
 		retorno = root;
 	}
 

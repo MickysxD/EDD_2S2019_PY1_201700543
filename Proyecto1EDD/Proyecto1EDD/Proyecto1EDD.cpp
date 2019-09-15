@@ -21,31 +21,17 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion);
 void escogerImagen();
 void filtros();
 void edicion();
-void exportarCSS();
+void exportarCSS(NodoCapa *primero);
 void exportarHTML();
 void reportes();
+void negativo();
+void escalaG();
+NodoCapa* exportar();
 string hex(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
 
 int main()
 {
-	/*string a = "aaa";
-	string b = "aa";
-	string c = "aa";
-
-	if (a < b)
-	{
-		cout << "b mayor a a\n";
-	}
-	if(a > b)
-	{
-		cout << "a mayor a b\n";
-	}
-	if (a == b)
-	{
-		cout << "igual\n";
-	}
-*/
 
 	while (true)
 	{
@@ -54,7 +40,7 @@ int main()
 }
 
 void menu() {
-	int eleccion;
+	string eleccion;
 
 	cout << "-------------------- Menu PhotGen++ --------------------\n\n";
 	cout << "1. Insertar Imagen\n";
@@ -62,53 +48,80 @@ void menu() {
 	cout << "3. Aplicar Filtros\n";
 	cout << "4. Ediccion Manual\n";
 	cout << "5. Exportar Imagen\n";
-	cout << "6. Reportes\n\n";
-	cout << "Ingrese el numero a de la accion a realizar: ";
+	cout << "6. Reportes\n";
+	cout << "7. Salir\n";
+	cout << "\nIngrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
-	cout << "\n-------------------- Menu PhotGen++ --------------------\n";
-	cout << "\n\n\n\n\n\n\n\n\n";
+	cout << endl;
+	cout << "\n-------------------- Menu PhotGen++ --------------------\n\n\n\n\n\n\n\n\n\n";
 
-
-	switch (eleccion)
+	if (eleccion == "1")
 	{
-		case 1:
-			insertarImagen();
-			break;
-
-		case 2:
-			escogerImagen();
-			break;
-
-		case 3:
+		insertarImagen();
+	}
+	else if (eleccion == "2") 
+	{
+		escogerImagen();
+	}
+	else if (eleccion == "3")
+	{
+		cout << "-------------------- Filtros --------------------\n\n";
+		if (imagen != NULL)
+		{
 			filtros();
-			break;
-
-		case 4:
+		}
+		else
+		{
+			cout << "	Imagen sin seleccionar\n";
+		}
+		cout << "\n-------------------- Filtros --------------------\n\n\n\n\n\n\n\n\n\n";
+	}
+	else if (eleccion == "3")
+	{
+		cout << "-------------------- Editor --------------------\n\n";
+		if (imagen != NULL)
+		{
 			edicion();
-			break;
-
-		case 5:
-			cout << "-------------------- Exportar Imagen --------------------\n\n";
-			if (imagen != NULL)
+		}
+		else
+		{
+			cout << "	Imagen sin seleccionar\n";
+		}
+		cout << "\n-------------------- Editor --------------------\n\n\n\n\n\n\n\n\n\n";
+	}
+	else if (eleccion == "5")
+	{
+		cout << "-------------------- Exportar Imagen --------------------\n\n";
+		if (imagen != NULL)
+		{
+			NodoCapa *primero = exportar();
+			if (primero != NULL)
 			{
 				exportarHTML();
-				exportarCSS();
-				cout << "	Termino de exportar\n";
+				exportarCSS(primero);
+				cout << "\n	Exportado con exito\n";
 			}
 			else
 			{
-				cout << "	Imagen sin seleccionar\n";
+				cout << "	ERROR: Seleccion no valida\n";
 			}
-			cout << "\n\n-------------------- Exportar Imagen --------------------\n\n\n\n\n\n\n\n\n\n";
-			break;
-
-		case 6:
-			exit(0);
-			break;
-
-		default:
-			break;
+			
+		}
+		else
+		{
+			cout << "	Imagen sin seleccionar\n";
+		}
+		cout << "\n-------------------- Exportar Imagen --------------------\n\n\n\n\n\n\n\n\n\n";
 	}
+	else if (eleccion == "6")
+	{
+		exit(0);
+	}
+	else if (eleccion == "7")
+	{
+		exit(0);
+	}
+
 }
 
 void insertarImagen() {
@@ -128,18 +141,30 @@ void insertarImagen() {
 
 	if (found != 4294967295)
 	{
-		nombre.push_back(direccion.substr(0, found));
-		nombre.push_back(direccion.substr(found, direccion.length()));
-
-		st = nombre[0];
-		found = st.find_last_of("/");
-
-		actual->nombreImagen = st.substr(found + 1, st.length());
+		found = direccion.find_last_of("/");
+		if (found != 4294967295)
+		{
+			nombre.push_back(direccion.substr(0, found));
+			st = direccion.substr(found + 1, direccion.length());
+			found = st.find_last_of(".");
+			nombre.push_back(st.substr(0, found));
+			nombre.push_back(st.substr(found, st.length()));
+			if (nombre[2] == ".csv")
+			{
+				actual->nombreImagen = nombre[0];
+				nombre[0] = nombre[0] + "/";
+			}
+			else
+			{
+				direccion = "";
+			}
+			
+		}
 	}
 	else
 	{
 		direccion = "";
-		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+		cout << "\nERROR: extencion del archivo (" << direccion << ") no valido \n";
 	}
 
 	ifstream lectura;
@@ -178,35 +203,35 @@ void insertarImagen() {
 
 				if (lista[i].compare("0") == 0 && lista[i+1].compare("config.csv") == 0)
 				{
-					agregarConfig(actual, lista[i+1]);
+					agregarConfig(actual, nombre[0]+lista[i+1]);
 				}
 				else
 				{
-					agregarCapa(actual, lista[i], lista[i+1]);
+					agregarCapa(actual, lista[i], nombre[0] + lista[i+1]);
 				}
 			}
 			else
 			{
 				if (lista[i+1].compare("0") == 0 && lista[i].compare("config.csv") == 0)
 				{
-					agregarConfig(actual, lista[i]);
+					agregarConfig(actual, nombre[0] + lista[i]);
 				}
 				else
 				{
-					agregarCapa(actual, lista[i+1], lista[i]);
+					agregarCapa(actual, lista[i+1], nombre[0] + lista[i]);
 				}
 			}
 			i++;
 		}
+		arbol->agregar(actual);
+		cout << "\n		Imagen cargada con exito\n";
 	}
 	else if(direccion != "")
 	{
-		cout << "ERROR: archivo no encontrado";
+		cout << "\nERROR: archivo no encontrado\n";
 	}
 
-	arbol->agregar(actual);
-
-	cout << "\n\n-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
+	cout << "\n-------------------- Insertar Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }
 
 void agregarConfig(NodoABB *actual, string direccion) {
@@ -221,7 +246,7 @@ void agregarConfig(NodoABB *actual, string direccion) {
 	
 	if (nombre[1] != ".csv")
 	{
-		cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+		cout << "\nERROR: extencion del archivo (" << direccion << ") no valido \n";
 		direccion = "";
 	}
 
@@ -268,7 +293,7 @@ void agregarConfig(NodoABB *actual, string direccion) {
 	}
 	else if (direccion != "")
 	{
-		cout << "ERROR: "<< direccion <<" archivo no encontrado\n";
+		cout << "\nERROR: "<< direccion <<" archivo no encontrado\n";
 	}
 }
 
@@ -288,7 +313,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 
 		if (nombre[1] != ".csv")
 		{
-			cout << "ERROR: extencion del archivo (" << direccion << ") no valido \n";
+			cout << "\nERROR: extencion del archivo (" << direccion << ") no valido \n";
 			direccion = "";
 		}
 		else {
@@ -315,15 +340,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 					{
 						if (lista[i].compare("x") != 0)
 						{
-							if (i == 0)
-							{
-								nueva->crearY(fila + 1);
-							}
-							if (fila == 0)
-							{
-								nueva->crearX(i + 1);
-							}
-							nueva->agregarNodo(i + 1, fila + 1, hex(lista[i]));
+							nueva->agregarNodo(i + 1, fila + 1, lista[i]);
 						}
 					}
 
@@ -335,7 +352,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 			}
 			else if (direccion != "")
 			{
-				cout << "ERROR: " << direccion << " archivo no encontrado\n";
+				cout << "\nERROR: " << direccion << " archivo no encontrado\n";
 			}
 		}
 	}
@@ -345,30 +362,134 @@ void escogerImagen() {
 
 	cout << "-------------------- Escoger Imagen --------------------\n\n";
 	int x = 1;
-	arbol->inorder(arbol->root, &x);
-	string direccion;
-	cout << "\n		Ingrese el numero de imagen a elegir: ";
-	cin >> direccion;
-	cout << "\n\n";
-
-	int f = stoi(direccion);
-	imagen = arbol->buscar(arbol->root, f);
-
-
-	if (imagen == NULL)
+	if (arbol->root != NULL)
 	{
-		cout << "ERROR: Imagen no encontrada";
-	}
+		arbol->inorder(arbol->root, &x);
+		string direccion;
+		cout << "\n		Ingrese el numero de imagen a elegir: ";
+		cin >> direccion;
+		cout << "\n";
 
-	cout << "\n\n-------------------- Escoger Imagen --------------------\n\n\n\n\n\n\n\n\n";
+		int f = stoi(direccion);
+		imagen = arbol->buscar(arbol->root, f);
+
+
+		if (imagen == NULL)
+		{
+			cout << "\nERROR: Imagen no encontrada\n";
+		}
+		else
+		{
+			fil = new Filtros();
+		}
+	}
+	else
+	{
+		cout << "\nERROR: No hay imagenes cargadas\n";
+	}
+	
+
+	cout << "\n-------------------- Escoger Imagen --------------------\n\n\n\n\n\n\n\n\n";
 }
 
 void filtros() {
+	string eleccion;
+
+	cout << "\n1. Negativo\n";
+	cout << "2. Escala de Grises\n";
+	cout << "3. Espejo\n";
+	cout << "4. X-Espejo\n";
+	cout << "5. Y-Espejo\n";
+	cout << "6. Doble-Espejo\n";
+	cout << "7. Collage\n";
+	cout << "8. Mosaico\n";
+	cout << "\nIngrese el numero a de la accion a realizar: ";
+	cin >> eleccion;
+	cout << "\n";
+
+
+	if (eleccion == "2")
+	{
+		escalaG();
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	/*
+	case 2:
+		grises();
+		break;
+
+	case 3:
+		espejo();
+		break;
+
+	case 4:
+		espejoX();
+		break;
+
+	case 5:
+		espejoY();
+		break;
+
+	case 6:
+		espejoDoble();
+		break;
+
+	case 7:
+		collage();
+		break;
+
+	case 8:
+		mosaico();
+		break;
+	*/
 
 }
 
 void edicion() {
 
+}
+
+NodoCapa* exportar() {
+	NodoCapa *retorno = NULL;
+	cout << "\n0. Normal\n";
+
+	if (fil->primero != NULL)
+	{
+		NodoFiltro *temp = fil->primero;
+		while (temp != NULL)
+		{
+			cout << temp->id <<". " << temp->nombreFiltro << "\n";
+			temp = temp->siguiente;
+		}
+	}
+
+	string eleccion;
+	cout << "\n		Escriba el numero de la imagen a imprimir: ";
+	cin >> eleccion;
+
+	if (eleccion == "0")
+	{
+		retorno = imagen->listaCapas->primero;
+	}
+	else
+	{
+		if (fil->primero != NULL)
+		{
+			NodoFiltro *temp = fil->primero;
+			while (temp != NULL)
+			{
+				if (stoi(eleccion) == temp->id)
+				{
+					retorno = temp->capas->primero;
+					temp = temp->siguiente;
+				}
+				else {
+					temp = temp->siguiente;
+				}
+			}
+		}
+	}
+	return retorno;
 }
 
 void exportarHTML() {
@@ -386,7 +507,7 @@ void exportarHTML() {
 		
 		lectura << "<div class=\"canvas\">\n";
 			
-		for (int i = 0; i < imagen->image_height * imagen->image_height; i++)
+		for (int i = 0; i < imagen->image_height * imagen->image_width; i++)
 		{
 			lectura << "	<div class=\"pixel\"></div>\n";
 		}
@@ -398,11 +519,11 @@ void exportarHTML() {
 	}
 	else
 	{
-		cout << "ERROR: Error con el html\n\n";
+		cout << "ERROR: Error con el html\n";
 	}
 }
 
-void exportarCSS() {
+void exportarCSS(NodoCapa *primero) {
 	ofstream lectura;
 	lectura.open("Exports/" + imagen->nombreImagen + ".css", ios::out);
 
@@ -432,7 +553,7 @@ void exportarCSS() {
 		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
 		lectura << "}\n\n";
 
-		NodoCapa *temp = imagen->listaCapas->primero;
+		NodoCapa *temp = primero;
 		while (temp != NULL) 
 		{
 			Matriz *mtz = temp->capa;
@@ -447,12 +568,12 @@ void exportarCSS() {
 					
 					if (col != NULL)
 					{
-						int pos = (col->y-1)*imagen->image_height + col->x;
+						int pos = (col->y-1)*imagen->image_width + col->x;
 
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{\nbackground: #" << col->codigo << ";\n}\n\n";
+							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
 						}
 						else
 						{
@@ -482,7 +603,7 @@ void exportarCSS() {
 	}
 	else
 	{
-		cout << "ERROR: Error con el css\n\n";
+		cout << "ERROR: Error con el css\n";
 	}
 }
 
@@ -512,6 +633,30 @@ string hex(string codigo) {
 	return RGBToHex(r, g, b);
 }
 
+string RGBG(string codigo) {
+	int r, g, b;
+	string cadena = codigo;
+	size_t found;
+
+	vector<string> nombre;
+	found = cadena.find("-");
+
+	nombre.push_back(cadena.substr(0, found));
+	cadena = cadena.substr(found + 1, cadena.length());
+
+	found = cadena.find("-");
+	nombre.push_back(cadena.substr(0, found));
+	nombre.push_back(cadena.substr(found + 1, cadena.length()));
+
+	r = stoi(nombre[0]) * 0.299;
+	g = stoi(nombre[1]) * 0.587;
+	b = stoi(nombre[2]) * 0.144;
+
+	cadena = to_string(r) + "-" + to_string(g) + "-" + to_string(b);
+
+	return cadena;
+}
+
 string RGBToHex(int rNum, int gNum, int bNum)
 {
 	string result;
@@ -525,4 +670,48 @@ string RGBToHex(int rNum, int gNum, int bNum)
 	sprintf_s(b, "%.2X", bNum);
 	result.append(b);
 	return result;
+}
+
+void escalaG() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(col->x, col->y, RGBG(col->codigo));
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Escala de grises", nuevo, 2);
 }

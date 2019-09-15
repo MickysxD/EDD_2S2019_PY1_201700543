@@ -9,9 +9,9 @@ Filtros::Filtros()
 	this->primero == NULL;
 }
 
-void Filtros::agregarNodo(string nombreFiltro, Capas *capas)
+void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 {
-	NodoFiltro *nuevo = new NodoFiltro(nombreFiltro, capas);
+	NodoFiltro *nuevo = new NodoFiltro(nombreFiltro, capas, id);
 	if (this->primero == NULL)
 	{
 		this->primero = nuevo;
@@ -25,11 +25,11 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas)
 		bool igual = false;
 
 		while (entra) {
-			if (temp->nombreFiltro == nuevo->nombreFiltro)
+			if (temp->id == nuevo->id)
 			{
 				igual = true;
 			}
-			else if (temp->nombreFiltro > nuevo->nombreFiltro) {
+			else if (temp->id > nuevo->id) {
 				bandera = true;
 				entra = false;
 			}

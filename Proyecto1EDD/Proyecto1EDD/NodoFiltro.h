@@ -12,8 +12,9 @@ public:
 	string nombreFiltro;
 	NodoFiltro *siguiente;
 	NodoFiltro *anterior;
+	int id;
 
-	NodoFiltro(string nombre, Capas *capas);
+	NodoFiltro(string nombre, Capas *capas, int id);
 	
 
 	~NodoFiltro();

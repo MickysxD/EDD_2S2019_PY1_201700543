@@ -11,7 +11,7 @@ public:
 	
 	NodoFiltro *primero;
 
-	void agregarNodo(string nombreCapa, Capas *capa);
+	void agregarNodo(string nombreCapa, Capas *capa, int id);
 
 	~Filtros();
 };
