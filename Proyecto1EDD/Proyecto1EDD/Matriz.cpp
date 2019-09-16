@@ -187,7 +187,7 @@ void Matriz::graficar(string nombre) {
 	grafica.open(nombre + ".dot", ios::out);
 
 	if (!grafica.fail()) {
-		grafica << "digraph  Grafico {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "node[nodesep = 1];" << endl << "rankdir=TB;" << endl;
+		grafica << "digraph  Grafico {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
 
 		Nodo *tempA = this->root;
 		Nodo *temp = this->root;

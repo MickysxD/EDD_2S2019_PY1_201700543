@@ -22,13 +22,20 @@ void escogerImagen();
 void filtros();
 void edicion();
 void exportarCSS(NodoCapa *primero);
+void exportarCSSC(NodoCapa *primero);
 void exportarHTML();
+void exportarHTMLC();
 void reportes();
-void negativo();
+void escalaN();
 void escalaG();
+void espejoX();
+void espejoY();
+void espejoD();
+void collage();
 NodoCapa* exportar();
 string hex(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
+string cx, cy;
 
 int main()
 {
@@ -97,8 +104,6 @@ void menu() {
 			NodoCapa *primero = exportar();
 			if (primero != NULL)
 			{
-				exportarHTML();
-				exportarCSS(primero);
 				cout << "\n	Exportado con exito\n";
 			}
 			else
@@ -397,48 +402,48 @@ void filtros() {
 
 	cout << "\n1. Negativo\n";
 	cout << "2. Escala de Grises\n";
-	cout << "3. Espejo\n";
-	cout << "4. X-Espejo\n";
-	cout << "5. Y-Espejo\n";
-	cout << "6. Doble-Espejo\n";
-	cout << "7. Collage\n";
-	cout << "8. Mosaico\n";
+	cout << "3. X-Espejo\n";
+	cout << "4. Y-Espejo\n";
+	cout << "5. Doble-Espejo\n";
+	cout << "6. Collage\n";
+	cout << "7. Mosaico\n";
 	cout << "\nIngrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
 	cout << "\n";
 
 
-	if (eleccion == "2")
+	if (eleccion == "1")
+	{
+		escalaN();
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	else if (eleccion == "2")
 	{
 		escalaG();
 		cout << "\n		Filtro realizado con Exito\n";
 	}
-	/*
-	case 2:
-		grises();
-		break;
-
-	case 3:
-		espejo();
-		break;
-
-	case 4:
+	else if (eleccion == "3")
+	{
 		espejoX();
-		break;
-
-	case 5:
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	else if (eleccion == "4")
+	{
 		espejoY();
-		break;
-
-	case 6:
-		espejoDoble();
-		break;
-
-	case 7:
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	else if (eleccion == "5")
+	{
+		espejoD();
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	else if (eleccion == "6")
+	{
 		collage();
-		break;
-
-	case 8:
+		cout << "\n		Filtro realizado con Exito\n";
+	}
+	/*
+	case 7:
 		mosaico();
 		break;
 	*/
@@ -481,6 +486,17 @@ NodoCapa* exportar() {
 				if (stoi(eleccion) == temp->id)
 				{
 					retorno = temp->capas->primero;
+					
+					if (temp->id == 6)
+					{
+						exportarHTMLC();
+						exportarCSSC(retorno);
+					}
+					else
+					{
+						exportarHTML();
+						exportarCSS(retorno);
+					}
 					temp = temp->siguiente;
 				}
 				else {
@@ -634,7 +650,7 @@ string hex(string codigo) {
 }
 
 string RGBG(string codigo) {
-	int r, g, b;
+	int r, g, b, x;
 	string cadena = codigo;
 	size_t found;
 
@@ -651,6 +667,39 @@ string RGBG(string codigo) {
 	r = stoi(nombre[0]) * 0.299;
 	g = stoi(nombre[1]) * 0.587;
 	b = stoi(nombre[2]) * 0.144;
+
+	/*r = stoi(nombre[0]) * 0.58;
+	g = stoi(nombre[1]) * 0.17;
+	b = stoi(nombre[2]) * 0.8;*/
+
+	x = r + g + b;
+	cadena = to_string(x) + "-" + to_string(x) + "-" + to_string(x);
+
+	return cadena;
+}
+
+string RGBN(string codigo) {
+	int r, g, b, x;
+	string cadena = codigo;
+	size_t found;
+
+	vector<string> nombre;
+	found = cadena.find("-");
+
+	nombre.push_back(cadena.substr(0, found));
+	cadena = cadena.substr(found + 1, cadena.length());
+
+	found = cadena.find("-");
+	nombre.push_back(cadena.substr(0, found));
+	nombre.push_back(cadena.substr(found + 1, cadena.length()));
+
+	r = 255 - stoi(nombre[0]);
+	g = 255 - stoi(nombre[1]);
+	b = 255 - stoi(nombre[2]);
+
+	/*r = stoi(nombre[0]) * 0.58;
+	g = stoi(nombre[1]) * 0.17;
+	b = stoi(nombre[2]) * 0.8;*/
 
 	cadena = to_string(r) + "-" + to_string(g) + "-" + to_string(b);
 
@@ -714,4 +763,356 @@ void escalaG() {
 	}
 
 	fil->agregarNodo("Escala de grises", nuevo, 2);
+}
+
+void escalaN() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(col->x, col->y, RGBN(col->codigo));
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Negativo", nuevo, 1);
+}
+
+void espejoX() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(imagen->image_width-col->x, col->y, col->codigo);
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Espejo-X", nuevo, 3);
+}
+
+void espejoY() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(col->x, imagen->image_height - col->y, col->codigo);
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Espejo-Y", nuevo, 4);
+}
+
+void espejoD() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(imagen->image_width - col->x, imagen->image_height - col->y, col->codigo);
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Espejo-Doble", nuevo, 5);
+}
+
+void collage() {
+	cout << "\n		Ingrese la coordenada en X:";
+	cin >> cx;
+	cout << endl;
+	cout << "\n		Ingrese la coordenada en y:";
+	cin >> cy;
+	cout << endl;
+
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					for (int i = 0; i < stoi(cx); i++)
+					{
+						for (int j = 0; j < stoi(cy); j++)
+						{
+							mtzn->agregarNodo(imagen->image_width*i + col->x, imagen->image_height*j + col->y, col->codigo);
+
+						}
+					}
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		//mtzn->graficar(temp->nombreCapa);
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Collage", nuevo, 6);
+}
+
+void exportarHTMLC() {
+	ofstream lectura;
+	lectura.open("Exports/" + imagen->nombreImagen + ".html", ios::out);
+
+	if (!lectura.fail())
+	{
+		lectura << "<!DOCTYPE html>\n";
+		lectura << "<html>\n";
+		lectura << "<head>\n";
+		lectura << "	<link rel=\"stylesheet\" href=\"" << imagen->nombreImagen << ".css\">\n";
+		lectura << "</head>\n";
+		lectura << "<body>\n\n";
+
+		lectura << "<div class=\"canvas\">\n";
+		int t = imagen->image_height * imagen->image_width * stoi(cy) * stoi(cx);
+		for (int i = 0; i < t; i++)
+		{
+			lectura << "	<div class=\"pixel\"></div>\n";
+		}
+
+		lectura << "</div>\n";
+		lectura << "</body>\n";
+		lectura << "</html>\n";
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el html\n";
+	}
+}
+
+void exportarCSSC(NodoCapa *primero) {
+	ofstream lectura;
+	lectura.open("Exports/" + imagen->nombreImagen + ".css", ios::out);
+
+
+	if (!lectura.fail())
+	{
+		lectura << "body {\n";
+		lectura << "background: #333333;\n";
+		lectura << "height: 100vh;\n";
+		lectura << "display: flex;\n";
+		lectura << "justify-content: center;\n";
+		lectura << "align-items: center;\n";
+		lectura << "}\n\n";
+
+		int px = imagen->pixel_width / stoi(cx);
+		int py = imagen->pixel_height / stoi(cy);
+		int w = imagen->image_width * px * stoi(cx);
+		int h = imagen->image_height * py * stoi(cy);
+
+		lectura << ".canvas {\n";
+		lectura << "width: " << w << "px;\n";
+		lectura << "height: " << h << "px;\n";
+		lectura << "}\n\n";
+
+		lectura << ".pixel {\n";
+		lectura << "width: " << px << "px;\n";
+		lectura << "height: " << py << "px;\n";
+		lectura << "float: left; \n";
+		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
+		lectura << "}\n\n";
+
+		NodoCapa *temp = primero;
+		while (temp != NULL)
+		{
+			Matriz *mtz = temp->capa;
+
+			if (mtz != NULL)
+			{
+				Nodo *fila = mtz->root;
+				Nodo *col = fila->siguiente;
+				col = col->abajo;
+				while (fila != NULL)
+				{
+
+					if (col != NULL)
+					{
+						int pos = (col->y - 1)*imagen->image_width*stoi(cx) + col->x;
+
+						if (col->abajo == NULL && fila->siguiente == NULL)
+						{
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
+						}
+						else
+						{
+							lectura << ".pixel:nth-child(" << pos << "),\n";
+						}
+						col = col->abajo;
+					}
+					else
+					{
+						fila = fila->siguiente;
+						if (fila != NULL)
+						{
+							col = fila->abajo;
+						}
+						else
+						{
+							col = NULL;
+						}
+					}
+
+				}
+			}
+
+			temp = temp->siguiente;
+		}
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el css\n";
+	}
 }
