@@ -6,7 +6,7 @@
 
 Filtros::Filtros()
 {
-	this->primero == NULL;
+	this->primero = NULL;
 }
 
 void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
@@ -15,6 +15,8 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 	if (this->primero == NULL)
 	{
 		this->primero = nuevo;
+		this->primero->siguiente = this->primero;
+		this->primero->anterior = this->primero;
 	}
 	else
 	{
@@ -33,7 +35,7 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 				bandera = true;
 				entra = false;
 			}
-			else if (temp->siguiente != NULL) {
+			else if (temp->siguiente != this->primero) {
 				temp = temp->siguiente;
 			}
 			else {
@@ -45,11 +47,8 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 		{
 			temp->anterior->siguiente = nuevo;
 			nuevo->anterior = temp->anterior;
-			if (temp->siguiente != NULL)
-			{
-				nuevo->siguiente = temp->siguiente;
-				temp->siguiente->anterior = nuevo;
-			}
+			nuevo->siguiente = temp->siguiente;
+			temp->siguiente->anterior = nuevo;
 		}
 		else if (bandera) {
 			if (temp == this->primero)
@@ -57,20 +56,15 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 				this->primero = nuevo;
 			}
 			nuevo->siguiente = temp;
-			if (temp->anterior != NULL)
-			{
-				temp->anterior->siguiente = nuevo;
-				nuevo->anterior = temp->anterior;
-				temp->anterior = nuevo;
-			}
-			else
-			{
-				temp->anterior = nuevo;
-			}
+			temp->anterior->siguiente = nuevo;
+			nuevo->anterior = temp->anterior;
+			temp->anterior = nuevo;
 		}
 		else {
 			temp->siguiente = nuevo;
 			nuevo->anterior = temp;
+			nuevo->siguiente = this->primero;
+			this->primero->anterior = nuevo;
 		}
 
 	}

@@ -83,9 +83,9 @@ void menu() {
 		}
 		cout << "\n-------------------- Filtros --------------------\n\n\n\n\n\n\n\n\n\n";
 	}
-	else if (eleccion == "3")
+	else if (eleccion == "4")
 	{
-		cout << "-------------------- Editor --------------------\n\n";
+		cout << "-------------------- Edicion Manual --------------------\n\n";
 		if (imagen != NULL)
 		{
 			edicion();
@@ -94,7 +94,7 @@ void menu() {
 		{
 			cout << "	Imagen sin seleccionar\n";
 		}
-		cout << "\n-------------------- Editor --------------------\n\n\n\n\n\n\n\n\n\n";
+		cout << "\n-------------------- Edicion Manual --------------------\n\n\n\n\n\n\n\n\n\n";
 	}
 	else if (eleccion == "5")
 	{
@@ -169,7 +169,7 @@ void insertarImagen() {
 	else
 	{
 		direccion = "";
-		cout << "\nERROR: extencion del archivo (" << direccion << ") no valido \n";
+		cout << "\nERROR: extencion del archivo no valido \n";
 	}
 
 	ifstream lectura;
@@ -310,7 +310,6 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 	vector<string> nombre;
 	found = direccion.find_last_of(".");
 
-	
 	if (found != 4294967295)
 	{
 		nombre.push_back(direccion.substr(0, found));
@@ -353,7 +352,8 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 
 				}
 				//nueva->graficar(ncapa);
-				actual->listaCapas->agregarNodo(nombre[0], stoi(ncapa), nueva);
+				found = nombre[0].find_last_of("/");
+				actual->listaCapas->agregarNodo(nombre[0].substr(found+1, nombre[0].length()), stoi(ncapa), nueva);
 			}
 			else if (direccion != "")
 			{
@@ -451,7 +451,104 @@ void filtros() {
 }
 
 void edicion() {
+	NodoCapa *retorno = NULL;
+	cout << "\n0. Normal\n";
 
+	if (fil->primero != NULL)
+	{
+		NodoFiltro *temp = fil->primero;
+		cout << temp->id << ". " << temp->nombreFiltro << "\n";
+		temp = temp->siguiente;
+		while (temp != fil->primero)
+		{
+			cout << temp->id << ". " << temp->nombreFiltro << "\n";
+			temp = temp->siguiente;
+		}
+	}
+
+	string eleccion;
+	cout << "\n		Escriba el numero de la imagen a Editar: ";
+	cin >> eleccion;
+
+	if (eleccion == "0")
+	{
+		retorno = imagen->listaCapas->primero;
+	}
+	else
+	{
+		if (fil->primero != NULL)
+		{
+			NodoFiltro *temp = fil->primero;
+			if (stoi(eleccion) == temp->id)
+			{
+				retorno = temp->capas->primero;
+
+				temp = temp->siguiente;
+			}
+			else {
+				temp = temp->siguiente;
+			}
+			while (temp != fil->primero)
+			{
+				if (stoi(eleccion) == temp->id)
+				{
+					retorno = temp->capas->primero;
+
+					temp = temp->siguiente;
+				}
+				else {
+					temp = temp->siguiente;
+				}
+			}
+		}
+	}
+
+	if (retorno != NULL) {
+		NodoCapa *temp = retorno;
+		
+		while (temp != NULL)
+		{
+			cout << temp->noCapa << ". " << temp->nombreCapa << "\n";
+			temp = temp->siguiente;
+		}
+
+		string x,y, ncapa, rgb;
+		cout << "\n		Escriba el numero de la capa a Editar: ";
+		cin >> ncapa;
+
+		temp = retorno;
+
+		while (temp != NULL)
+		{
+			if (temp->noCapa == stoi(ncapa))
+			{
+				cout << "\n		Escriba la coordenda en X: ";
+				cin >> x;
+				cout << "\n		Escriba la coordenda en Y: ";
+				cin >> y;
+				cout << "\n		Escriba el codigo RGB: ";
+				cin >> rgb;
+
+				temp->capa->agregarNodo(stoi(x), stoi(y), rgb);
+				retorno = temp;
+				temp = temp->siguiente;
+			}
+			else
+			{
+				temp = temp->siguiente;
+			}
+			
+		}
+		if (retorno == NULL)
+		{
+			cout << "\n		ERROR: no a sido posible modificar\n";
+		}
+		else
+		{
+			cout << "\n			Modificado con exito\n";
+		}
+
+	}
 }
 
 NodoCapa* exportar() {
@@ -461,7 +558,9 @@ NodoCapa* exportar() {
 	if (fil->primero != NULL)
 	{
 		NodoFiltro *temp = fil->primero;
-		while (temp != NULL)
+		cout << temp->id << ". " << temp->nombreFiltro << "\n";
+		temp = temp->siguiente;
+		while (temp != fil->primero)
 		{
 			cout << temp->id <<". " << temp->nombreFiltro << "\n";
 			temp = temp->siguiente;
@@ -483,7 +582,26 @@ NodoCapa* exportar() {
 		if (fil->primero != NULL)
 		{
 			NodoFiltro *temp = fil->primero;
-			while (temp != NULL)
+			if (stoi(eleccion) == temp->id)
+			{
+				retorno = temp->capas->primero;
+
+				if (temp->id == 6)
+				{
+					exportarHTMLC();
+					exportarCSSC(retorno);
+				}
+				else
+				{
+					exportarHTML();
+					exportarCSS(retorno);
+				}
+				temp = temp->siguiente;
+			}
+			else {
+				temp = temp->siguiente;
+			}
+			while (temp != fil->primero)
 			{
 				if (stoi(eleccion) == temp->id)
 				{
@@ -671,10 +789,6 @@ string RGBG(string codigo) {
 	g = stoi(nombre[1]) * 0.587;
 	b = stoi(nombre[2]) * 0.144;
 
-	/*r = stoi(nombre[0]) * 0.58;
-	g = stoi(nombre[1]) * 0.17;
-	b = stoi(nombre[2]) * 0.8;*/
-
 	x = r + g + b;
 	cadena = to_string(x) + "-" + to_string(x) + "-" + to_string(x);
 
@@ -699,10 +813,6 @@ string RGBN(string codigo) {
 	r = 255 - stoi(nombre[0]);
 	g = 255 - stoi(nombre[1]);
 	b = 255 - stoi(nombre[2]);
-
-	/*r = stoi(nombre[0]) * 0.58;
-	g = stoi(nombre[1]) * 0.17;
-	b = stoi(nombre[2]) * 0.8;*/
 
 	cadena = to_string(r) + "-" + to_string(g) + "-" + to_string(b);
 
@@ -948,7 +1058,7 @@ void collage() {
 	cout << "\n		Ingrese la coordenada en X:";
 	cin >> cx;
 	cout << endl;
-	cout << "\n		Ingrese la coordenada en y:";
+	cout << "\n		Ingrese la coordenada en Y:";
 	cin >> cy;
 	cout << endl;
 

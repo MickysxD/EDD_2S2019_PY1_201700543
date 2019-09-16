@@ -181,6 +181,41 @@ void Matriz::agregarNodo(int x, int y, string codigo)
 
 }
 
+void Matriz::modificarNodo(int x, int y, string codigo)
+{
+	Nodo *nuevo = new Nodo();
+	nuevo->codigo = codigo;
+	nuevo->x = x;
+	nuevo->y = y;
+
+	Nodo *nodoX = this->buscarX(x);
+	Nodo *nodoY = this->buscarY(y);
+
+	if (nodoX == NULL && nodoY == NULL) {
+		nodoX = this->crearX(x);
+		nodoY = this->crearY(y);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
+	}
+	else if (nodoX != NULL && nodoY == NULL) {
+		nodoY = this->crearY(y);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
+
+	}
+	else if (nodoX == NULL && nodoY != NULL) {
+		nodoX = this->crearX(x);
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
+
+	}
+	else if (nodoX != NULL && nodoY != NULL) {
+		nuevo = this->agregarX(nuevo, nodoY);
+		nuevo = this->agregarY(nuevo, nodoX);
+	}
+
+}
+
 void Matriz::graficar(string nombre) {
 	ofstream grafica;
 

@@ -1,12 +1,9 @@
-﻿  Filtros.cpp
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\filtros.cpp(9): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
-  Proyecto1EDD.cpp
+﻿  Proyecto1EDD.cpp
 c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(196): warning C4018: '<': no coinciden signed/unsigned
 c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(276): warning C4018: '<': no coinciden signed/unsigned
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(344): warning C4018: '<': no coinciden signed/unsigned
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(670): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(671): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(672): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(685): warning C4101: 'x': variable local sin referencia
-  Generando código...
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(343): warning C4018: '<': no coinciden signed/unsigned
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(788): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(789): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(790): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(799): warning C4101: 'x': variable local sin referencia
   Proyecto1EDD.vcxproj -> C:\Users\Micky\Documents\CodeBlocks.git\EDD_2S2019_PY1_201700543\Proyecto1EDD\Debug\Proyecto1EDD.exe

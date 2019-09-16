@@ -19,6 +19,7 @@ public:
 	Nodo* crearY(int y);
 
 	void agregarNodo(int x, int y, string codigo);
+	void modificarNodo(int x, int y, string codigo);
 	void imprimir();
 	void csv(string direccion);
 	void graficar(string nombre);
