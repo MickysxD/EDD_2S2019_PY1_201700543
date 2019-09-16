@@ -475,6 +475,8 @@ NodoCapa* exportar() {
 	if (eleccion == "0")
 	{
 		retorno = imagen->listaCapas->primero;
+		exportarHTML();
+		exportarCSS(retorno);
 	}
 	else
 	{
@@ -589,11 +591,12 @@ void exportarCSS(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
+							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
 						}
 						else
 						{
-							lectura << ".pixel:nth-child(" << pos << "),\n";
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
 						}
 						col = col->abajo;
 					}
@@ -1083,11 +1086,12 @@ void exportarCSSC(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{\nbackground: #" << hex(col->codigo) << ";\n}\n\n";
+							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
 						}
 						else
 						{
-							lectura << ".pixel:nth-child(" << pos << "),\n";
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
 						}
 						col = col->abajo;
 					}

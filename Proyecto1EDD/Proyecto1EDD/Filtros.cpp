@@ -52,10 +52,21 @@ void Filtros::agregarNodo(string nombreFiltro, Capas *capas, int id)
 			}
 		}
 		else if (bandera) {
+			if (temp == this->primero)
+			{
+				this->primero = nuevo;
+			}
 			nuevo->siguiente = temp;
-			temp->anterior->siguiente = nuevo;
-			nuevo->anterior = temp->anterior;
-			temp->anterior = nuevo;
+			if (temp->anterior != NULL)
+			{
+				temp->anterior->siguiente = nuevo;
+				nuevo->anterior = temp->anterior;
+				temp->anterior = nuevo;
+			}
+			else
+			{
+				temp->anterior = nuevo;
+			}
 		}
 		else {
 			temp->siguiente = nuevo;
