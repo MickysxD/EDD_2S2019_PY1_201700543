@@ -2,6 +2,7 @@
 #include "ABB.h"
 #include <iostream>
 
+
 ABB::ABB()
 {
 	this->root = NULL;
@@ -81,7 +82,41 @@ NodoABB* ABB::buscar(NodoABB *root, int posb) {
 	return retorno;
 }
 
+string ABB::graficar(NodoABB *root) {
+	string retorno, rank;
+	
+	if (root->izq != NULL || root->der != NULL)
+	{
+		retorno = "\"" + root->nombreImagen + "\"[label= \"<C0>|" + root->nombreImagen + "\\nimage_width=" + to_string(root->image_width) + "\\nimage_height=" + to_string(root->image_height) + "\\npixel_width=" + to_string(root->pixel_width) + "\\npixel_height=" + to_string(root->pixel_height) + "|<C1>\"];\n";
+		rank = "{ rank=same; ";
+	}
+	else
+	{
+		retorno = "\"" + root->nombreImagen + "\"[label=\"" + root->nombreImagen + "\\nimage_width=" + to_string(root->image_width) + "\\nimage_height=" + to_string(root->image_height) + "\\npixel_width=" + to_string(root->pixel_width) + "\\npixel_height=" + to_string(root->pixel_height) + "\"];\n";
 
+	}
+
+	if (root->izq != NULL)
+	{
+		retorno = retorno + graficarN(root->izq);
+		retorno = retorno + "\"" + root->nombreImagen + "\":C0->\"" + root->izq->nombreImagen + "\";\n";
+		rank = rank + "\"" + root->izq->nombreImagen + "\" ";
+	}
+	
+	if (root->der != NULL)
+	{
+		retorno = retorno + graficarN(root->der);
+		retorno = retorno +  "\"" + root->nombreImagen + "\":C1->\"" + root->der->nombreImagen + "\";\n";
+		rank = rank + "\"" + root->der->nombreImagen + "\" ";
+	}
+	
+	if (root->izq != NULL || root->der != NULL)
+	{
+		rank = rank + "}\n";
+	}
+	retorno = retorno + rank;
+	return retorno;
+}
 
 ABB::~ABB()
 {

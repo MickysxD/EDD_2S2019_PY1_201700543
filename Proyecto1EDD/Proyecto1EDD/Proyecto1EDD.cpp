@@ -32,6 +32,7 @@ void espejoX();
 void espejoY();
 void espejoD();
 void collage();
+void arbolR();
 NodoCapa* exportar();
 string hex(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
@@ -120,7 +121,7 @@ void menu() {
 	}
 	else if (eleccion == "6")
 	{
-		exit(0);
+		reportes();
 	}
 	else if (eleccion == "7")
 	{
@@ -745,6 +746,74 @@ void exportarCSS(NodoCapa *primero) {
 }
 
 void reportes() {
+	cout << "\n-------------------- Reportes --------------------\n\n";
+
+	string eleccion;
+
+	cout << "1. Reporte del Arbol\n";
+	cout << "2. Reporte de Capa\n";
+	cout << "3. Reporte Lineal de Capa\n";
+	cout << "4. Reporte Transversal del Arbol \n";
+	cout << "5. Reporte de Filtros\n";
+	cout << "\nIngrese el numero a de la accion a realizar: ";
+	cin >> eleccion;
+	cout << endl;
+
+	
+	if (eleccion == "1")
+	{
+		arbolR();
+	}
+	else if (eleccion == "2")
+	{
+
+	}
+	else if (eleccion == "3")
+	{
+
+	}
+	else if (eleccion == "4")
+	{
+
+	}
+	else if (eleccion == "5")
+	{
+
+	}
+	else
+	{
+		cout << "\n	Eleccion no valida\n";
+	}
+
+	cout << "\n-------------------- Reportes --------------------\n\n\n\n\n\n\n\n\n\n";
+
+}
+
+void arbolR(){
+	ofstream grafica;
+
+	grafica.open("arbol.dot", ios::out);
+
+	if (!grafica.fail()) {
+		grafica << "digraph grafico{\nnode [shape = record];\ngraph [nodesep = 1];\nrankdir=TB;\n";
+
+		string nombre = arbol->graficar(arbol->root);
+		
+		grafica << nombre;
+
+		/*string conecciones = arbol->graficarC(arbol->root);
+
+		grafica << conecciones;*/
+
+		grafica << "}";
+
+		grafica.close();
+
+		system("dot -Tjpg arbol.dot -o arbol.jpg");
+
+		system("arbol.jpg");
+
+	}
 
 }
 

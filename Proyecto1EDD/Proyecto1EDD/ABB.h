@@ -13,6 +13,7 @@ public:
 	void recursivoAgregar(NodoABB *nuevo, NodoABB *root);
 	void inorder(NodoABB *root, int *pos);
 	NodoABB *buscar(NodoABB *root, int posb);
+	string graficar(NodoABB *root);
 	~ABB();
 };
 

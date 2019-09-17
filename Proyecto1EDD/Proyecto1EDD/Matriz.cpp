@@ -222,7 +222,7 @@ void Matriz::graficar(string nombre) {
 	grafica.open(nombre + ".dot", ios::out);
 
 	if (!grafica.fail()) {
-		grafica << "digraph  Grafico {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
+		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
 
 		Nodo *tempA = this->root;
 		Nodo *temp = this->root;
@@ -393,6 +393,8 @@ void Matriz::graficar(string nombre) {
 
 		grafica << "}";
 
+		grafica.close();
+
 		string creacion = "dot -Tjpg " + nombre + ".dot -o " + nombre + ".jpg";
 		system(creacion.c_str());
 
@@ -400,10 +402,6 @@ void Matriz::graficar(string nombre) {
 		system(creacion.c_str());
 
 	}
-
-
-	grafica.close();
-
 
 }
 
