@@ -23,6 +23,8 @@ public:
 	void imprimir();
 	void csv(string direccion);
 	void graficar(string nombre);
+	void graficarC(string nombre);
+	void graficarF(string nombre);
 
 	~Matriz();
 };

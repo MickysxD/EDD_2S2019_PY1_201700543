@@ -118,6 +118,49 @@ string ABB::graficar(NodoABB *root) {
 	return retorno;
 }
 
+string ABB::inorderG(NodoABB *root) {
+	if (root->izq != NULL)
+	{
+		inorderG(root->izq);
+	}
+	
+
+	
+	if (root->der != NULL)
+	{
+		inorderG(root->der);
+	}
+}
+
+string ABB::preorderG(NodoABB *root) {
+	if (root->izq != NULL)
+	{
+		preorderG(root->izq);
+	}
+
+
+
+	if (root->der != NULL)
+	{
+		preorderG(root->der);
+	}
+}
+
+string ABB::postorderG(NodoABB *root) {
+	if (root->izq != NULL)
+	{
+		postorderG(root->izq);
+	}
+
+
+
+	if (root->der != NULL)
+	{
+		postorderG(root->der);
+	}
+}
+
+
 ABB::~ABB()
 {
 }

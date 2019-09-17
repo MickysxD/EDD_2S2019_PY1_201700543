@@ -33,6 +33,8 @@ void espejoY();
 void espejoD();
 void collage();
 void arbolR();
+void nodoR();
+void nodoL();
 NodoCapa* exportar();
 string hex(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
@@ -766,11 +768,11 @@ void reportes() {
 	}
 	else if (eleccion == "2")
 	{
-
+		nodoR();
 	}
 	else if (eleccion == "3")
 	{
-
+		nodoL();
 	}
 	else if (eleccion == "4")
 	{
@@ -801,10 +803,6 @@ void arbolR(){
 		
 		grafica << nombre;
 
-		/*string conecciones = arbol->graficarC(arbol->root);
-
-		grafica << conecciones;*/
-
 		grafica << "}";
 
 		grafica.close();
@@ -815,6 +813,134 @@ void arbolR(){
 
 	}
 
+}
+
+void nodoR() {
+	int x = 1;
+	if (arbol->root != NULL)
+	{
+		arbol->inorder(arbol->root, &x);
+		string direccion;
+		cout << "\n		Ingrese el numero de imagen a elegir: ";
+		cin >> direccion;
+		cout << "\n";
+
+		int f = stoi(direccion);
+		NodoABB *retorno = arbol->buscar(arbol->root, f);
+
+
+		if (retorno != NULL) {
+			NodoCapa *temp = retorno->listaCapas->primero;
+
+			while (temp != NULL)
+			{
+				cout << temp->noCapa << ". " << temp->nombreCapa << "\n";
+				temp = temp->siguiente;
+			}
+
+			string ncapa;
+			cout << "\n		Escriba el numero de la capa a Graficar: ";
+			cin >> ncapa;
+
+			temp = retorno->listaCapas->primero;
+
+			while (temp != NULL)
+			{
+				if (temp->noCapa == stoi(ncapa))
+				{
+					temp->capa->graficar(temp->nombreCapa);
+				}
+				else
+				{
+					temp = temp->siguiente;
+				}
+
+			}
+			if (retorno == NULL)
+			{
+				cout << "\n		ERROR: no a sido posible modificar\n";
+			}
+			else
+			{
+				cout << "\n			Modificado con exito\n";
+			}
+
+		}
+	}
+	else
+	{
+		cout << "\nERROR: No hay imagenes cargadas\n";
+	}
+}
+
+void nodoL() {
+	int x = 1;
+	if (arbol->root != NULL)
+	{
+		arbol->inorder(arbol->root, &x);
+		string direccion;
+		cout << "\n		Ingrese el numero de imagen a elegir: ";
+		cin >> direccion;
+		cout << "\n";
+
+		int f = stoi(direccion);
+		NodoABB *retorno = arbol->buscar(arbol->root, f);
+
+
+		if (retorno != NULL) {
+			NodoCapa *temp = retorno->listaCapas->primero;
+
+			while (temp != NULL)
+			{
+				cout << temp->noCapa << ". " << temp->nombreCapa << "\n";
+				temp = temp->siguiente;
+			}
+
+			string ncapa, linea;
+			cout << "\n		Escriba el numero de la capa a Graficar: ";
+			cin >> ncapa;
+
+			temp = retorno->listaCapas->primero;
+
+			while (temp != NULL)
+			{
+				if (temp->noCapa == stoi(ncapa))
+				{
+					cout << "\n		1. Columnas";
+					cout << "\n		2. Filas";
+					cout << "\n		Escriba el numero de la capa a Graficar: ";
+					cin >> linea;
+					if (linea == "1")
+					{
+						temp->capa->graficarC(temp->nombreCapa + "LinealColumna");
+					}
+					else if (linea == "2")
+					{
+						temp->capa->graficarF(temp->nombreCapa + "LinealFila");
+					}
+					
+				}
+				else
+				{
+					temp = temp->siguiente;
+				}
+
+			}
+			if (retorno == NULL)
+			{
+				cout << "\n		ERROR: no a sido posible modificar\n";
+			}
+			else
+			{
+				cout << "\n			Modificado con exito\n";
+			}
+
+		}
+	}
+	else
+	{
+		cout << "\nERROR: No hay imagenes cargadas\n";
+	}
 }
 
 string hex(string codigo) {
