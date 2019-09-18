@@ -886,7 +886,6 @@ void nodoL() {
 		int f = stoi(direccion);
 		NodoABB *retorno = arbol->buscar(arbol->root, f);
 
-
 		if (retorno != NULL) {
 			NodoCapa *temp = retorno->listaCapas->primero;
 
@@ -908,7 +907,7 @@ void nodoL() {
 				{
 					cout << "\n		1. Columnas";
 					cout << "\n		2. Filas";
-					cout << "\n		Escriba el numero de la capa a Graficar: ";
+					cout << "\n		Escriba el numero de la forma a Graficar: ";
 					cin >> linea;
 					if (linea == "1")
 					{

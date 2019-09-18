@@ -98,14 +98,14 @@ string ABB::graficar(NodoABB *root) {
 
 	if (root->izq != NULL)
 	{
-		retorno = retorno + graficarN(root->izq);
+		retorno = retorno + graficar(root->izq);
 		retorno = retorno + "\"" + root->nombreImagen + "\":C0->\"" + root->izq->nombreImagen + "\";\n";
 		rank = rank + "\"" + root->izq->nombreImagen + "\" ";
 	}
 	
 	if (root->der != NULL)
 	{
-		retorno = retorno + graficarN(root->der);
+		retorno = retorno + graficar(root->der);
 		retorno = retorno +  "\"" + root->nombreImagen + "\":C1->\"" + root->der->nombreImagen + "\";\n";
 		rank = rank + "\"" + root->der->nombreImagen + "\" ";
 	}
@@ -119,45 +119,67 @@ string ABB::graficar(NodoABB *root) {
 }
 
 string ABB::inorderG(NodoABB *root) {
+	string retorno;
 	if (root->izq != NULL)
 	{
-		inorderG(root->izq);
+		retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
+		retorno = retorno +  inorderG(root->izq);
 	}
 	
-
+	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	retorno = retorno + inorderG(root->izq);
 	
 	if (root->der != NULL)
 	{
-		inorderG(root->der);
+		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
+		retorno = retorno + inorderG(root->der);
 	}
+	
+	return retorno;
 }
 
 string ABB::preorderG(NodoABB *root) {
+	string retorno;
 	if (root->izq != NULL)
 	{
-		preorderG(root->izq);
+		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->izq->nombreImagen + "\"];\n";
+		retorno = retorno + inorderG(root->izq);
 	}
 
-
+	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	retorno = retorno + inorderG(root->izq);
 
 	if (root->der != NULL)
 	{
-		preorderG(root->der);
+		if (root->izq != NULL)
+		{
+			retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
+
+		}
+		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
+		retorno = retorno + inorderG(root->der);
 	}
+	return retorno;
 }
 
 string ABB::postorderG(NodoABB *root) {
+	string retorno;
 	if (root->izq != NULL)
 	{
-		postorderG(root->izq);
+		retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
+		retorno = retorno + inorderG(root->izq);
 	}
 
-
+	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	retorno = retorno + inorderG(root->izq);
 
 	if (root->der != NULL)
 	{
-		postorderG(root->der);
+		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
+		retorno = retorno + inorderG(root->der);
 	}
+
+	return retorno;
 }
 
 

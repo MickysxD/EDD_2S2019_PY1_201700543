@@ -1283,3 +1283,4 @@ background: repeat-y;
 
 .pixel:nth-child(75) {background: #F4130C;}
 
+.pixel:nth-child(2) {background: rgb(255,255,255,0.9);}
