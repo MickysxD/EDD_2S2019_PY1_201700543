@@ -40,6 +40,8 @@ void nodoR();
 void nodoL();
 void arbolT();
 void filtrosR();
+void listaFiltros();
+void filtroCapa();
 NodoCapa* exportar();
 string RGB(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
@@ -69,6 +71,7 @@ void menu() {
 	cin >> eleccion;
 	cout << endl;
 	cout << "\n-------------------- Menu PhotGen++ --------------------\n\n\n\n\n\n\n\n\n\n";
+	system("cls");
 
 	if (eleccion == "1")
 	{
@@ -815,7 +818,7 @@ void reportes() {
 		}
 		else
 		{
-			cout << "\n	ERROR: no hay filtros aplicados ";
+			cout << "\n	ERROR: no hay filtros aplicados\n";
 		}
 	}
 	else
@@ -893,11 +896,11 @@ void nodoR() {
 			}
 			if (retorno == NULL)
 			{
-				cout << "\n		ERROR: no a sido posible modificar\n";
+				cout << "\n		ERROR: no a sido posible Graficar\n";
 			}
 			else
 			{
-				cout << "\n			Modificado con exito\n";
+				cout << "\n			Graficado con exito\n";
 			}
 
 		}
@@ -967,7 +970,7 @@ void nodoL() {
 			}
 			if (temp == NULL)
 			{
-				cout << "\n		ERROR: no a sido posible grafiar\n";
+				cout << "\n		ERROR: no a sido posible graficar\n";
 			}
 			else
 			{
@@ -1054,15 +1057,154 @@ void arbolT() {
 void filtrosR() {
 	string eleccion;
 
-	cout << "1. Reporte de todos los filtros\n";
-	cout << "2. Reporte de Capa\n";
-	cout << "3. Reporte Lineal de Capa\n";
-	cout << "4. Reporte Transversal del Arbol \n";
-	cout << "5. Reporte de Filtros\n";
+	cout << "1. Lista de filtros\n";
+	cout << "2. Reporte Capa de filtro\n";
 	cout << "\n	Ingrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
 	cout << endl;
 
+	if (eleccion == "1")
+	{
+		listaFiltros();
+	}
+	else if (eleccion == "2")
+	{
+		filtroCapa();
+	}
+	else
+	{
+		cout << "\n	ERROR: eleccion no valida";
+
+	}
+}
+
+void listaFiltros() {
+	ofstream grafica;
+
+	grafica.open("listaFiltros.dot", ios::out);
+
+	if (!grafica.fail()) {
+		grafica << "digraph grafico{\nnode [shape = record];\ngraph [nodesep = 1];\nrankdir=LR;\n";
+
+		NodoFiltro *temp = fil->primero;
+
+		grafica << "\"" << temp->nombreFiltro << "\"[label=\"" << temp->nombreFiltro << "\"];" << endl;
+		grafica << "\"" << temp->nombreFiltro << "\"->\"" << temp->siguiente->nombreFiltro << "\"[dir=both];" << endl;
+
+		temp = temp->siguiente;
+
+		while (temp != fil->primero)
+		{
+			grafica << "\"" << temp->nombreFiltro << "\"[label=\"" << temp->nombreFiltro << "\"];" << endl;
+			grafica << "\"" << temp->nombreFiltro << "\"->\"" << temp->siguiente->nombreFiltro << "\"[dir=both];" << endl;
+
+			temp = temp->siguiente;
+		}
+
+		grafica << "}";
+
+		grafica.close();
+
+		system("dot -Tjpg listaFiltros.dot -o listaFiltros.jpg");
+		system("listaFiltros.jpg");
+
+		cout << "\n		Graficado con exito\n";
+	}
+	else
+	{
+		cout << "\n		ERROR: no se pudo  graficar";
+	}
+
+}
+
+void filtroCapa() {
+	if (fil->primero != NULL)
+	{
+		NodoFiltro *temp = fil->primero;
+
+		cout << temp->id << "." << temp->nombreFiltro << endl;
+		temp = temp->siguiente;
+
+		while (temp != fil->primero)
+		{
+			cout << temp->id << "." << temp->nombreFiltro << endl;
+			temp = temp->siguiente;
+		}
+		
+		string direccion;
+		cout << "\n		Ingrese el numero de imagen a elegir: ";
+		cin >> direccion;
+		cout << "\n";
+
+		int f = stoi(direccion);
+		Capas *retorno = NULL;
+
+		temp = fil->primero;
+
+		if (temp->id == f)
+		{
+			retorno = temp->capas;
+		}
+
+		temp = temp->siguiente;
+
+		while (temp != fil->primero)
+		{
+			if (temp->id == f)
+			{
+				retorno = temp->capas;
+				temp = temp->siguiente;
+			}
+			else
+			{
+				temp = temp->siguiente;
+			}
+		}
+
+
+		if (retorno != NULL) {
+			NodoCapa *temp = retorno->primero;
+
+			while (temp != NULL)
+			{
+				cout << temp->noCapa << ". " << temp->nombreCapa << "\n";
+				temp = temp->siguiente;
+			}
+
+			string ncapa;
+			cout << "\n		Escriba el numero de la capa a Graficar: ";
+			cin >> ncapa;
+
+			temp = retorno->primero;
+
+			while (temp != NULL)
+			{
+				if (temp->noCapa == stoi(ncapa))
+				{
+					temp->capa->graficar(temp->nombreCapa);
+					break;
+				}
+				else
+				{
+					temp = temp->siguiente;
+				}
+
+			}
+			if (retorno == NULL)
+			{
+				cout << "\n		ERROR: no a sido posible graficar\n";
+			}
+			else
+			{
+				cout << "\n			Graficado con exito\n";
+			}
+
+		}
+	}
+	else
+	{
+		cout << "\nERROR: No hay imagenes cargadas\n";
+	}
 }
 
 string RGB(string codigo) {
