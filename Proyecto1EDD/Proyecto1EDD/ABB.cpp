@@ -118,66 +118,59 @@ string ABB::graficar(NodoABB *root) {
 	return retorno;
 }
 
-string ABB::inorderG(NodoABB *root) {
+string ABB::inorderG(NodoABB *root, int *pos) {
 	string retorno;
+	
 	if (root->izq != NULL)
 	{
-		retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
-		retorno = retorno +  inorderG(root->izq);
+		retorno = retorno + inorderG(root->izq, pos);
 	}
-	
-	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
-	retorno = retorno + inorderG(root->izq);
-	
+
+	retorno = retorno + "\"" + to_string(*pos) + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	(*pos)++;
+
 	if (root->der != NULL)
 	{
-		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
-		retorno = retorno + inorderG(root->der);
+		retorno = retorno + inorderG(root->der, pos);
 	}
-	
+
 	return retorno;
 }
 
-string ABB::preorderG(NodoABB *root) {
+string ABB::preorderG(NodoABB *root, int *pos) {
 	string retorno;
+
+	retorno = retorno + "\"" + to_string(*pos) + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	(*pos)++;
+
 	if (root->izq != NULL)
 	{
-		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->izq->nombreImagen + "\"];\n";
-		retorno = retorno + inorderG(root->izq);
+		retorno = retorno + inorderG(root->izq, pos);
 	}
-
-	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
-	retorno = retorno + inorderG(root->izq);
 
 	if (root->der != NULL)
 	{
-		if (root->izq != NULL)
-		{
-			retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
-
-		}
-		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
-		retorno = retorno + inorderG(root->der);
+		retorno = retorno + inorderG(root->der, pos);
 	}
+
 	return retorno;
 }
 
-string ABB::postorderG(NodoABB *root) {
+string ABB::postorderG(NodoABB *root, int *pos) {
 	string retorno;
+
 	if (root->izq != NULL)
 	{
-		retorno = retorno + "\"" + root->izq->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
-		retorno = retorno + inorderG(root->izq);
+		retorno = retorno + inorderG(root->izq, pos);
 	}
-
-	retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->nombreImagen + "\"];\n";
-	retorno = retorno + inorderG(root->izq);
 
 	if (root->der != NULL)
 	{
-		retorno = retorno + "\"" + root->nombreImagen + "\"[label= \"" + root->der->nombreImagen + "\"];\n";
-		retorno = retorno + inorderG(root->der);
+		retorno = retorno + inorderG(root->der, pos);
 	}
+
+	retorno = retorno + "\"" + to_string(*pos) + "\"[label= \"" + root->nombreImagen + "\"];\n";
+	(*pos)++;
 
 	return retorno;
 }

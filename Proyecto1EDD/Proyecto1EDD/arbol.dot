@@ -1,11 +1,12 @@
 digraph grafico{
 node [shape = record];
 graph [nodesep = 1];
-rankdir=TB;
-"Mario"[label= "<C0>|Mario\nimage_width=16\nimage_height=16\npixel_width=30\npixel_height=30|<C1>"];
-"Ave"[label="Ave\nimage_width=19\nimage_height=17\npixel_width=30\npixel_height=30"];
-"Mario":C0->"Ave";
-"NC"[label="NC\nimage_width=20\nimage_height=20\npixel_width=30\npixel_height=30"];
-"Mario":C1->"NC";
-{ rank=same; "Ave" "NC" }
+rankdir=LR;
+"1"[label= "Ave"];
+"2"[label= "Mario"];
+"3"[label= "NC"];
+"4"[label= "Goku"];
+"1"->"2";
+"2"->"3";
+"3"->"4";
 }

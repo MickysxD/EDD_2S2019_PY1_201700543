@@ -1,1286 +1,2549 @@
-html {
-background: repeat-x;
-background-repeat: repeat-y;
-}
-
 body {
 background: #333333;
 height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+}
 
+.canvasG {
+width: 600px;
+height: 600px;
 }
 
 .canvas {
-width: 600px;
-height: 600px;
-	
+width: 30px;
+height: 30px;
 }
 
-.pixel {
+.pixelG {
 width: 30px;
 height: 30px;
 float: left; 
 jbox-shadow: 0px 0px 1px #fff;
-background: repeat-x;
-background: repeat-y;
 }
 
-.pixel:nth-child(1) {background: #FFFFFF;}
+.pixel {
+opacity: 0.5;
+width: 1.5px;
+height: 1.5px;
+float: left; 
+jbox-shadow: 0px 0px 1px #fff;
+}
 
-.pixel:nth-child(21) {background: #F6CB43;}
+.pixel:nth-child(1) {background: rgb(246,203,67);}
 
-.pixel:nth-child(41) {background: #F6CB43;}
+.pixel:nth-child(21) {background: rgb(246,203,67);}
 
-.pixel:nth-child(61) {background: #F6CB43;}
+.pixel:nth-child(41) {background: rgb(246,203,67);}
 
-.pixel:nth-child(81) {background: #F6CB43;}
+.pixel:nth-child(61) {background: rgb(246,203,67);}
 
-.pixel:nth-child(101) {background: #F6CB43;}
+.pixel:nth-child(81) {background: rgb(246,203,67);}
 
-.pixel:nth-child(121) {background: #F6CB43;}
+.pixel:nth-child(101) {background: rgb(246,203,67);}
 
-.pixel:nth-child(141) {background: #F6CB43;}
+.pixel:nth-child(121) {background: rgb(246,203,67);}
 
-.pixel:nth-child(161) {background: #F6CB43;}
+.pixel:nth-child(141) {background: rgb(246,203,67);}
 
-.pixel:nth-child(181) {background: #F6CB43;}
+.pixel:nth-child(161) {background: rgb(246,203,67);}
 
-.pixel:nth-child(201) {background: #F6CB43;}
+.pixel:nth-child(181) {background: rgb(246,203,67);}
 
-.pixel:nth-child(221) {background: #F6CB43;}
+.pixel:nth-child(201) {background: rgb(246,203,67);}
 
-.pixel:nth-child(241) {background: #F6CB43;}
+.pixel:nth-child(221) {background: rgb(246,203,67);}
 
-.pixel:nth-child(261) {background: #F6CB43;}
+.pixel:nth-child(241) {background: rgb(246,203,67);}
 
-.pixel:nth-child(281) {background: #F6CB43;}
+.pixel:nth-child(261) {background: rgb(246,203,67);}
 
-.pixel:nth-child(301) {background: #F6CB43;}
+.pixel:nth-child(281) {background: rgb(246,203,67);}
 
-.pixel:nth-child(321) {background: #F6CB43;}
+.pixel:nth-child(301) {background: rgb(246,203,67);}
 
-.pixel:nth-child(341) {background: #F6CB43;}
+.pixel:nth-child(321) {background: rgb(246,203,67);}
 
-.pixel:nth-child(361) {background: #F6CB43;}
+.pixel:nth-child(341) {background: rgb(246,203,67);}
 
-.pixel:nth-child(381) {background: #F6CB43;}
+.pixel:nth-child(361) {background: rgb(246,203,67);}
 
-.pixel:nth-child(1) {background: #FFFFFF;}
+.pixel:nth-child(381) {background: rgb(246,203,67);}
 
-.pixel:nth-child(21) {background: #F6CB43;}
+.pixel:nth-child(1) {background: rgb(246,203,67);}
 
-.pixel:nth-child(41) {background: #F6CB43;}
+.pixel:nth-child(21) {background: rgb(246,203,67);}
 
-.pixel:nth-child(61) {background: #F6CB43;}
+.pixel:nth-child(41) {background: rgb(246,203,67);}
 
-.pixel:nth-child(81) {background: #F6CB43;}
+.pixel:nth-child(61) {background: rgb(246,203,67);}
 
-.pixel:nth-child(101) {background: #F6CB43;}
+.pixel:nth-child(81) {background: rgb(246,203,67);}
 
-.pixel:nth-child(121) {background: #F6CB43;}
+.pixel:nth-child(101) {background: rgb(246,203,67);}
 
-.pixel:nth-child(141) {background: #F6CB43;}
+.pixel:nth-child(121) {background: rgb(246,203,67);}
 
-.pixel:nth-child(161) {background: #F6CB43;}
+.pixel:nth-child(141) {background: rgb(246,203,67);}
 
-.pixel:nth-child(181) {background: #F6CB43;}
+.pixel:nth-child(161) {background: rgb(246,203,67);}
 
-.pixel:nth-child(201) {background: #F6CB43;}
+.pixel:nth-child(181) {background: rgb(246,203,67);}
 
-.pixel:nth-child(221) {background: #F6CB43;}
+.pixel:nth-child(201) {background: rgb(246,203,67);}
 
-.pixel:nth-child(241) {background: #F6CB43;}
+.pixel:nth-child(221) {background: rgb(246,203,67);}
 
-.pixel:nth-child(261) {background: #F6CB43;}
+.pixel:nth-child(241) {background: rgb(246,203,67);}
 
-.pixel:nth-child(281) {background: #F6CB43;}
+.pixel:nth-child(261) {background: rgb(246,203,67);}
 
-.pixel:nth-child(301) {background: #F6CB43;}
+.pixel:nth-child(281) {background: rgb(246,203,67);}
 
-.pixel:nth-child(321) {background: #F6CB43;}
+.pixel:nth-child(301) {background: rgb(246,203,67);}
 
-.pixel:nth-child(341) {background: #F6CB43;}
+.pixel:nth-child(321) {background: rgb(246,203,67);}
 
-.pixel:nth-child(361) {background: #F6CB43;}
+.pixel:nth-child(341) {background: rgb(246,203,67);}
 
-.pixel:nth-child(381) {background: #F6CB43;}
+.pixel:nth-child(361) {background: rgb(246,203,67);}
 
-.pixel:nth-child(2) {background: #F6CB44;}
+.pixel:nth-child(381) {background: rgb(246,203,67);}
 
-.pixel:nth-child(22) {background: #F6CB44;}
+.pixel:nth-child(2) {background: rgb(246,203,68);}
 
-.pixel:nth-child(42) {background: #F6CB44;}
+.pixel:nth-child(22) {background: rgb(246,203,68);}
 
-.pixel:nth-child(62) {background: #F6CB44;}
+.pixel:nth-child(42) {background: rgb(246,203,68);}
 
-.pixel:nth-child(82) {background: #F6CB44;}
+.pixel:nth-child(62) {background: rgb(246,203,68);}
 
-.pixel:nth-child(102) {background: #F6CB44;}
+.pixel:nth-child(82) {background: rgb(246,203,68);}
 
-.pixel:nth-child(122) {background: #F6CB44;}
+.pixel:nth-child(102) {background: rgb(246,203,68);}
 
-.pixel:nth-child(142) {background: #F6CB44;}
+.pixel:nth-child(122) {background: rgb(246,203,68);}
 
-.pixel:nth-child(162) {background: #F6CB44;}
+.pixel:nth-child(142) {background: rgb(246,203,68);}
 
-.pixel:nth-child(182) {background: #F6CB44;}
+.pixel:nth-child(162) {background: rgb(246,203,68);}
 
-.pixel:nth-child(202) {background: #F6CB44;}
+.pixel:nth-child(182) {background: rgb(246,203,68);}
 
-.pixel:nth-child(222) {background: #F6CB44;}
+.pixel:nth-child(202) {background: rgb(246,203,68);}
 
-.pixel:nth-child(242) {background: #F6CB44;}
+.pixel:nth-child(222) {background: rgb(246,203,68);}
 
-.pixel:nth-child(262) {background: #F6CB44;}
+.pixel:nth-child(242) {background: rgb(246,203,68);}
 
-.pixel:nth-child(282) {background: #F6CB44;}
+.pixel:nth-child(262) {background: rgb(246,203,68);}
 
-.pixel:nth-child(302) {background: #F6CB44;}
+.pixel:nth-child(282) {background: rgb(246,203,68);}
 
-.pixel:nth-child(322) {background: #F6CB44;}
+.pixel:nth-child(302) {background: rgb(246,203,68);}
 
-.pixel:nth-child(342) {background: #F6CB44;}
+.pixel:nth-child(322) {background: rgb(246,203,68);}
 
-.pixel:nth-child(362) {background: #F6CB44;}
+.pixel:nth-child(342) {background: rgb(246,203,68);}
 
-.pixel:nth-child(382) {background: #F6CB43;}
+.pixel:nth-child(362) {background: rgb(246,203,68);}
 
-.pixel:nth-child(3) {background: #F6CB45;}
+.pixel:nth-child(382) {background: rgb(246,203,67);}
 
-.pixel:nth-child(23) {background: #F6CB45;}
+.pixel:nth-child(3) {background: rgb(246,203,69);}
 
-.pixel:nth-child(43) {background: #F6CB45;}
+.pixel:nth-child(23) {background: rgb(246,203,69);}
 
-.pixel:nth-child(63) {background: #F6CB45;}
+.pixel:nth-child(43) {background: rgb(246,203,69);}
 
-.pixel:nth-child(83) {background: #F6CB45;}
+.pixel:nth-child(63) {background: rgb(246,203,69);}
 
-.pixel:nth-child(103) {background: #F6CB45;}
+.pixel:nth-child(83) {background: rgb(246,203,69);}
 
-.pixel:nth-child(123) {background: #F6CB45;}
+.pixel:nth-child(103) {background: rgb(246,203,69);}
 
-.pixel:nth-child(143) {background: #F6CB45;}
+.pixel:nth-child(123) {background: rgb(246,203,69);}
 
-.pixel:nth-child(163) {background: #F6CB45;}
+.pixel:nth-child(143) {background: rgb(246,203,69);}
 
-.pixel:nth-child(183) {background: #F6CB45;}
+.pixel:nth-child(163) {background: rgb(246,203,69);}
 
-.pixel:nth-child(203) {background: #F6CB45;}
+.pixel:nth-child(183) {background: rgb(246,203,69);}
 
-.pixel:nth-child(223) {background: #F6CB45;}
+.pixel:nth-child(203) {background: rgb(246,203,69);}
 
-.pixel:nth-child(243) {background: #F6CB45;}
+.pixel:nth-child(223) {background: rgb(246,203,69);}
 
-.pixel:nth-child(263) {background: #F6CB45;}
+.pixel:nth-child(243) {background: rgb(246,203,69);}
 
-.pixel:nth-child(283) {background: #F6CB45;}
+.pixel:nth-child(263) {background: rgb(246,203,69);}
 
-.pixel:nth-child(303) {background: #F6CB45;}
+.pixel:nth-child(283) {background: rgb(246,203,69);}
 
-.pixel:nth-child(323) {background: #F6CB45;}
+.pixel:nth-child(303) {background: rgb(246,203,69);}
 
-.pixel:nth-child(343) {background: #F6CB45;}
+.pixel:nth-child(323) {background: rgb(246,203,69);}
 
-.pixel:nth-child(363) {background: #F6CB45;}
+.pixel:nth-child(343) {background: rgb(246,203,69);}
 
-.pixel:nth-child(383) {background: #F6CB43;}
+.pixel:nth-child(363) {background: rgb(246,203,69);}
 
-.pixel:nth-child(4) {background: #F6CB46;}
+.pixel:nth-child(383) {background: rgb(246,203,67);}
 
-.pixel:nth-child(24) {background: #F6CB46;}
+.pixel:nth-child(4) {background: rgb(246,203,70);}
 
-.pixel:nth-child(44) {background: #F6CB46;}
+.pixel:nth-child(24) {background: rgb(246,203,70);}
 
-.pixel:nth-child(64) {background: #F6CB46;}
+.pixel:nth-child(44) {background: rgb(246,203,70);}
 
-.pixel:nth-child(84) {background: #F6CB46;}
+.pixel:nth-child(64) {background: rgb(246,203,70);}
 
-.pixel:nth-child(104) {background: #F6CB46;}
+.pixel:nth-child(84) {background: rgb(246,203,70);}
 
-.pixel:nth-child(124) {background: #F6CB46;}
+.pixel:nth-child(104) {background: rgb(246,203,70);}
 
-.pixel:nth-child(144) {background: #F6CB46;}
+.pixel:nth-child(124) {background: rgb(246,203,70);}
 
-.pixel:nth-child(164) {background: #F6CB46;}
+.pixel:nth-child(144) {background: rgb(246,203,70);}
 
-.pixel:nth-child(184) {background: #F6CB46;}
+.pixel:nth-child(164) {background: rgb(246,203,70);}
 
-.pixel:nth-child(204) {background: #F6CB46;}
+.pixel:nth-child(184) {background: rgb(246,203,70);}
 
-.pixel:nth-child(224) {background: #F6CB46;}
+.pixel:nth-child(204) {background: rgb(246,203,70);}
 
-.pixel:nth-child(244) {background: #F6CB46;}
+.pixel:nth-child(224) {background: rgb(246,203,70);}
 
-.pixel:nth-child(264) {background: #F6CB46;}
+.pixel:nth-child(244) {background: rgb(246,203,70);}
 
-.pixel:nth-child(284) {background: #F6CB46;}
+.pixel:nth-child(264) {background: rgb(246,203,70);}
 
-.pixel:nth-child(304) {background: #F6CB46;}
+.pixel:nth-child(284) {background: rgb(246,203,70);}
 
-.pixel:nth-child(324) {background: #F6CB46;}
+.pixel:nth-child(304) {background: rgb(246,203,70);}
 
-.pixel:nth-child(344) {background: #F6CB46;}
+.pixel:nth-child(324) {background: rgb(246,203,70);}
 
-.pixel:nth-child(364) {background: #F6CB46;}
+.pixel:nth-child(344) {background: rgb(246,203,70);}
 
-.pixel:nth-child(384) {background: #F6CB43;}
+.pixel:nth-child(364) {background: rgb(246,203,70);}
 
-.pixel:nth-child(5) {background: #F6CB47;}
+.pixel:nth-child(384) {background: rgb(246,203,67);}
 
-.pixel:nth-child(25) {background: #F6CB47;}
+.pixel:nth-child(5) {background: rgb(246,203,71);}
 
-.pixel:nth-child(45) {background: #F6CB47;}
+.pixel:nth-child(25) {background: rgb(246,203,71);}
 
-.pixel:nth-child(65) {background: #F6CB47;}
+.pixel:nth-child(45) {background: rgb(246,203,71);}
 
-.pixel:nth-child(85) {background: #F6CB47;}
+.pixel:nth-child(65) {background: rgb(246,203,71);}
 
-.pixel:nth-child(105) {background: #F6CB47;}
+.pixel:nth-child(85) {background: rgb(246,203,71);}
 
-.pixel:nth-child(125) {background: #F6CB47;}
+.pixel:nth-child(105) {background: rgb(246,203,71);}
 
-.pixel:nth-child(145) {background: #F6CB47;}
+.pixel:nth-child(125) {background: rgb(246,203,71);}
 
-.pixel:nth-child(165) {background: #F6CB47;}
+.pixel:nth-child(145) {background: rgb(246,203,71);}
 
-.pixel:nth-child(185) {background: #F6CB47;}
+.pixel:nth-child(165) {background: rgb(246,203,71);}
 
-.pixel:nth-child(205) {background: #F6CB47;}
+.pixel:nth-child(185) {background: rgb(246,203,71);}
 
-.pixel:nth-child(225) {background: #F6CB47;}
+.pixel:nth-child(205) {background: rgb(246,203,71);}
 
-.pixel:nth-child(245) {background: #F6CB47;}
+.pixel:nth-child(225) {background: rgb(246,203,71);}
 
-.pixel:nth-child(265) {background: #F6CB47;}
+.pixel:nth-child(245) {background: rgb(246,203,71);}
 
-.pixel:nth-child(285) {background: #F6CB47;}
+.pixel:nth-child(265) {background: rgb(246,203,71);}
 
-.pixel:nth-child(305) {background: #F6CB47;}
+.pixel:nth-child(285) {background: rgb(246,203,71);}
 
-.pixel:nth-child(325) {background: #F6CB47;}
+.pixel:nth-child(305) {background: rgb(246,203,71);}
 
-.pixel:nth-child(345) {background: #F6CB47;}
+.pixel:nth-child(325) {background: rgb(246,203,71);}
 
-.pixel:nth-child(365) {background: #F6CB47;}
+.pixel:nth-child(345) {background: rgb(246,203,71);}
 
-.pixel:nth-child(385) {background: #F6CB43;}
+.pixel:nth-child(365) {background: rgb(246,203,71);}
 
-.pixel:nth-child(6) {background: #F6CB48;}
+.pixel:nth-child(385) {background: rgb(246,203,67);}
 
-.pixel:nth-child(26) {background: #F6CB48;}
+.pixel:nth-child(6) {background: rgb(246,203,72);}
 
-.pixel:nth-child(46) {background: #F6CB48;}
+.pixel:nth-child(26) {background: rgb(246,203,72);}
 
-.pixel:nth-child(66) {background: #F6CB48;}
+.pixel:nth-child(46) {background: rgb(246,203,72);}
 
-.pixel:nth-child(86) {background: #F6CB48;}
+.pixel:nth-child(66) {background: rgb(246,203,72);}
 
-.pixel:nth-child(106) {background: #F6CB48;}
+.pixel:nth-child(86) {background: rgb(246,203,72);}
 
-.pixel:nth-child(126) {background: #F6CB48;}
+.pixel:nth-child(106) {background: rgb(246,203,72);}
 
-.pixel:nth-child(146) {background: #F6CB48;}
+.pixel:nth-child(126) {background: rgb(246,203,72);}
 
-.pixel:nth-child(166) {background: #F6CB48;}
+.pixel:nth-child(146) {background: rgb(246,203,72);}
 
-.pixel:nth-child(186) {background: #F6CB48;}
+.pixel:nth-child(166) {background: rgb(246,203,72);}
 
-.pixel:nth-child(206) {background: #F6CB48;}
+.pixel:nth-child(186) {background: rgb(246,203,72);}
 
-.pixel:nth-child(226) {background: #F6CB48;}
+.pixel:nth-child(206) {background: rgb(246,203,72);}
 
-.pixel:nth-child(246) {background: #F6CB48;}
+.pixel:nth-child(226) {background: rgb(246,203,72);}
 
-.pixel:nth-child(266) {background: #F6CB48;}
+.pixel:nth-child(246) {background: rgb(246,203,72);}
 
-.pixel:nth-child(286) {background: #F6CB48;}
+.pixel:nth-child(266) {background: rgb(246,203,72);}
 
-.pixel:nth-child(306) {background: #F6CB48;}
+.pixel:nth-child(286) {background: rgb(246,203,72);}
 
-.pixel:nth-child(326) {background: #F6CB48;}
+.pixel:nth-child(306) {background: rgb(246,203,72);}
 
-.pixel:nth-child(346) {background: #F6CB48;}
+.pixel:nth-child(326) {background: rgb(246,203,72);}
 
-.pixel:nth-child(366) {background: #F6CB48;}
+.pixel:nth-child(346) {background: rgb(246,203,72);}
 
-.pixel:nth-child(386) {background: #F6CB43;}
+.pixel:nth-child(366) {background: rgb(246,203,72);}
 
-.pixel:nth-child(7) {background: #F6CB49;}
+.pixel:nth-child(386) {background: rgb(246,203,67);}
 
-.pixel:nth-child(27) {background: #F6CB49;}
+.pixel:nth-child(7) {background: rgb(246,203,73);}
 
-.pixel:nth-child(47) {background: #F6CB49;}
+.pixel:nth-child(27) {background: rgb(246,203,73);}
 
-.pixel:nth-child(67) {background: #F6CB49;}
+.pixel:nth-child(47) {background: rgb(246,203,73);}
 
-.pixel:nth-child(87) {background: #F6CB49;}
+.pixel:nth-child(67) {background: rgb(246,203,73);}
 
-.pixel:nth-child(107) {background: #F6CB49;}
+.pixel:nth-child(87) {background: rgb(246,203,73);}
 
-.pixel:nth-child(127) {background: #F6CB49;}
+.pixel:nth-child(107) {background: rgb(246,203,73);}
 
-.pixel:nth-child(147) {background: #F6CB49;}
+.pixel:nth-child(127) {background: rgb(246,203,73);}
 
-.pixel:nth-child(167) {background: #F6CB49;}
+.pixel:nth-child(147) {background: rgb(246,203,73);}
 
-.pixel:nth-child(187) {background: #F6CB49;}
+.pixel:nth-child(167) {background: rgb(246,203,73);}
 
-.pixel:nth-child(207) {background: #F6CB49;}
+.pixel:nth-child(187) {background: rgb(246,203,73);}
 
-.pixel:nth-child(227) {background: #F6CB49;}
+.pixel:nth-child(207) {background: rgb(246,203,73);}
 
-.pixel:nth-child(247) {background: #F6CB49;}
+.pixel:nth-child(227) {background: rgb(246,203,73);}
 
-.pixel:nth-child(267) {background: #F6CB49;}
+.pixel:nth-child(247) {background: rgb(246,203,73);}
 
-.pixel:nth-child(287) {background: #F6CB49;}
+.pixel:nth-child(267) {background: rgb(246,203,73);}
 
-.pixel:nth-child(307) {background: #F6CB49;}
+.pixel:nth-child(287) {background: rgb(246,203,73);}
 
-.pixel:nth-child(327) {background: #F6CB49;}
+.pixel:nth-child(307) {background: rgb(246,203,73);}
 
-.pixel:nth-child(347) {background: #F6CB49;}
+.pixel:nth-child(327) {background: rgb(246,203,73);}
 
-.pixel:nth-child(367) {background: #F6CB49;}
+.pixel:nth-child(347) {background: rgb(246,203,73);}
 
-.pixel:nth-child(387) {background: #F6CB43;}
+.pixel:nth-child(367) {background: rgb(246,203,73);}
 
-.pixel:nth-child(8) {background: #F6CB4A;}
+.pixel:nth-child(387) {background: rgb(246,203,67);}
 
-.pixel:nth-child(28) {background: #F6CB4A;}
+.pixel:nth-child(8) {background: rgb(246,203,74);}
 
-.pixel:nth-child(48) {background: #F6CB4A;}
+.pixel:nth-child(28) {background: rgb(246,203,74);}
 
-.pixel:nth-child(68) {background: #F6CB4A;}
+.pixel:nth-child(48) {background: rgb(246,203,74);}
 
-.pixel:nth-child(88) {background: #F6CB4A;}
+.pixel:nth-child(68) {background: rgb(246,203,74);}
 
-.pixel:nth-child(108) {background: #F6CB4A;}
+.pixel:nth-child(88) {background: rgb(246,203,74);}
 
-.pixel:nth-child(128) {background: #F6CB4A;}
+.pixel:nth-child(108) {background: rgb(246,203,74);}
 
-.pixel:nth-child(148) {background: #F6CB4A;}
+.pixel:nth-child(128) {background: rgb(246,203,74);}
 
-.pixel:nth-child(168) {background: #F6CB4A;}
+.pixel:nth-child(148) {background: rgb(255,255,255);}
 
-.pixel:nth-child(188) {background: #F6CB4A;}
+.pixel:nth-child(168) {background: rgb(246,203,74);}
 
-.pixel:nth-child(208) {background: #F6CB4A;}
+.pixel:nth-child(188) {background: rgb(246,203,74);}
 
-.pixel:nth-child(228) {background: #F6CB4A;}
+.pixel:nth-child(208) {background: rgb(246,203,74);}
 
-.pixel:nth-child(248) {background: #F6CB4A;}
+.pixel:nth-child(228) {background: rgb(246,203,74);}
 
-.pixel:nth-child(268) {background: #F6CB4A;}
+.pixel:nth-child(248) {background: rgb(246,203,74);}
 
-.pixel:nth-child(288) {background: #F6CB4A;}
+.pixel:nth-child(268) {background: rgb(246,203,74);}
 
-.pixel:nth-child(308) {background: #F6CB4A;}
+.pixel:nth-child(288) {background: rgb(246,203,74);}
 
-.pixel:nth-child(328) {background: #F6CB4A;}
+.pixel:nth-child(308) {background: rgb(246,203,74);}
 
-.pixel:nth-child(348) {background: #F6CB4A;}
+.pixel:nth-child(328) {background: rgb(246,203,74);}
 
-.pixel:nth-child(368) {background: #F6CB4A;}
+.pixel:nth-child(348) {background: rgb(246,203,74);}
 
-.pixel:nth-child(388) {background: #F6CB43;}
+.pixel:nth-child(368) {background: rgb(246,203,74);}
 
-.pixel:nth-child(9) {background: #F6CB4B;}
+.pixel:nth-child(388) {background: rgb(246,203,67);}
 
-.pixel:nth-child(29) {background: #F6CB4B;}
+.pixel:nth-child(9) {background: rgb(246,203,75);}
 
-.pixel:nth-child(49) {background: #F6CB4B;}
+.pixel:nth-child(29) {background: rgb(246,203,75);}
 
-.pixel:nth-child(69) {background: #F6CB4B;}
+.pixel:nth-child(49) {background: rgb(246,203,75);}
 
-.pixel:nth-child(89) {background: #FFFFFF;}
+.pixel:nth-child(69) {background: rgb(246,203,75);}
 
-.pixel:nth-child(109) {background: #F6CB4B;}
+.pixel:nth-child(89) {background: rgb(246,203,75);}
 
-.pixel:nth-child(129) {background: #F6CB4B;}
+.pixel:nth-child(109) {background: rgb(246,203,75);}
 
-.pixel:nth-child(149) {background: #F6CB4B;}
+.pixel:nth-child(129) {background: rgb(246,203,75);}
 
-.pixel:nth-child(169) {background: #F6CB4B;}
+.pixel:nth-child(149) {background: rgb(246,203,75);}
 
-.pixel:nth-child(189) {background: #F6CB4B;}
+.pixel:nth-child(169) {background: rgb(246,203,75);}
 
-.pixel:nth-child(209) {background: #F6CB4B;}
+.pixel:nth-child(189) {background: rgb(246,203,75);}
 
-.pixel:nth-child(229) {background: #F6CB4B;}
+.pixel:nth-child(209) {background: rgb(246,203,75);}
 
-.pixel:nth-child(249) {background: #F6CB4B;}
+.pixel:nth-child(229) {background: rgb(246,203,75);}
 
-.pixel:nth-child(269) {background: #F6CB4B;}
+.pixel:nth-child(249) {background: rgb(246,203,75);}
 
-.pixel:nth-child(289) {background: #F6CB4B;}
+.pixel:nth-child(269) {background: rgb(246,203,75);}
 
-.pixel:nth-child(309) {background: #F6CB4B;}
+.pixel:nth-child(289) {background: rgb(246,203,75);}
 
-.pixel:nth-child(329) {background: #F6CB4B;}
+.pixel:nth-child(309) {background: rgb(246,203,75);}
 
-.pixel:nth-child(349) {background: #F6CB4B;}
+.pixel:nth-child(329) {background: rgb(246,203,75);}
 
-.pixel:nth-child(369) {background: #F6CB4B;}
+.pixel:nth-child(349) {background: rgb(246,203,75);}
 
-.pixel:nth-child(389) {background: #F6CB43;}
+.pixel:nth-child(369) {background: rgb(246,203,75);}
 
-.pixel:nth-child(10) {background: #F6CB4C;}
+.pixel:nth-child(389) {background: rgb(246,203,67);}
 
-.pixel:nth-child(30) {background: #F6CB4C;}
+.pixel:nth-child(10) {background: rgb(246,203,76);}
 
-.pixel:nth-child(50) {background: #F6CB4C;}
+.pixel:nth-child(30) {background: rgb(246,203,76);}
 
-.pixel:nth-child(70) {background: #F6CB4C;}
+.pixel:nth-child(50) {background: rgb(246,203,76);}
 
-.pixel:nth-child(90) {background: #F6CB4C;}
+.pixel:nth-child(70) {background: rgb(246,203,76);}
 
-.pixel:nth-child(110) {background: #F6CB4C;}
+.pixel:nth-child(90) {background: rgb(246,203,76);}
 
-.pixel:nth-child(130) {background: #F6CB4C;}
+.pixel:nth-child(110) {background: rgb(246,203,76);}
 
-.pixel:nth-child(150) {background: #F6CB4C;}
+.pixel:nth-child(130) {background: rgb(246,203,76);}
 
-.pixel:nth-child(170) {background: #F6CB4C;}
+.pixel:nth-child(150) {background: rgb(246,203,76);}
 
-.pixel:nth-child(190) {background: #F6CB4C;}
+.pixel:nth-child(170) {background: rgb(246,203,76);}
 
-.pixel:nth-child(210) {background: #F6CB4C;}
+.pixel:nth-child(190) {background: rgb(246,203,76);}
 
-.pixel:nth-child(230) {background: #F6CB4C;}
+.pixel:nth-child(210) {background: rgb(246,203,76);}
 
-.pixel:nth-child(250) {background: #F6CB4C;}
+.pixel:nth-child(230) {background: rgb(246,203,76);}
 
-.pixel:nth-child(270) {background: #F6CB4C;}
+.pixel:nth-child(250) {background: rgb(246,203,76);}
 
-.pixel:nth-child(290) {background: #F6CB4C;}
+.pixel:nth-child(270) {background: rgb(246,203,76);}
 
-.pixel:nth-child(310) {background: #F6CB4C;}
+.pixel:nth-child(290) {background: rgb(246,203,76);}
 
-.pixel:nth-child(330) {background: #F6CB4C;}
+.pixel:nth-child(310) {background: rgb(246,203,76);}
 
-.pixel:nth-child(350) {background: #F6CB4C;}
+.pixel:nth-child(330) {background: rgb(246,203,76);}
 
-.pixel:nth-child(370) {background: #F6CB4C;}
+.pixel:nth-child(350) {background: rgb(246,203,76);}
 
-.pixel:nth-child(390) {background: #F6CB43;}
+.pixel:nth-child(370) {background: rgb(246,203,76);}
 
-.pixel:nth-child(11) {background: #F6CB4D;}
+.pixel:nth-child(390) {background: rgb(246,203,67);}
 
-.pixel:nth-child(31) {background: #F6CB4D;}
+.pixel:nth-child(11) {background: rgb(246,203,77);}
 
-.pixel:nth-child(51) {background: #F6CB4D;}
+.pixel:nth-child(31) {background: rgb(246,203,77);}
 
-.pixel:nth-child(71) {background: #F6CB4D;}
+.pixel:nth-child(51) {background: rgb(246,203,77);}
 
-.pixel:nth-child(91) {background: #F6CB4D;}
+.pixel:nth-child(71) {background: rgb(246,203,77);}
 
-.pixel:nth-child(111) {background: #F6CB4D;}
+.pixel:nth-child(91) {background: rgb(246,203,77);}
 
-.pixel:nth-child(131) {background: #F6CB4D;}
+.pixel:nth-child(111) {background: rgb(246,203,77);}
 
-.pixel:nth-child(151) {background: #F6CB4D;}
+.pixel:nth-child(131) {background: rgb(246,203,77);}
 
-.pixel:nth-child(171) {background: #F6CB4D;}
+.pixel:nth-child(151) {background: rgb(246,203,77);}
 
-.pixel:nth-child(191) {background: #F6CB4D;}
+.pixel:nth-child(171) {background: rgb(246,203,77);}
 
-.pixel:nth-child(211) {background: #F6CB4D;}
+.pixel:nth-child(191) {background: rgb(246,203,77);}
 
-.pixel:nth-child(231) {background: #F6CB4D;}
+.pixel:nth-child(211) {background: rgb(246,203,77);}
 
-.pixel:nth-child(251) {background: #F6CB4D;}
+.pixel:nth-child(231) {background: rgb(246,203,77);}
 
-.pixel:nth-child(271) {background: #F6CB4D;}
+.pixel:nth-child(251) {background: rgb(246,203,77);}
 
-.pixel:nth-child(291) {background: #F6CB4D;}
+.pixel:nth-child(271) {background: rgb(246,203,77);}
 
-.pixel:nth-child(311) {background: #F6CB4D;}
+.pixel:nth-child(291) {background: rgb(246,203,77);}
 
-.pixel:nth-child(331) {background: #F6CB4D;}
+.pixel:nth-child(311) {background: rgb(246,203,77);}
 
-.pixel:nth-child(351) {background: #F6CB4D;}
+.pixel:nth-child(331) {background: rgb(246,203,77);}
 
-.pixel:nth-child(371) {background: #F6CB4D;}
+.pixel:nth-child(351) {background: rgb(246,203,77);}
 
-.pixel:nth-child(391) {background: #F6CB43;}
+.pixel:nth-child(371) {background: rgb(246,203,77);}
 
-.pixel:nth-child(12) {background: #F6CB4E;}
+.pixel:nth-child(391) {background: rgb(246,203,67);}
 
-.pixel:nth-child(32) {background: #F6CB4E;}
+.pixel:nth-child(12) {background: rgb(246,203,78);}
 
-.pixel:nth-child(52) {background: #F6CB4E;}
+.pixel:nth-child(32) {background: rgb(246,203,78);}
 
-.pixel:nth-child(72) {background: #F6CB4E;}
+.pixel:nth-child(52) {background: rgb(246,203,78);}
 
-.pixel:nth-child(92) {background: #F6CB4E;}
+.pixel:nth-child(72) {background: rgb(246,203,78);}
 
-.pixel:nth-child(112) {background: #F6CB4E;}
+.pixel:nth-child(92) {background: rgb(246,203,78);}
 
-.pixel:nth-child(132) {background: #F6CB4E;}
+.pixel:nth-child(112) {background: rgb(246,203,78);}
 
-.pixel:nth-child(152) {background: #F6CB4E;}
+.pixel:nth-child(132) {background: rgb(246,203,78);}
 
-.pixel:nth-child(172) {background: #F6CB4E;}
+.pixel:nth-child(152) {background: rgb(246,203,78);}
 
-.pixel:nth-child(192) {background: #F6CB4E;}
+.pixel:nth-child(172) {background: rgb(246,203,78);}
 
-.pixel:nth-child(212) {background: #F6CB4E;}
+.pixel:nth-child(192) {background: rgb(246,203,78);}
 
-.pixel:nth-child(232) {background: #F6CB4E;}
+.pixel:nth-child(212) {background: rgb(246,203,78);}
 
-.pixel:nth-child(252) {background: #F6CB4E;}
+.pixel:nth-child(232) {background: rgb(246,203,78);}
 
-.pixel:nth-child(272) {background: #F6CB4E;}
+.pixel:nth-child(252) {background: rgb(246,203,78);}
 
-.pixel:nth-child(292) {background: #F6CB4E;}
+.pixel:nth-child(272) {background: rgb(246,203,78);}
 
-.pixel:nth-child(312) {background: #F6CB4E;}
+.pixel:nth-child(292) {background: rgb(246,203,78);}
 
-.pixel:nth-child(332) {background: #F6CB4E;}
+.pixel:nth-child(312) {background: rgb(246,203,78);}
 
-.pixel:nth-child(352) {background: #F6CB4E;}
+.pixel:nth-child(332) {background: rgb(246,203,78);}
 
-.pixel:nth-child(372) {background: #F6CB4E;}
+.pixel:nth-child(352) {background: rgb(246,203,78);}
 
-.pixel:nth-child(392) {background: #F6CB43;}
+.pixel:nth-child(372) {background: rgb(246,203,78);}
 
-.pixel:nth-child(13) {background: #F6CB4F;}
+.pixel:nth-child(392) {background: rgb(246,203,67);}
 
-.pixel:nth-child(33) {background: #F6CB4F;}
+.pixel:nth-child(13) {background: rgb(246,203,79);}
 
-.pixel:nth-child(53) {background: #F6CB4F;}
+.pixel:nth-child(33) {background: rgb(246,203,79);}
 
-.pixel:nth-child(73) {background: #F6CB4F;}
+.pixel:nth-child(53) {background: rgb(246,203,79);}
 
-.pixel:nth-child(93) {background: #F6CB4F;}
+.pixel:nth-child(73) {background: rgb(246,203,79);}
 
-.pixel:nth-child(113) {background: #F6CB4F;}
+.pixel:nth-child(93) {background: rgb(246,203,79);}
 
-.pixel:nth-child(133) {background: #F6CB4F;}
+.pixel:nth-child(113) {background: rgb(246,203,79);}
 
-.pixel:nth-child(153) {background: #F6CB4F;}
+.pixel:nth-child(133) {background: rgb(246,203,79);}
 
-.pixel:nth-child(173) {background: #F6CB4F;}
+.pixel:nth-child(153) {background: rgb(246,203,79);}
 
-.pixel:nth-child(193) {background: #F6CB4F;}
+.pixel:nth-child(173) {background: rgb(246,203,79);}
 
-.pixel:nth-child(213) {background: #F6CB4F;}
+.pixel:nth-child(193) {background: rgb(246,203,79);}
 
-.pixel:nth-child(233) {background: #F6CB4F;}
+.pixel:nth-child(213) {background: rgb(246,203,79);}
 
-.pixel:nth-child(253) {background: #F6CB4F;}
+.pixel:nth-child(233) {background: rgb(246,203,79);}
 
-.pixel:nth-child(273) {background: #F6CB4F;}
+.pixel:nth-child(253) {background: rgb(246,203,79);}
 
-.pixel:nth-child(293) {background: #F6CB4F;}
+.pixel:nth-child(273) {background: rgb(246,203,79);}
 
-.pixel:nth-child(313) {background: #F6CB4F;}
+.pixel:nth-child(293) {background: rgb(246,203,79);}
 
-.pixel:nth-child(333) {background: #F6CB4F;}
+.pixel:nth-child(313) {background: rgb(246,203,79);}
 
-.pixel:nth-child(353) {background: #F6CB4F;}
+.pixel:nth-child(333) {background: rgb(246,203,79);}
 
-.pixel:nth-child(373) {background: #F6CB4F;}
+.pixel:nth-child(353) {background: rgb(246,203,79);}
 
-.pixel:nth-child(393) {background: #F6CB43;}
+.pixel:nth-child(373) {background: rgb(246,203,79);}
 
-.pixel:nth-child(14) {background: #F6CB50;}
+.pixel:nth-child(393) {background: rgb(246,203,67);}
 
-.pixel:nth-child(34) {background: #F6CB50;}
+.pixel:nth-child(14) {background: rgb(246,203,80);}
 
-.pixel:nth-child(54) {background: #F6CB50;}
+.pixel:nth-child(34) {background: rgb(246,203,80);}
 
-.pixel:nth-child(74) {background: #F6CB50;}
+.pixel:nth-child(54) {background: rgb(246,203,80);}
 
-.pixel:nth-child(94) {background: #F6CB50;}
+.pixel:nth-child(74) {background: rgb(246,203,80);}
 
-.pixel:nth-child(114) {background: #F6CB50;}
+.pixel:nth-child(94) {background: rgb(246,203,80);}
 
-.pixel:nth-child(134) {background: #F6CB50;}
+.pixel:nth-child(114) {background: rgb(246,203,80);}
 
-.pixel:nth-child(154) {background: #F6CB50;}
+.pixel:nth-child(134) {background: rgb(246,203,80);}
 
-.pixel:nth-child(174) {background: #F6CB50;}
+.pixel:nth-child(154) {background: rgb(246,203,80);}
 
-.pixel:nth-child(194) {background: #F6CB50;}
+.pixel:nth-child(174) {background: rgb(246,203,80);}
 
-.pixel:nth-child(214) {background: #F6CB50;}
+.pixel:nth-child(194) {background: rgb(246,203,80);}
 
-.pixel:nth-child(234) {background: #F6CB50;}
+.pixel:nth-child(214) {background: rgb(246,203,80);}
 
-.pixel:nth-child(254) {background: #F6CB50;}
+.pixel:nth-child(234) {background: rgb(246,203,80);}
 
-.pixel:nth-child(274) {background: #F6CB50;}
+.pixel:nth-child(254) {background: rgb(246,203,80);}
 
-.pixel:nth-child(294) {background: #F6CB50;}
+.pixel:nth-child(274) {background: rgb(246,203,80);}
 
-.pixel:nth-child(314) {background: #F6CB50;}
+.pixel:nth-child(294) {background: rgb(246,203,80);}
 
-.pixel:nth-child(334) {background: #F6CB50;}
+.pixel:nth-child(314) {background: rgb(246,203,80);}
 
-.pixel:nth-child(354) {background: #F6CB50;}
+.pixel:nth-child(334) {background: rgb(246,203,80);}
 
-.pixel:nth-child(374) {background: #F6CB50;}
+.pixel:nth-child(354) {background: rgb(246,203,80);}
 
-.pixel:nth-child(394) {background: #F6CB43;}
+.pixel:nth-child(374) {background: rgb(246,203,80);}
 
-.pixel:nth-child(15) {background: #F6CB51;}
+.pixel:nth-child(394) {background: rgb(246,203,67);}
 
-.pixel:nth-child(35) {background: #F6CB51;}
+.pixel:nth-child(15) {background: rgb(246,203,81);}
 
-.pixel:nth-child(55) {background: #F6CB51;}
+.pixel:nth-child(35) {background: rgb(246,203,81);}
 
-.pixel:nth-child(75) {background: #F6CB51;}
+.pixel:nth-child(55) {background: rgb(246,203,81);}
 
-.pixel:nth-child(95) {background: #F6CB51;}
+.pixel:nth-child(75) {background: rgb(246,203,81);}
 
-.pixel:nth-child(115) {background: #F6CB51;}
+.pixel:nth-child(95) {background: rgb(246,203,81);}
 
-.pixel:nth-child(135) {background: #F6CB51;}
+.pixel:nth-child(115) {background: rgb(246,203,81);}
 
-.pixel:nth-child(155) {background: #F6CB51;}
+.pixel:nth-child(135) {background: rgb(246,203,81);}
 
-.pixel:nth-child(175) {background: #F6CB51;}
+.pixel:nth-child(155) {background: rgb(246,203,81);}
 
-.pixel:nth-child(195) {background: #F6CB51;}
+.pixel:nth-child(175) {background: rgb(246,203,81);}
 
-.pixel:nth-child(215) {background: #F6CB51;}
+.pixel:nth-child(195) {background: rgb(246,203,81);}
 
-.pixel:nth-child(235) {background: #F6CB51;}
+.pixel:nth-child(215) {background: rgb(246,203,81);}
 
-.pixel:nth-child(255) {background: #F6CB51;}
+.pixel:nth-child(235) {background: rgb(246,203,81);}
 
-.pixel:nth-child(275) {background: #F6CB51;}
+.pixel:nth-child(255) {background: rgb(246,203,81);}
 
-.pixel:nth-child(295) {background: #F6CB51;}
+.pixel:nth-child(275) {background: rgb(246,203,81);}
 
-.pixel:nth-child(315) {background: #F6CB51;}
+.pixel:nth-child(295) {background: rgb(246,203,81);}
 
-.pixel:nth-child(335) {background: #F6CB51;}
+.pixel:nth-child(315) {background: rgb(246,203,81);}
 
-.pixel:nth-child(355) {background: #F6CB51;}
+.pixel:nth-child(335) {background: rgb(246,203,81);}
 
-.pixel:nth-child(375) {background: #F6CB51;}
+.pixel:nth-child(355) {background: rgb(246,203,81);}
 
-.pixel:nth-child(395) {background: #F6CB43;}
+.pixel:nth-child(375) {background: rgb(246,203,81);}
 
-.pixel:nth-child(16) {background: #F6CB52;}
+.pixel:nth-child(395) {background: rgb(246,203,67);}
 
-.pixel:nth-child(36) {background: #F6CB52;}
+.pixel:nth-child(16) {background: rgb(246,203,82);}
 
-.pixel:nth-child(56) {background: #F6CB52;}
+.pixel:nth-child(36) {background: rgb(246,203,82);}
 
-.pixel:nth-child(76) {background: #F6CB52;}
+.pixel:nth-child(56) {background: rgb(246,203,82);}
 
-.pixel:nth-child(96) {background: #F6CB52;}
+.pixel:nth-child(76) {background: rgb(246,203,82);}
 
-.pixel:nth-child(116) {background: #F6CB52;}
+.pixel:nth-child(96) {background: rgb(246,203,82);}
 
-.pixel:nth-child(136) {background: #F6CB52;}
+.pixel:nth-child(116) {background: rgb(246,203,82);}
 
-.pixel:nth-child(156) {background: #F6CB52;}
+.pixel:nth-child(136) {background: rgb(246,203,82);}
 
-.pixel:nth-child(176) {background: #F6CB52;}
+.pixel:nth-child(156) {background: rgb(246,203,82);}
 
-.pixel:nth-child(196) {background: #F6CB52;}
+.pixel:nth-child(176) {background: rgb(246,203,82);}
 
-.pixel:nth-child(216) {background: #F6CB52;}
+.pixel:nth-child(196) {background: rgb(246,203,82);}
 
-.pixel:nth-child(236) {background: #F6CB52;}
+.pixel:nth-child(216) {background: rgb(246,203,82);}
 
-.pixel:nth-child(256) {background: #F6CB52;}
+.pixel:nth-child(236) {background: rgb(246,203,82);}
 
-.pixel:nth-child(276) {background: #F6CB52;}
+.pixel:nth-child(256) {background: rgb(246,203,82);}
 
-.pixel:nth-child(296) {background: #F6CB52;}
+.pixel:nth-child(276) {background: rgb(246,203,82);}
 
-.pixel:nth-child(316) {background: #F6CB52;}
+.pixel:nth-child(296) {background: rgb(246,203,82);}
 
-.pixel:nth-child(336) {background: #F6CB52;}
+.pixel:nth-child(316) {background: rgb(246,203,82);}
 
-.pixel:nth-child(356) {background: #F6CB52;}
+.pixel:nth-child(336) {background: rgb(246,203,82);}
 
-.pixel:nth-child(376) {background: #F6CB52;}
+.pixel:nth-child(356) {background: rgb(246,203,82);}
 
-.pixel:nth-child(396) {background: #F6CB43;}
+.pixel:nth-child(376) {background: rgb(246,203,82);}
 
-.pixel:nth-child(17) {background: #F6CB53;}
+.pixel:nth-child(396) {background: rgb(246,203,67);}
 
-.pixel:nth-child(37) {background: #F6CB53;}
+.pixel:nth-child(17) {background: rgb(246,203,83);}
 
-.pixel:nth-child(57) {background: #F6CB53;}
+.pixel:nth-child(37) {background: rgb(246,203,83);}
 
-.pixel:nth-child(77) {background: #F6CB53;}
+.pixel:nth-child(57) {background: rgb(246,203,83);}
 
-.pixel:nth-child(97) {background: #F6CB53;}
+.pixel:nth-child(77) {background: rgb(246,203,83);}
 
-.pixel:nth-child(117) {background: #F6CB53;}
+.pixel:nth-child(97) {background: rgb(246,203,83);}
 
-.pixel:nth-child(137) {background: #F6CB53;}
+.pixel:nth-child(117) {background: rgb(246,203,83);}
 
-.pixel:nth-child(157) {background: #F6CB53;}
+.pixel:nth-child(137) {background: rgb(246,203,83);}
 
-.pixel:nth-child(177) {background: #F6CB53;}
+.pixel:nth-child(157) {background: rgb(246,203,83);}
 
-.pixel:nth-child(197) {background: #F6CB53;}
+.pixel:nth-child(177) {background: rgb(246,203,83);}
 
-.pixel:nth-child(217) {background: #F6CB53;}
+.pixel:nth-child(197) {background: rgb(246,203,83);}
 
-.pixel:nth-child(237) {background: #F6CB53;}
+.pixel:nth-child(217) {background: rgb(246,203,83);}
 
-.pixel:nth-child(257) {background: #F6CB53;}
+.pixel:nth-child(237) {background: rgb(246,203,83);}
 
-.pixel:nth-child(277) {background: #F6CB53;}
+.pixel:nth-child(257) {background: rgb(246,203,83);}
 
-.pixel:nth-child(297) {background: #F6CB53;}
+.pixel:nth-child(277) {background: rgb(246,203,83);}
 
-.pixel:nth-child(317) {background: #F6CB53;}
+.pixel:nth-child(297) {background: rgb(246,203,83);}
 
-.pixel:nth-child(337) {background: #F6CB53;}
+.pixel:nth-child(317) {background: rgb(246,203,83);}
 
-.pixel:nth-child(357) {background: #F6CB53;}
+.pixel:nth-child(337) {background: rgb(246,203,83);}
 
-.pixel:nth-child(377) {background: #F6CB53;}
+.pixel:nth-child(357) {background: rgb(246,203,83);}
 
-.pixel:nth-child(397) {background: #F6CB43;}
+.pixel:nth-child(377) {background: rgb(246,203,83);}
 
-.pixel:nth-child(18) {background: #F6CB54;}
+.pixel:nth-child(397) {background: rgb(246,203,67);}
 
-.pixel:nth-child(38) {background: #F6CB54;}
+.pixel:nth-child(18) {background: rgb(246,203,84);}
 
-.pixel:nth-child(58) {background: #F6CB54;}
+.pixel:nth-child(38) {background: rgb(246,203,84);}
 
-.pixel:nth-child(78) {background: #F6CB54;}
+.pixel:nth-child(58) {background: rgb(246,203,84);}
 
-.pixel:nth-child(98) {background: #F6CB54;}
+.pixel:nth-child(78) {background: rgb(246,203,84);}
 
-.pixel:nth-child(118) {background: #F6CB54;}
+.pixel:nth-child(98) {background: rgb(246,203,84);}
 
-.pixel:nth-child(138) {background: #F6CB54;}
+.pixel:nth-child(118) {background: rgb(246,203,84);}
 
-.pixel:nth-child(158) {background: #F6CB54;}
+.pixel:nth-child(138) {background: rgb(246,203,84);}
 
-.pixel:nth-child(178) {background: #F6CB54;}
+.pixel:nth-child(158) {background: rgb(246,203,84);}
 
-.pixel:nth-child(198) {background: #F6CB54;}
+.pixel:nth-child(178) {background: rgb(246,203,84);}
 
-.pixel:nth-child(218) {background: #F6CB54;}
+.pixel:nth-child(198) {background: rgb(246,203,84);}
 
-.pixel:nth-child(238) {background: #F6CB54;}
+.pixel:nth-child(218) {background: rgb(246,203,84);}
 
-.pixel:nth-child(258) {background: #F6CB54;}
+.pixel:nth-child(238) {background: rgb(246,203,84);}
 
-.pixel:nth-child(278) {background: #F6CB54;}
+.pixel:nth-child(258) {background: rgb(246,203,84);}
 
-.pixel:nth-child(298) {background: #F6CB54;}
+.pixel:nth-child(278) {background: rgb(246,203,84);}
 
-.pixel:nth-child(318) {background: #F6CB54;}
+.pixel:nth-child(298) {background: rgb(246,203,84);}
 
-.pixel:nth-child(338) {background: #F6CB54;}
+.pixel:nth-child(318) {background: rgb(246,203,84);}
 
-.pixel:nth-child(358) {background: #F6CB54;}
+.pixel:nth-child(338) {background: rgb(246,203,84);}
 
-.pixel:nth-child(378) {background: #F6CB54;}
+.pixel:nth-child(358) {background: rgb(246,203,84);}
 
-.pixel:nth-child(398) {background: #F6CB43;}
+.pixel:nth-child(378) {background: rgb(246,203,84);}
 
-.pixel:nth-child(19) {background: #F6CB55;}
+.pixel:nth-child(398) {background: rgb(246,203,67);}
 
-.pixel:nth-child(39) {background: #F6CB55;}
+.pixel:nth-child(19) {background: rgb(246,203,85);}
 
-.pixel:nth-child(59) {background: #F6CB55;}
+.pixel:nth-child(39) {background: rgb(246,203,85);}
 
-.pixel:nth-child(79) {background: #F6CB55;}
+.pixel:nth-child(59) {background: rgb(246,203,85);}
 
-.pixel:nth-child(99) {background: #F6CB55;}
+.pixel:nth-child(79) {background: rgb(246,203,85);}
 
-.pixel:nth-child(119) {background: #F6CB55;}
+.pixel:nth-child(99) {background: rgb(246,203,85);}
 
-.pixel:nth-child(139) {background: #F6CB55;}
+.pixel:nth-child(119) {background: rgb(246,203,85);}
 
-.pixel:nth-child(159) {background: #F6CB55;}
+.pixel:nth-child(139) {background: rgb(246,203,85);}
 
-.pixel:nth-child(179) {background: #F6CB55;}
+.pixel:nth-child(159) {background: rgb(246,203,85);}
 
-.pixel:nth-child(199) {background: #F6CB55;}
+.pixel:nth-child(179) {background: rgb(246,203,85);}
 
-.pixel:nth-child(219) {background: #F6CB55;}
+.pixel:nth-child(199) {background: rgb(246,203,85);}
 
-.pixel:nth-child(239) {background: #F6CB55;}
+.pixel:nth-child(219) {background: rgb(246,203,85);}
 
-.pixel:nth-child(259) {background: #F6CB55;}
+.pixel:nth-child(239) {background: rgb(246,203,85);}
 
-.pixel:nth-child(279) {background: #F6CB55;}
+.pixel:nth-child(259) {background: rgb(246,203,85);}
 
-.pixel:nth-child(299) {background: #F6CB55;}
+.pixel:nth-child(279) {background: rgb(246,203,85);}
 
-.pixel:nth-child(319) {background: #F6CB55;}
+.pixel:nth-child(299) {background: rgb(246,203,85);}
 
-.pixel:nth-child(339) {background: #F6CB55;}
+.pixel:nth-child(319) {background: rgb(246,203,85);}
 
-.pixel:nth-child(359) {background: #F6CB55;}
+.pixel:nth-child(339) {background: rgb(246,203,85);}
 
-.pixel:nth-child(379) {background: #F6CB55;}
+.pixel:nth-child(359) {background: rgb(246,203,85);}
 
-.pixel:nth-child(399) {background: #F6CB43;}
+.pixel:nth-child(379) {background: rgb(246,203,85);}
 
-.pixel:nth-child(20) {background: #F6CB43;}
+.pixel:nth-child(399) {background: rgb(246,203,67);}
 
-.pixel:nth-child(40) {background: #F6CB43;}
+.pixel:nth-child(20) {background: rgb(246,203,67);}
 
-.pixel:nth-child(60) {background: #F6CB43;}
+.pixel:nth-child(40) {background: rgb(246,203,67);}
 
-.pixel:nth-child(80) {background: #F6CB43;}
+.pixel:nth-child(60) {background: rgb(246,203,67);}
 
-.pixel:nth-child(100) {background: #F6CB43;}
+.pixel:nth-child(80) {background: rgb(246,203,67);}
 
-.pixel:nth-child(120) {background: #F6CB43;}
+.pixel:nth-child(100) {background: rgb(246,203,67);}
 
-.pixel:nth-child(140) {background: #F6CB43;}
+.pixel:nth-child(120) {background: rgb(246,203,67);}
 
-.pixel:nth-child(160) {background: #F6CB43;}
+.pixel:nth-child(140) {background: rgb(246,203,67);}
 
-.pixel:nth-child(180) {background: #F6CB43;}
+.pixel:nth-child(160) {background: rgb(246,203,67);}
 
-.pixel:nth-child(200) {background: #F6CB43;}
+.pixel:nth-child(180) {background: rgb(246,203,67);}
 
-.pixel:nth-child(220) {background: #F6CB43;}
+.pixel:nth-child(200) {background: rgb(246,203,67);}
 
-.pixel:nth-child(240) {background: #F6CB43;}
+.pixel:nth-child(220) {background: rgb(246,203,67);}
 
-.pixel:nth-child(260) {background: #F6CB43;}
+.pixel:nth-child(240) {background: rgb(246,203,67);}
 
-.pixel:nth-child(280) {background: #F6CB43;}
+.pixel:nth-child(260) {background: rgb(246,203,67);}
 
-.pixel:nth-child(300) {background: #F6CB43;}
+.pixel:nth-child(280) {background: rgb(246,203,67);}
 
-.pixel:nth-child(320) {background: #F6CB43;}
+.pixel:nth-child(300) {background: rgb(246,203,67);}
 
-.pixel:nth-child(340) {background: #F6CB43;}
+.pixel:nth-child(320) {background: rgb(246,203,67);}
 
-.pixel:nth-child(360) {background: #F6CB43;}
+.pixel:nth-child(340) {background: rgb(246,203,67);}
 
-.pixel:nth-child(380) {background: #F6CB43;}
+.pixel:nth-child(360) {background: rgb(246,203,67);}
 
-.pixel:nth-child(400) {background: #F6CB43;}
+.pixel:nth-child(380) {background: rgb(246,203,67);}
 
-.pixel:nth-child(324) {background: #F65143;}
+.pixel:nth-child(400) {background: rgb(246,203,67);}
 
-.pixel:nth-child(344) {background: #F65143;}
+.pixel:nth-child(324) {background: rgb(246,81,67);}
 
-.pixel:nth-child(364) {background: #F65143;}
+.pixel:nth-child(344) {background: rgb(246,81,67);}
 
-.pixel:nth-child(384) {background: #F65143;}
+.pixel:nth-child(364) {background: rgb(246,81,67);}
 
-.pixel:nth-child(324) {background: #F65143;}
+.pixel:nth-child(384) {background: rgb(246,81,67);}
 
-.pixel:nth-child(344) {background: #F65143;}
+.pixel:nth-child(324) {background: rgb(246,81,67);}
 
-.pixel:nth-child(364) {background: #F65143;}
+.pixel:nth-child(344) {background: rgb(246,81,67);}
 
-.pixel:nth-child(384) {background: #F65143;}
+.pixel:nth-child(364) {background: rgb(246,81,67);}
 
-.pixel:nth-child(305) {background: #F65143;}
+.pixel:nth-child(384) {background: rgb(246,81,67);}
 
-.pixel:nth-child(325) {background: #F65143;}
+.pixel:nth-child(305) {background: rgb(246,81,67);}
 
-.pixel:nth-child(345) {background: #F65143;}
+.pixel:nth-child(325) {background: rgb(246,81,67);}
 
-.pixel:nth-child(365) {background: #F65143;}
+.pixel:nth-child(345) {background: rgb(246,81,67);}
 
-.pixel:nth-child(385) {background: #F65143;}
+.pixel:nth-child(365) {background: rgb(246,81,67);}
 
-.pixel:nth-child(266) {background: #F65143;}
+.pixel:nth-child(385) {background: rgb(246,81,67);}
 
-.pixel:nth-child(286) {background: #F65143;}
+.pixel:nth-child(266) {background: rgb(246,81,67);}
 
-.pixel:nth-child(306) {background: #F65143;}
+.pixel:nth-child(286) {background: rgb(246,81,67);}
 
-.pixel:nth-child(326) {background: #F65143;}
+.pixel:nth-child(306) {background: rgb(246,81,67);}
 
-.pixel:nth-child(346) {background: #F65143;}
+.pixel:nth-child(326) {background: rgb(246,81,67);}
 
-.pixel:nth-child(249) {background: #F65143;}
+.pixel:nth-child(346) {background: rgb(246,81,67);}
 
-.pixel:nth-child(269) {background: #F65143;}
+.pixel:nth-child(249) {background: rgb(246,81,67);}
 
-.pixel:nth-child(289) {background: #F65143;}
+.pixel:nth-child(269) {background: rgb(246,81,67);}
 
-.pixel:nth-child(309) {background: #F65143;}
+.pixel:nth-child(289) {background: rgb(246,81,67);}
 
-.pixel:nth-child(250) {background: #F65143;}
+.pixel:nth-child(309) {background: rgb(246,81,67);}
 
-.pixel:nth-child(270) {background: #F65143;}
+.pixel:nth-child(250) {background: rgb(246,81,67);}
 
-.pixel:nth-child(290) {background: #F65143;}
+.pixel:nth-child(270) {background: rgb(246,81,67);}
 
-.pixel:nth-child(310) {background: #F65143;}
+.pixel:nth-child(290) {background: rgb(246,81,67);}
 
-.pixel:nth-child(251) {background: #F65143;}
+.pixel:nth-child(310) {background: rgb(246,81,67);}
 
-.pixel:nth-child(271) {background: #F65143;}
+.pixel:nth-child(251) {background: rgb(246,81,67);}
 
-.pixel:nth-child(291) {background: #F65143;}
+.pixel:nth-child(271) {background: rgb(246,81,67);}
 
-.pixel:nth-child(311) {background: #F65143;}
+.pixel:nth-child(291) {background: rgb(246,81,67);}
 
-.pixel:nth-child(252) {background: #F65143;}
+.pixel:nth-child(311) {background: rgb(246,81,67);}
 
-.pixel:nth-child(272) {background: #F65143;}
+.pixel:nth-child(252) {background: rgb(246,81,67);}
 
-.pixel:nth-child(292) {background: #F65143;}
+.pixel:nth-child(272) {background: rgb(246,81,67);}
 
-.pixel:nth-child(312) {background: #F65143;}
+.pixel:nth-child(292) {background: rgb(246,81,67);}
 
-.pixel:nth-child(275) {background: #F65143;}
+.pixel:nth-child(312) {background: rgb(246,81,67);}
 
-.pixel:nth-child(295) {background: #F65143;}
+.pixel:nth-child(275) {background: rgb(246,81,67);}
 
-.pixel:nth-child(315) {background: #F65143;}
+.pixel:nth-child(295) {background: rgb(246,81,67);}
 
-.pixel:nth-child(335) {background: #F65143;}
+.pixel:nth-child(315) {background: rgb(246,81,67);}
 
-.pixel:nth-child(355) {background: #F65143;}
+.pixel:nth-child(335) {background: rgb(246,81,67);}
 
-.pixel:nth-child(316) {background: #F65143;}
+.pixel:nth-child(355) {background: rgb(246,81,67);}
 
-.pixel:nth-child(336) {background: #F65143;}
+.pixel:nth-child(316) {background: rgb(246,81,67);}
 
-.pixel:nth-child(356) {background: #F65143;}
+.pixel:nth-child(336) {background: rgb(246,81,67);}
 
-.pixel:nth-child(376) {background: #F65143;}
+.pixel:nth-child(356) {background: rgb(246,81,67);}
 
-.pixel:nth-child(396) {background: #F65143;}
+.pixel:nth-child(376) {background: rgb(246,81,67);}
 
-.pixel:nth-child(337) {background: #F65143;}
+.pixel:nth-child(396) {background: rgb(246,81,67);}
 
-.pixel:nth-child(357) {background: #F65143;}
+.pixel:nth-child(337) {background: rgb(246,81,67);}
 
-.pixel:nth-child(377) {background: #F65143;}
+.pixel:nth-child(357) {background: rgb(246,81,67);}
 
-.pixel:nth-child(397) {background: #F65143;}
+.pixel:nth-child(377) {background: rgb(246,81,67);}
 
-.pixel:nth-child(366) {background: #436CF6;}
+.pixel:nth-child(397) {background: rgb(246,81,67);}
 
-.pixel:nth-child(386) {background: #436CF6;}
+.pixel:nth-child(366) {background: rgb(67,108,246);}
 
-.pixel:nth-child(366) {background: #436CF6;}
+.pixel:nth-child(386) {background: rgb(67,108,246);}
 
-.pixel:nth-child(386) {background: #436CF6;}
+.pixel:nth-child(366) {background: rgb(67,108,246);}
 
-.pixel:nth-child(247) {background: #436CF6;}
+.pixel:nth-child(386) {background: rgb(67,108,246);}
 
-.pixel:nth-child(267) {background: #436CF6;}
+.pixel:nth-child(247) {background: rgb(67,108,246);}
 
-.pixel:nth-child(287) {background: #436CF6;}
+.pixel:nth-child(267) {background: rgb(67,108,246);}
 
-.pixel:nth-child(307) {background: #436CF6;}
+.pixel:nth-child(287) {background: rgb(67,108,246);}
 
-.pixel:nth-child(327) {background: #436CF6;}
+.pixel:nth-child(307) {background: rgb(67,108,246);}
 
-.pixel:nth-child(347) {background: #436CF6;}
+.pixel:nth-child(327) {background: rgb(67,108,246);}
 
-.pixel:nth-child(367) {background: #436CF6;}
+.pixel:nth-child(347) {background: rgb(67,108,246);}
 
-.pixel:nth-child(387) {background: #436CF6;}
+.pixel:nth-child(367) {background: rgb(67,108,246);}
 
-.pixel:nth-child(248) {background: #436CF6;}
+.pixel:nth-child(387) {background: rgb(67,108,246);}
 
-.pixel:nth-child(268) {background: #436CF6;}
+.pixel:nth-child(248) {background: rgb(67,108,246);}
 
-.pixel:nth-child(288) {background: #436CF6;}
+.pixel:nth-child(268) {background: rgb(67,108,246);}
 
-.pixel:nth-child(308) {background: #436CF6;}
+.pixel:nth-child(288) {background: rgb(67,108,246);}
 
-.pixel:nth-child(328) {background: #436CF7;}
+.pixel:nth-child(308) {background: rgb(67,108,246);}
 
-.pixel:nth-child(348) {background: #436CF6;}
+.pixel:nth-child(328) {background: rgb(67,108,247);}
 
-.pixel:nth-child(368) {background: #436CF7;}
+.pixel:nth-child(348) {background: rgb(67,108,246);}
 
-.pixel:nth-child(388) {background: #436CF6;}
+.pixel:nth-child(368) {background: rgb(67,108,247);}
 
-.pixel:nth-child(329) {background: #436CF6;}
+.pixel:nth-child(388) {background: rgb(67,108,246);}
 
-.pixel:nth-child(349) {background: #436CF6;}
+.pixel:nth-child(329) {background: rgb(67,108,246);}
 
-.pixel:nth-child(369) {background: #436CF8;}
+.pixel:nth-child(349) {background: rgb(67,108,246);}
 
-.pixel:nth-child(389) {background: #436CF6;}
+.pixel:nth-child(369) {background: rgb(67,108,248);}
 
-.pixel:nth-child(330) {background: #436CF6;}
+.pixel:nth-child(389) {background: rgb(67,108,246);}
 
-.pixel:nth-child(350) {background: #436CF6;}
+.pixel:nth-child(330) {background: rgb(67,108,246);}
 
-.pixel:nth-child(370) {background: #436CF9;}
+.pixel:nth-child(350) {background: rgb(67,108,246);}
 
-.pixel:nth-child(390) {background: #436CF6;}
+.pixel:nth-child(370) {background: rgb(67,108,249);}
 
-.pixel:nth-child(331) {background: #436CF6;}
+.pixel:nth-child(390) {background: rgb(67,108,246);}
 
-.pixel:nth-child(351) {background: #436CF6;}
+.pixel:nth-child(331) {background: rgb(67,108,246);}
 
-.pixel:nth-child(371) {background: #436CFA;}
+.pixel:nth-child(351) {background: rgb(67,108,246);}
 
-.pixel:nth-child(391) {background: #436CF6;}
+.pixel:nth-child(371) {background: rgb(67,108,250);}
 
-.pixel:nth-child(332) {background: #436CF6;}
+.pixel:nth-child(391) {background: rgb(67,108,246);}
 
-.pixel:nth-child(352) {background: #436CF6;}
+.pixel:nth-child(332) {background: rgb(67,108,246);}
 
-.pixel:nth-child(372) {background: #436CFB;}
+.pixel:nth-child(352) {background: rgb(67,108,246);}
 
-.pixel:nth-child(392) {background: #436CF6;}
+.pixel:nth-child(372) {background: rgb(67,108,251);}
 
-.pixel:nth-child(253) {background: #436CF6;}
+.pixel:nth-child(392) {background: rgb(67,108,246);}
 
-.pixel:nth-child(273) {background: #436CF6;}
+.pixel:nth-child(253) {background: rgb(67,108,246);}
 
-.pixel:nth-child(293) {background: #436CF6;}
+.pixel:nth-child(273) {background: rgb(67,108,246);}
 
-.pixel:nth-child(313) {background: #436CF6;}
+.pixel:nth-child(293) {background: rgb(67,108,246);}
 
-.pixel:nth-child(333) {background: #436CF6;}
+.pixel:nth-child(313) {background: rgb(67,108,246);}
 
-.pixel:nth-child(353) {background: #436CF6;}
+.pixel:nth-child(333) {background: rgb(67,108,246);}
 
-.pixel:nth-child(373) {background: #436CF6;}
+.pixel:nth-child(353) {background: rgb(67,108,246);}
 
-.pixel:nth-child(393) {background: #436CF6;}
+.pixel:nth-child(373) {background: rgb(67,108,246);}
 
-.pixel:nth-child(254) {background: #436CF6;}
+.pixel:nth-child(393) {background: rgb(67,108,246);}
 
-.pixel:nth-child(274) {background: #436CF6;}
+.pixel:nth-child(254) {background: rgb(67,108,246);}
 
-.pixel:nth-child(294) {background: #436CF6;}
+.pixel:nth-child(274) {background: rgb(67,108,246);}
 
-.pixel:nth-child(314) {background: #436CF6;}
+.pixel:nth-child(294) {background: rgb(67,108,246);}
 
-.pixel:nth-child(334) {background: #436CF6;}
+.pixel:nth-child(314) {background: rgb(67,108,246);}
 
-.pixel:nth-child(354) {background: #436CF6;}
+.pixel:nth-child(334) {background: rgb(67,108,246);}
 
-.pixel:nth-child(374) {background: #436CF6;}
+.pixel:nth-child(354) {background: rgb(67,108,246);}
 
-.pixel:nth-child(394) {background: #436CF6;}
+.pixel:nth-child(374) {background: rgb(67,108,246);}
 
-.pixel:nth-child(375) {background: #436CF6;}
+.pixel:nth-child(394) {background: rgb(67,108,246);}
 
-.pixel:nth-child(395) {background: #436CF6;}
+.pixel:nth-child(375) {background: rgb(67,108,246);}
 
-.pixel:nth-child(67) {background: #F8D69A;}
+.pixel:nth-child(395) {background: rgb(67,108,246);}
 
-.pixel:nth-child(87) {background: #F8D69A;}
+.pixel:nth-child(67) {background: rgb(248,214,154);}
 
-.pixel:nth-child(107) {background: #F8D69A;}
+.pixel:nth-child(87) {background: rgb(248,214,154);}
 
-.pixel:nth-child(127) {background: #F8D69A;}
+.pixel:nth-child(107) {background: rgb(248,214,154);}
 
-.pixel:nth-child(147) {background: #F8D69A;}
+.pixel:nth-child(127) {background: rgb(248,214,154);}
 
-.pixel:nth-child(67) {background: #F8D69A;}
+.pixel:nth-child(147) {background: rgb(248,214,154);}
 
-.pixel:nth-child(87) {background: #F8D69A;}
+.pixel:nth-child(67) {background: rgb(248,214,154);}
 
-.pixel:nth-child(107) {background: #F8D69A;}
+.pixel:nth-child(87) {background: rgb(248,214,154);}
 
-.pixel:nth-child(127) {background: #F8D69A;}
+.pixel:nth-child(107) {background: rgb(248,214,154);}
 
-.pixel:nth-child(147) {background: #F8D69A;}
+.pixel:nth-child(127) {background: rgb(248,214,154);}
 
-.pixel:nth-child(48) {background: #F8D69A;}
+.pixel:nth-child(147) {background: rgb(248,214,154);}
 
-.pixel:nth-child(68) {background: #F8D69A;}
+.pixel:nth-child(48) {background: rgb(248,214,154);}
 
-.pixel:nth-child(88) {background: #F8D69A;}
+.pixel:nth-child(68) {background: rgb(248,214,154);}
 
-.pixel:nth-child(108) {background: #F8D69A;}
+.pixel:nth-child(88) {background: rgb(248,214,154);}
 
-.pixel:nth-child(128) {background: #F8D69A;}
+.pixel:nth-child(108) {background: rgb(248,214,154);}
 
-.pixel:nth-child(148) {background: #F8D69A;}
+.pixel:nth-child(128) {background: rgb(248,214,154);}
 
-.pixel:nth-child(168) {background: #F8D69A;}
+.pixel:nth-child(148) {background: rgb(255,255,255);}
 
-.pixel:nth-child(188) {background: #F8D69A;}
+.pixel:nth-child(168) {background: rgb(248,214,154);}
 
-.pixel:nth-child(29) {background: #F8D69A;}
+.pixel:nth-child(188) {background: rgb(248,214,154);}
 
-.pixel:nth-child(49) {background: #F8D69A;}
+.pixel:nth-child(29) {background: rgb(248,214,154);}
 
-.pixel:nth-child(69) {background: #F8D69A;}
+.pixel:nth-child(49) {background: rgb(248,214,154);}
 
-.pixel:nth-child(89) {background: #F8D69A;}
+.pixel:nth-child(69) {background: rgb(248,214,154);}
 
-.pixel:nth-child(109) {background: #F8D69A;}
+.pixel:nth-child(89) {background: rgb(248,214,154);}
 
-.pixel:nth-child(129) {background: #F8D69A;}
+.pixel:nth-child(109) {background: rgb(248,214,154);}
 
-.pixel:nth-child(149) {background: #F8D69A;}
+.pixel:nth-child(129) {background: rgb(248,214,154);}
 
-.pixel:nth-child(169) {background: #F8D69A;}
+.pixel:nth-child(149) {background: rgb(248,214,154);}
 
-.pixel:nth-child(189) {background: #F8D69A;}
+.pixel:nth-child(169) {background: rgb(248,214,154);}
 
-.pixel:nth-child(209) {background: #F8D69A;}
+.pixel:nth-child(189) {background: rgb(248,214,154);}
 
-.pixel:nth-child(10) {background: #F8D69A;}
+.pixel:nth-child(209) {background: rgb(248,214,154);}
 
-.pixel:nth-child(30) {background: #F8D69A;}
+.pixel:nth-child(10) {background: rgb(248,214,154);}
 
-.pixel:nth-child(50) {background: #F8D69A;}
+.pixel:nth-child(30) {background: rgb(248,214,154);}
 
-.pixel:nth-child(70) {background: #F8D69A;}
+.pixel:nth-child(50) {background: rgb(248,214,154);}
 
-.pixel:nth-child(90) {background: #F8D69A;}
+.pixel:nth-child(70) {background: rgb(248,214,154);}
 
-.pixel:nth-child(110) {background: #F8D69A;}
+.pixel:nth-child(90) {background: rgb(248,214,154);}
 
-.pixel:nth-child(130) {background: #F8D69A;}
+.pixel:nth-child(110) {background: rgb(248,214,154);}
 
-.pixel:nth-child(150) {background: #F8D69A;}
+.pixel:nth-child(130) {background: rgb(248,214,154);}
 
-.pixel:nth-child(170) {background: #F8D69A;}
+.pixel:nth-child(150) {background: rgb(248,214,154);}
 
-.pixel:nth-child(190) {background: #F8D69A;}
+.pixel:nth-child(170) {background: rgb(248,214,154);}
 
-.pixel:nth-child(210) {background: #F8D69A;}
+.pixel:nth-child(190) {background: rgb(248,214,154);}
 
-.pixel:nth-child(230) {background: #F8D69A;}
+.pixel:nth-child(210) {background: rgb(248,214,154);}
 
-.pixel:nth-child(11) {background: #F8D69A;}
+.pixel:nth-child(230) {background: rgb(248,214,154);}
 
-.pixel:nth-child(31) {background: #F8D69A;}
+.pixel:nth-child(11) {background: rgb(248,214,154);}
 
-.pixel:nth-child(51) {background: #F8D69A;}
+.pixel:nth-child(31) {background: rgb(248,214,154);}
 
-.pixel:nth-child(71) {background: #F8D69A;}
+.pixel:nth-child(51) {background: rgb(248,214,154);}
 
-.pixel:nth-child(91) {background: #F8D69A;}
+.pixel:nth-child(71) {background: rgb(248,214,154);}
 
-.pixel:nth-child(111) {background: #F8D69A;}
+.pixel:nth-child(91) {background: rgb(248,214,154);}
 
-.pixel:nth-child(131) {background: #F8D69A;}
+.pixel:nth-child(111) {background: rgb(248,214,154);}
 
-.pixel:nth-child(151) {background: #F8D69A;}
+.pixel:nth-child(131) {background: rgb(248,214,154);}
 
-.pixel:nth-child(171) {background: #F8D69A;}
+.pixel:nth-child(151) {background: rgb(248,214,154);}
 
-.pixel:nth-child(191) {background: #F8D69A;}
+.pixel:nth-child(171) {background: rgb(248,214,154);}
 
-.pixel:nth-child(211) {background: #F8D69A;}
+.pixel:nth-child(191) {background: rgb(248,214,154);}
 
-.pixel:nth-child(231) {background: #F8D69A;}
+.pixel:nth-child(211) {background: rgb(248,214,154);}
 
-.pixel:nth-child(32) {background: #F8D69A;}
+.pixel:nth-child(231) {background: rgb(248,214,154);}
 
-.pixel:nth-child(52) {background: #F8D69A;}
+.pixel:nth-child(32) {background: rgb(248,214,154);}
 
-.pixel:nth-child(72) {background: #F8D69A;}
+.pixel:nth-child(52) {background: rgb(248,214,154);}
 
-.pixel:nth-child(92) {background: #F8D69A;}
+.pixel:nth-child(72) {background: rgb(248,214,154);}
 
-.pixel:nth-child(112) {background: #F8D69A;}
+.pixel:nth-child(92) {background: rgb(248,214,154);}
 
-.pixel:nth-child(132) {background: #F8D69A;}
+.pixel:nth-child(112) {background: rgb(248,214,154);}
 
-.pixel:nth-child(152) {background: #F8D69A;}
+.pixel:nth-child(132) {background: rgb(248,214,154);}
 
-.pixel:nth-child(172) {background: #F8D69A;}
+.pixel:nth-child(152) {background: rgb(248,214,154);}
 
-.pixel:nth-child(192) {background: #F8D69A;}
+.pixel:nth-child(172) {background: rgb(248,214,154);}
 
-.pixel:nth-child(212) {background: #F8D69A;}
+.pixel:nth-child(192) {background: rgb(248,214,154);}
 
-.pixel:nth-child(53) {background: #F8D69A;}
+.pixel:nth-child(212) {background: rgb(248,214,154);}
 
-.pixel:nth-child(73) {background: #F8D69A;}
+.pixel:nth-child(53) {background: rgb(248,214,154);}
 
-.pixel:nth-child(93) {background: #F8D69A;}
+.pixel:nth-child(73) {background: rgb(248,214,154);}
 
-.pixel:nth-child(113) {background: #F8D69A;}
+.pixel:nth-child(93) {background: rgb(248,214,154);}
 
-.pixel:nth-child(133) {background: #F8D69A;}
+.pixel:nth-child(113) {background: rgb(248,214,154);}
 
-.pixel:nth-child(153) {background: #F8D69A;}
+.pixel:nth-child(133) {background: rgb(248,214,154);}
 
-.pixel:nth-child(173) {background: #F8D69A;}
+.pixel:nth-child(153) {background: rgb(248,214,154);}
 
-.pixel:nth-child(193) {background: #F8D69A;}
+.pixel:nth-child(173) {background: rgb(248,214,154);}
 
-.pixel:nth-child(74) {background: #F8D69A;}
+.pixel:nth-child(193) {background: rgb(248,214,154);}
 
-.pixel:nth-child(94) {background: #F8D69A;}
+.pixel:nth-child(74) {background: rgb(248,214,154);}
 
-.pixel:nth-child(114) {background: #F8D69A;}
+.pixel:nth-child(94) {background: rgb(248,214,154);}
 
-.pixel:nth-child(134) {background: #F8D69A;}
+.pixel:nth-child(114) {background: rgb(248,214,154);}
 
-.pixel:nth-child(154) {background: #F8D69A;}
+.pixel:nth-child(134) {background: rgb(248,214,154);}
 
-.pixel:nth-child(87) {background: #FFFFFF;}
+.pixel:nth-child(154) {background: rgb(248,214,154);}
 
-.pixel:nth-child(87) {background: #FFFFFF;}
+.pixel:nth-child(49) {background: rgb(0,0,0);}
 
-.pixel:nth-child(49) {background: #000000;}
+.pixel:nth-child(89) {background: rgb(0,0,0);}
 
-.pixel:nth-child(89) {background: #000000;}
+.pixel:nth-child(109) {background: rgb(0,0,0);}
 
-.pixel:nth-child(109) {background: #000000;}
+.pixel:nth-child(49) {background: rgb(0,0,0);}
 
-.pixel:nth-child(50) {background: #000000;}
+.pixel:nth-child(89) {background: rgb(0,0,0);}
 
-.pixel:nth-child(170) {background: #000000;}
+.pixel:nth-child(109) {background: rgb(0,0,0);}
 
-.pixel:nth-child(51) {background: #000000;}
+.pixel:nth-child(50) {background: rgb(0,0,0);}
 
-.pixel:nth-child(171) {background: #000000;}
+.pixel:nth-child(170) {background: rgb(0,0,0);}
 
-.pixel:nth-child(52) {background: #000000;}
+.pixel:nth-child(51) {background: rgb(0,0,0);}
 
-.pixel:nth-child(92) {background: #000000;}
+.pixel:nth-child(171) {background: rgb(0,0,0);}
 
-.pixel:nth-child(112) {background: #000000;}
+.pixel:nth-child(52) {background: rgb(0,0,0);}
 
-.pixel:nth-child(46) {background: #F4130C;}
+.pixel:nth-child(92) {background: rgb(0,0,0);}
 
-.pixel:nth-child(66) {background: #F4130C;}
+.pixel:nth-child(112) {background: rgb(0,0,0);}
 
-.pixel:nth-child(46) {background: #F4130C;}
+.pixel:nth-child(46) {background: rgb(244,19,12);}
 
-.pixel:nth-child(66) {background: #F4130C;}
+.pixel:nth-child(66) {background: rgb(244,19,12);}
 
-.pixel:nth-child(27) {background: #F4130C;}
+.pixel:nth-child(46) {background: rgb(244,19,12);}
 
-.pixel:nth-child(47) {background: #F4130C;}
+.pixel:nth-child(66) {background: rgb(244,19,12);}
 
-.pixel:nth-child(8) {background: #F4130C;}
+.pixel:nth-child(27) {background: rgb(244,19,12);}
 
-.pixel:nth-child(28) {background: #F4130C;}
+.pixel:nth-child(47) {background: rgb(244,19,12);}
 
-.pixel:nth-child(9) {background: #F4130C;}
+.pixel:nth-child(8) {background: rgb(244,19,12);}
 
-.pixel:nth-child(10) {background: #F4130C;}
+.pixel:nth-child(28) {background: rgb(244,19,12);}
 
-.pixel:nth-child(11) {background: #F4130C;}
+.pixel:nth-child(9) {background: rgb(244,19,12);}
 
-.pixel:nth-child(12) {background: #F4130C;}
+.pixel:nth-child(10) {background: rgb(244,19,12);}
 
-.pixel:nth-child(32) {background: #F4130C;}
+.pixel:nth-child(11) {background: rgb(244,19,12);}
 
-.pixel:nth-child(13) {background: #F4130C;}
+.pixel:nth-child(12) {background: rgb(244,19,12);}
 
-.pixel:nth-child(33) {background: #F4130C;}
+.pixel:nth-child(32) {background: rgb(244,19,12);}
 
-.pixel:nth-child(34) {background: #F4130C;}
+.pixel:nth-child(13) {background: rgb(244,19,12);}
 
-.pixel:nth-child(54) {background: #F4130C;}
+.pixel:nth-child(33) {background: rgb(244,19,12);}
 
-.pixel:nth-child(55) {background: #F4130C;}
+.pixel:nth-child(34) {background: rgb(244,19,12);}
 
-.pixel:nth-child(75) {background: #F4130C;}
+.pixel:nth-child(54) {background: rgb(244,19,12);}
 
-.pixel:nth-child(2) {background: rgb(255,255,255,0.9);}
+.pixel:nth-child(55) {background: rgb(244,19,12);}
+
+.pixel:nth-child(75) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(1) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(21) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(41) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(61) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(81) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(101) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(121) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(141) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(161) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(181) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(201) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(221) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(241) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(261) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(281) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(301) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(321) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(341) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(361) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(381) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(1) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(21) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(41) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(61) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(81) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(101) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(121) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(141) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(161) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(181) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(201) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(221) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(241) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(261) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(281) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(301) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(321) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(341) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(361) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(381) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(2) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(22) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(42) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(62) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(82) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(102) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(122) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(142) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(162) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(182) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(202) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(222) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(242) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(262) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(282) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(302) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(322) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(342) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(362) {background: rgb(246,203,68);}
+
+.pixelG:nth-child(382) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(3) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(23) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(43) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(63) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(83) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(103) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(123) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(143) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(163) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(183) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(203) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(223) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(243) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(263) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(283) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(303) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(323) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(343) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(363) {background: rgb(246,203,69);}
+
+.pixelG:nth-child(383) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(4) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(24) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(44) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(64) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(84) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(104) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(124) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(144) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(164) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(184) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(204) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(224) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(244) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(264) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(284) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(304) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(324) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(344) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(364) {background: rgb(246,203,70);}
+
+.pixelG:nth-child(384) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(5) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(25) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(45) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(65) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(85) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(105) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(125) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(145) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(165) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(185) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(205) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(225) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(245) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(265) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(285) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(305) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(325) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(345) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(365) {background: rgb(246,203,71);}
+
+.pixelG:nth-child(385) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(6) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(26) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(46) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(66) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(86) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(106) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(126) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(146) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(166) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(186) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(206) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(226) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(246) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(266) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(286) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(306) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(326) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(346) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(366) {background: rgb(246,203,72);}
+
+.pixelG:nth-child(386) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(7) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(27) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(47) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(67) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(87) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(107) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(127) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(147) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(167) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(187) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(207) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(227) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(247) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(267) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(287) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(307) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(327) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(347) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(367) {background: rgb(246,203,73);}
+
+.pixelG:nth-child(387) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(8) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(28) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(48) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(68) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(88) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(108) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(128) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(148) {background: rgb(255,255,255);}
+
+.pixelG:nth-child(168) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(188) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(208) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(228) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(248) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(268) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(288) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(308) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(328) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(348) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(368) {background: rgb(246,203,74);}
+
+.pixelG:nth-child(388) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(9) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(29) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(49) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(69) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(89) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(109) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(129) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(149) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(169) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(189) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(209) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(229) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(249) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(269) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(289) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(309) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(329) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(349) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(369) {background: rgb(246,203,75);}
+
+.pixelG:nth-child(389) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(10) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(30) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(50) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(70) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(90) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(110) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(130) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(150) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(170) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(190) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(210) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(230) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(250) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(270) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(290) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(310) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(330) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(350) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(370) {background: rgb(246,203,76);}
+
+.pixelG:nth-child(390) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(11) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(31) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(51) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(71) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(91) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(111) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(131) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(151) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(171) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(191) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(211) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(231) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(251) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(271) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(291) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(311) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(331) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(351) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(371) {background: rgb(246,203,77);}
+
+.pixelG:nth-child(391) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(12) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(32) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(52) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(72) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(92) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(112) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(132) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(152) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(172) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(192) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(212) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(232) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(252) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(272) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(292) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(312) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(332) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(352) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(372) {background: rgb(246,203,78);}
+
+.pixelG:nth-child(392) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(13) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(33) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(53) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(73) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(93) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(113) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(133) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(153) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(173) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(193) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(213) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(233) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(253) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(273) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(293) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(313) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(333) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(353) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(373) {background: rgb(246,203,79);}
+
+.pixelG:nth-child(393) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(14) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(34) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(54) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(74) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(94) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(114) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(134) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(154) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(174) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(194) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(214) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(234) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(254) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(274) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(294) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(314) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(334) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(354) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(374) {background: rgb(246,203,80);}
+
+.pixelG:nth-child(394) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(15) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(35) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(55) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(75) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(95) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(115) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(135) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(155) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(175) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(195) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(215) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(235) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(255) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(275) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(295) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(315) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(335) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(355) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(375) {background: rgb(246,203,81);}
+
+.pixelG:nth-child(395) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(16) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(36) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(56) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(76) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(96) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(116) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(136) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(156) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(176) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(196) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(216) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(236) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(256) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(276) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(296) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(316) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(336) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(356) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(376) {background: rgb(246,203,82);}
+
+.pixelG:nth-child(396) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(17) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(37) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(57) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(77) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(97) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(117) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(137) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(157) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(177) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(197) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(217) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(237) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(257) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(277) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(297) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(317) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(337) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(357) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(377) {background: rgb(246,203,83);}
+
+.pixelG:nth-child(397) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(18) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(38) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(58) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(78) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(98) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(118) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(138) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(158) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(178) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(198) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(218) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(238) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(258) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(278) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(298) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(318) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(338) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(358) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(378) {background: rgb(246,203,84);}
+
+.pixelG:nth-child(398) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(19) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(39) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(59) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(79) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(99) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(119) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(139) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(159) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(179) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(199) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(219) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(239) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(259) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(279) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(299) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(319) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(339) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(359) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(379) {background: rgb(246,203,85);}
+
+.pixelG:nth-child(399) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(20) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(40) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(60) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(80) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(100) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(120) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(140) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(160) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(180) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(200) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(220) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(240) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(260) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(280) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(300) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(320) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(340) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(360) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(380) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(400) {background: rgb(246,203,67);}
+
+.pixelG:nth-child(324) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(344) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(364) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(384) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(324) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(344) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(364) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(384) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(305) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(325) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(345) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(365) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(385) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(266) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(286) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(306) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(326) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(346) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(249) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(269) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(289) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(309) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(250) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(270) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(290) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(310) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(251) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(271) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(291) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(311) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(252) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(272) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(292) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(312) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(275) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(295) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(315) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(335) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(355) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(316) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(336) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(356) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(376) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(396) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(337) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(357) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(377) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(397) {background: rgb(246,81,67);}
+
+.pixelG:nth-child(366) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(386) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(366) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(386) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(247) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(267) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(287) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(307) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(327) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(347) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(367) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(387) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(248) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(268) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(288) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(308) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(328) {background: rgb(67,108,247);}
+
+.pixelG:nth-child(348) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(368) {background: rgb(67,108,247);}
+
+.pixelG:nth-child(388) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(329) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(349) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(369) {background: rgb(67,108,248);}
+
+.pixelG:nth-child(389) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(330) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(350) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(370) {background: rgb(67,108,249);}
+
+.pixelG:nth-child(390) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(331) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(351) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(371) {background: rgb(67,108,250);}
+
+.pixelG:nth-child(391) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(332) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(352) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(372) {background: rgb(67,108,251);}
+
+.pixelG:nth-child(392) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(253) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(273) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(293) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(313) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(333) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(353) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(373) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(393) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(254) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(274) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(294) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(314) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(334) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(354) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(374) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(394) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(375) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(395) {background: rgb(67,108,246);}
+
+.pixelG:nth-child(67) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(87) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(107) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(127) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(147) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(67) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(87) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(107) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(127) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(147) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(48) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(68) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(88) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(108) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(128) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(148) {background: rgb(255,255,255);}
+
+.pixelG:nth-child(168) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(188) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(29) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(49) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(69) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(89) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(109) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(129) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(149) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(169) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(189) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(209) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(10) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(30) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(50) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(70) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(90) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(110) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(130) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(150) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(170) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(190) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(210) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(230) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(11) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(31) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(51) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(71) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(91) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(111) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(131) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(151) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(171) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(191) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(211) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(231) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(32) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(52) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(72) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(92) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(112) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(132) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(152) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(172) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(192) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(212) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(53) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(73) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(93) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(113) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(133) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(153) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(173) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(193) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(74) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(94) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(114) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(134) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(154) {background: rgb(248,214,154);}
+
+.pixelG:nth-child(49) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(89) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(109) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(49) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(89) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(109) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(50) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(170) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(51) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(171) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(52) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(92) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(112) {background: rgb(0,0,0);}
+
+.pixelG:nth-child(46) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(66) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(46) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(66) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(27) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(47) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(8) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(28) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(9) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(10) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(11) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(12) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(32) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(13) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(33) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(34) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(54) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(55) {background: rgb(244,19,12);}
+
+.pixelG:nth-child(75) {background: rgb(244,19,12);}
+

@@ -12,9 +12,9 @@ public:
 	void agregar(NodoABB *nuevo);
 	void recursivoAgregar(NodoABB *nuevo, NodoABB *root);
 	void inorder(NodoABB *root, int *pos);
-	string inorderG(NodoABB *root);
-	string preorderG(NodoABB *root);
-	string postorderG(NodoABB *root);
+	string inorderG(NodoABB *root, int *pos);
+	string preorderG(NodoABB *root, int *pos);
+	string postorderG(NodoABB *root, int *pos);
 	NodoABB *buscar(NodoABB *root, int posb);
 	string graficar(NodoABB *root);
 	~ABB();

@@ -23,8 +23,10 @@ void filtros();
 void edicion();
 void exportarCSS(NodoCapa *primero);
 void exportarCSSC(NodoCapa *primero);
+void exportarCSSM(NodoCapa *primero);
 void exportarHTML();
 void exportarHTMLC();
+void exportarHTMLM(NodoCapa *primero);
 void reportes();
 void escalaN();
 void escalaG();
@@ -32,11 +34,14 @@ void espejoX();
 void espejoY();
 void espejoD();
 void collage();
+void mosaico();
 void arbolR();
 void nodoR();
 void nodoL();
+void arbolT();
+void filtrosR();
 NodoCapa* exportar();
-string hex(string codigo);
+string RGB(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
 string cx, cy;
 
@@ -123,7 +128,18 @@ void menu() {
 	}
 	else if (eleccion == "6")
 	{
-		reportes();
+		cout << "\n-------------------- Reportes --------------------\n\n";
+
+		if (arbol->root != NULL)
+		{
+			reportes();
+		}
+		else
+		{
+			cout << "	ERROR: no hay imagenes cargadas\n";
+		}
+
+		cout << "\n-------------------- Reportes --------------------\n\n\n\n\n\n\n\n\n\n";
 	}
 	else if (eleccion == "7")
 	{
@@ -445,11 +461,11 @@ void filtros() {
 		collage();
 		cout << "\n		Filtro realizado con Exito\n";
 	}
-	/*
-	case 7:
+	else if (eleccion == "7")
+	{
 		mosaico();
-		break;
-	*/
+		cout << "\n		Filtro realizado con Exito\n";
+	}
 
 }
 
@@ -591,19 +607,25 @@ NodoCapa* exportar() {
 
 				if (temp->id == 6)
 				{
+					exportarCSSC(imagen->listaCapas->primero);
 					exportarHTMLC();
-					exportarCSSC(retorno);
+				}
+				else if (temp->id == 7)
+				{
+					exportarCSSM(retorno);
+					exportarHTMLM(retorno);
 				}
 				else
 				{
-					exportarHTML();
 					exportarCSS(retorno);
+					exportarHTML();
 				}
 				temp = temp->siguiente;
 			}
 			else {
 				temp = temp->siguiente;
 			}
+
 			while (temp != fil->primero)
 			{
 				if (stoi(eleccion) == temp->id)
@@ -612,13 +634,18 @@ NodoCapa* exportar() {
 					
 					if (temp->id == 6)
 					{
+						exportarCSSC(imagen->listaCapas->primero);
 						exportarHTMLC();
-						exportarCSSC(retorno);
+					}
+					else if (temp->id == 7)
+					{
+						exportarCSSM(retorno);
+						exportarHTMLM(retorno);
 					}
 					else
 					{
-						exportarHTML();
 						exportarCSS(retorno);
+						exportarHTML();
 					}
 					temp = temp->siguiente;
 				}
@@ -633,7 +660,8 @@ NodoCapa* exportar() {
 
 void exportarHTML() {
 	ofstream lectura;
-	lectura.open("Exports/" + imagen->nombreImagen + ".html", ios::out);
+	string nombre = "Exports/" + imagen->nombreImagen + ".html";
+	lectura.open(nombre, ios::out);
 
 	if (!lectura.fail())
 	{
@@ -660,6 +688,8 @@ void exportarHTML() {
 	{
 		cout << "ERROR: Error con el html\n";
 	}
+
+	system(nombre.c_str());
 }
 
 void exportarCSS(NodoCapa *primero) {
@@ -712,12 +742,12 @@ void exportarCSS(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}
@@ -748,8 +778,7 @@ void exportarCSS(NodoCapa *primero) {
 }
 
 void reportes() {
-	cout << "\n-------------------- Reportes --------------------\n\n";
-
+	
 	string eleccion;
 
 	cout << "1. Reporte del Arbol\n";
@@ -757,7 +786,7 @@ void reportes() {
 	cout << "3. Reporte Lineal de Capa\n";
 	cout << "4. Reporte Transversal del Arbol \n";
 	cout << "5. Reporte de Filtros\n";
-	cout << "\nIngrese el numero a de la accion a realizar: ";
+	cout << "\n	Ingrese el numero a de la accion a realizar: ";
 	cin >> eleccion;
 	cout << endl;
 
@@ -776,18 +805,23 @@ void reportes() {
 	}
 	else if (eleccion == "4")
 	{
-
+		arbolT();
 	}
 	else if (eleccion == "5")
 	{
-
+		if (fil->primero != NULL)
+		{
+			filtrosR();
+		}
+		else
+		{
+			cout << "\n	ERROR: no hay filtros aplicados ";
+		}
 	}
 	else
 	{
 		cout << "\n	Eleccion no valida\n";
 	}
-
-	cout << "\n-------------------- Reportes --------------------\n\n\n\n\n\n\n\n\n\n";
 
 }
 
@@ -849,6 +883,7 @@ void nodoR() {
 				if (temp->noCapa == stoi(ncapa))
 				{
 					temp->capa->graficar(temp->nombreCapa);
+					break;
 				}
 				else
 				{
@@ -905,19 +940,24 @@ void nodoL() {
 			{
 				if (temp->noCapa == stoi(ncapa))
 				{
-					cout << "\n		1. Columnas";
-					cout << "\n		2. Filas";
+					cout << "\n1. Columnas";
+					cout << "\n2. Filas";
 					cout << "\n		Escriba el numero de la forma a Graficar: ";
 					cin >> linea;
 					if (linea == "1")
 					{
 						temp->capa->graficarC(temp->nombreCapa + "LinealColumna");
+						break;
 					}
 					else if (linea == "2")
 					{
 						temp->capa->graficarF(temp->nombreCapa + "LinealFila");
+						break;
 					}
-					
+					else
+					{
+						cout << "\n\n	ERROR: eleccion no valida ";
+					}
 				}
 				else
 				{
@@ -925,13 +965,13 @@ void nodoL() {
 				}
 
 			}
-			if (retorno == NULL)
+			if (temp == NULL)
 			{
-				cout << "\n		ERROR: no a sido posible modificar\n";
+				cout << "\n		ERROR: no a sido posible grafiar\n";
 			}
 			else
 			{
-				cout << "\n			Modificado con exito\n";
+				cout << "\n			Graficado con exito\n";
 			}
 
 		}
@@ -942,7 +982,90 @@ void nodoL() {
 	}
 }
 
-string hex(string codigo) {
+void arbolT() {
+	string eleccion;
+	string archivo;
+	string nombre = "";
+	int contador = 1;
+	cout << "1. Inorder\n";
+	cout << "2. Preorder\n";
+	cout << "3. Postorder\n";
+	cout << "\n	Ingrese el numero a de la accion a realizar: ";
+	cin >> eleccion;
+	cout << endl;
+
+	if (eleccion ==  "1")
+	{
+		archivo = "arbolInorder";
+		nombre = arbol->inorderG(arbol->root, &contador);
+	}
+	else if (eleccion == "2")
+	{
+		archivo = "arbolPreorder";
+		nombre = arbol->preorderG(arbol->root, &contador);
+	}
+	else if (eleccion == "3")
+	{
+		archivo = "arbolPostorder";
+		nombre = arbol->postorderG(arbol->root, &contador);
+	}
+
+	if (nombre != "")
+	{
+		ofstream grafica;
+
+		grafica.open(archivo+".dot", ios::out);
+
+		if (!grafica.fail()) {
+			grafica << "digraph grafico{\nnode [shape = record];\ngraph [nodesep = 1];\nrankdir=LR;\n";
+
+			grafica << nombre;
+
+			for (int i = 1; i < contador-1; i++)
+			{
+				grafica << "\"" + to_string(i) << "\"->\"" << to_string(i+1) << "\";\n";
+			}
+
+			grafica << "}";
+
+			grafica.close();
+
+			string dot = "dot -Tjpg " + archivo + ".dot -o " + archivo + ".jpg";
+			system(dot.c_str());
+			string imagen = archivo + ".jpg";
+			system(imagen.c_str());
+
+			cout << "\n		Graficado con exito\n";
+		}
+		else
+		{
+			cout << "\n		ERROR: no se pudo  graficar";
+		}
+	}
+	else
+	{
+		cout << "\n		ERROR: no se pudo  graficar";
+	}
+	
+	
+
+}
+
+void filtrosR() {
+	string eleccion;
+
+	cout << "1. Reporte de todos los filtros\n";
+	cout << "2. Reporte de Capa\n";
+	cout << "3. Reporte Lineal de Capa\n";
+	cout << "4. Reporte Transversal del Arbol \n";
+	cout << "5. Reporte de Filtros\n";
+	cout << "\n	Ingrese el numero a de la accion a realizar: ";
+	cin >> eleccion;
+	cout << endl;
+
+}
+
+string RGB(string codigo) {
 	int r, g, b;
 	string cadena = codigo;
 	size_t found;
@@ -961,7 +1084,9 @@ string hex(string codigo) {
 	g = stoi(nombre[1]);
 	b = stoi(nombre[2]);
 
-	return RGBToHex(r, g, b);
+	string retorno = to_string(r) + "," + to_string(g) + "," + to_string(b);
+
+	return retorno;
 }
 
 string RGBG(string codigo) {
@@ -1307,9 +1432,54 @@ void collage() {
 	fil->agregarNodo("Collage", nuevo, 6);
 }
 
+void mosaico() {
+	Capas *nuevo = new Capas();
+
+	NodoCapa *temp = imagen->listaCapas->primero;
+	while (temp != NULL)
+	{
+		Matriz *mtz = temp->capa;
+		Matriz *mtzn = new Matriz();
+
+		if (mtz != NULL)
+		{
+			Nodo *fila = mtz->root;
+			Nodo *col = fila->siguiente;
+			col = col->abajo;
+			while (fila != NULL)
+			{
+				if (col != NULL)
+				{
+					mtzn->agregarNodo(col->x, col->y, col->codigo);
+					col = col->abajo;
+				}
+				else
+				{
+					fila = fila->siguiente;
+					if (fila != NULL)
+					{
+						col = fila->abajo;
+					}
+					else
+					{
+						col = NULL;
+					}
+				}
+			}
+
+		}
+		nuevo->agregarNodo(temp->nombreCapa, temp->noCapa, mtzn);
+
+		temp = temp->siguiente;
+	}
+
+	fil->agregarNodo("Mosaico", nuevo, 7);
+}
+
 void exportarHTMLC() {
 	ofstream lectura;
-	lectura.open("Exports/" + imagen->nombreImagen + ".html", ios::out);
+	string nombre = "Exports/" + imagen->nombreImagen + ".html";
+	lectura.open(nombre, ios::out);
 
 	if (!lectura.fail())
 	{
@@ -1320,14 +1490,21 @@ void exportarHTMLC() {
 		lectura << "</head>\n";
 		lectura << "<body>\n\n";
 
-		lectura << "<div class=\"canvas\">\n";
-		int t = imagen->image_height * imagen->image_width * stoi(cy) * stoi(cx);
-		for (int i = 0; i < t; i++)
+		lectura << "<div class=\"canvasG\">\n";
+		for (int i = 0; i < stoi(cx) * stoi(cy); i++)
 		{
-			lectura << "	<div class=\"pixel\"></div>\n";
+			lectura << "	<div class=\"pixelG\">\n";
+			lectura << "		<div class=\"canvas\">\n";
+			int t = imagen->image_height * imagen->image_width;
+			for (int j = 0; j < t; j++)
+			{
+				lectura << "			<div class=\"pixel\"></div>\n";
+			}
+			lectura << "		</div>\n";
+			lectura << "	</div>\n";
 		}
-
-		lectura << "</div>\n";
+		
+		lectura << "</div>\n\n";
 		lectura << "</body>\n";
 		lectura << "</html>\n";
 
@@ -1336,6 +1513,8 @@ void exportarHTMLC() {
 	{
 		cout << "ERROR: Error con el html\n";
 	}
+
+	system(nombre.c_str());
 }
 
 void exportarCSSC(NodoCapa *primero) {
@@ -1353,14 +1532,31 @@ void exportarCSSC(NodoCapa *primero) {
 		lectura << "align-items: center;\n";
 		lectura << "}\n\n";
 
-		int px = imagen->pixel_width / stoi(cx);
-		int py = imagen->pixel_height / stoi(cy);
-		int w = imagen->image_width * px * stoi(cx);
-		int h = imagen->image_height * py * stoi(cy);
+		double wG = imagen->image_width * imagen->pixel_width;
+		double hG = imagen->image_height * imagen->pixel_height;
+		double w = double(wG) / double(stoi(cx));
+		double h = double(hG) / double(stoi(cy));
+		double pxG = w;
+		double pyG = h;
+		double px = double(imagen->pixel_width) / double(stoi(cx));
+		double py = double(imagen->pixel_height) / double(stoi(cy));
+		
+
+		lectura << ".canvasG {\n";
+		lectura << "width: " << wG << "px;\n";
+		lectura << "height: " << hG << "px;\n";
+		lectura << "}\n\n";
 
 		lectura << ".canvas {\n";
 		lectura << "width: " << w << "px;\n";
 		lectura << "height: " << h << "px;\n";
+		lectura << "}\n\n";
+
+		lectura << ".pixelG {\n";
+		lectura << "width: " << pxG << "px;\n";
+		lectura << "height: " << pyG << "px;\n";
+		lectura << "float: left; \n";
+		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
 		lectura << "}\n\n";
 
 		lectura << ".pixel {\n";
@@ -1385,17 +1581,212 @@ void exportarCSSC(NodoCapa *primero) {
 
 					if (col != NULL)
 					{
-						int pos = (col->y - 1)*imagen->image_width*stoi(cx) + col->x;
+						int pos = (col->y - 1)*imagen->image_width + col->x;
 
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: #" << hex(col->codigo) << ";}\n\n";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+						}
+						col = col->abajo;
+					}
+					else
+					{
+						fila = fila->siguiente;
+						if (fila != NULL)
+						{
+							col = fila->abajo;
+						}
+						else
+						{
+							col = NULL;
+						}
+					}
+
+				}
+			}
+
+			temp = temp->siguiente;
+		}
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el css\n";
+	}
+}
+
+void exportarHTMLM(NodoCapa *primero) {
+	ofstream lectura;
+	string nombre = "Exports/" + imagen->nombreImagen + ".html";
+	lectura.open(nombre, ios::out);
+
+	if (!lectura.fail())
+	{
+		lectura << "<!DOCTYPE html>\n";
+		lectura << "<html>\n";
+		lectura << "<head>\n";
+		lectura << "	<link rel=\"stylesheet\" href=\"" << imagen->nombreImagen << ".css\">\n";
+		lectura << "</head>\n";
+		lectura << "<body>\n\n";
+
+		lectura << "<div class=\"canvasG\">\n";
+		int t = imagen->image_height * imagen->image_width;
+		for (int i = 0; i < t; i++)
+		{
+			lectura << "	<div class=\"pixelG\">\n";
+			lectura << "		<div class=\"canvas\">\n";
+			for (int j = 0; j < t; j++)
+			{
+				lectura << "			<div class=\"pixel\"></div>\n";
+			}
+			lectura << "		</div>\n";
+			lectura << "	</div>\n";
+		}
+
+		lectura << "</div>\n\n";
+		lectura << "</body>\n";
+		lectura << "</html>\n";
+
+	}
+	else
+	{
+		cout << "ERROR: Error con el html\n";
+	}
+
+	system(nombre.c_str());
+}
+
+void exportarCSSM(NodoCapa *primero) {
+	ofstream lectura;
+	lectura.open("Exports/" + imagen->nombreImagen + ".css", ios::out);
+
+
+	if (!lectura.fail())
+	{
+		lectura << "body {\n";
+		lectura << "background: #333333;\n";
+		lectura << "height: 100vh;\n";
+		lectura << "display: flex;\n";
+		lectura << "justify-content: center;\n";
+		lectura << "align-items: center;\n";
+		lectura << "}\n\n";
+
+		double wG = imagen->image_width * imagen->pixel_width;
+		double hG = imagen->image_height * imagen->pixel_height;
+		double w = imagen->pixel_width;
+		double h = imagen->pixel_height;
+
+		double pxG = w;
+		double pyG = h;
+		double px = double(imagen->pixel_width) / double(imagen->image_width);
+		double py = double(imagen->pixel_height) / double(imagen->image_height);
+
+
+		lectura << ".canvasG {\n";
+		lectura << "width: " << wG << "px;\n";
+		lectura << "height: " << hG << "px;\n";
+		lectura << "}\n\n";
+
+		lectura << ".canvas {\n";
+		lectura << "width: " << w << "px;\n";
+		lectura << "height: " << h << "px;\n";
+		lectura << "}\n\n";
+
+		lectura << ".pixelG {\n";
+		lectura << "width: " << w << "px;\n";
+		lectura << "height: " << h << "px;\n";
+		lectura << "float: left; \n";
+		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
+		lectura << "}\n\n";
+
+		lectura << ".pixel {\n";
+		lectura << "opacity: 0.5;\n";
+		lectura << "width: " << px << "px;\n";
+		lectura << "height: " << py << "px;\n";
+		lectura << "float: left; \n";
+		lectura << "jbox-shadow: 0px 0px 1px #fff;\n";
+		lectura << "}\n\n";
+
+		NodoCapa *temp = primero;
+		while (temp != NULL)
+		{
+			Matriz *mtz = temp->capa;
+
+			if (mtz != NULL)
+			{
+				Nodo *fila = mtz->root;
+				Nodo *col = fila->siguiente;
+				col = col->abajo;
+				while (fila != NULL)
+				{
+
+					if (col != NULL)
+					{
+						int pos = (col->y - 1)*imagen->image_width + col->x;
+
+						if (col->abajo == NULL && fila->siguiente == NULL)
+						{
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+						}
+						else
+						{
+							lectura << ".pixel:nth-child(" << pos << ") ";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+						}
+						col = col->abajo;
+					}
+					else
+					{
+						fila = fila->siguiente;
+						if (fila != NULL)
+						{
+							col = fila->abajo;
+						}
+						else
+						{
+							col = NULL;
+						}
+					}
+
+				}
+			}
+
+			temp = temp->siguiente;
+		}
+
+		temp = primero;
+		while (temp != NULL)
+		{
+			Matriz *mtz = temp->capa;
+
+			if (mtz != NULL)
+			{
+				Nodo *fila = mtz->root;
+				Nodo *col = fila->siguiente;
+				col = col->abajo;
+				while (fila != NULL)
+				{
+
+					if (col != NULL)
+					{
+						int pos = (col->y - 1)*imagen->image_width + col->x;
+
+						if (col->abajo == NULL && fila->siguiente == NULL)
+						{
+							lectura << ".pixelG:nth-child(" << pos << ") ";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+						}
+						else
+						{
+							lectura << ".pixelG:nth-child(" << pos << ") ";
+							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}

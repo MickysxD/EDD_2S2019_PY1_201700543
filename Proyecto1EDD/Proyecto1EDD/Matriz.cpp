@@ -222,7 +222,7 @@ void Matriz::graficar(string nombre) {
 	grafica.open(nombre + ".dot", ios::out);
 
 	if (!grafica.fail()) {
-		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
+		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl << "ranksep = \"1.2 equally\"" << endl;
 
 		Nodo *tempA = this->root;
 		Nodo *temp = this->root;
@@ -411,7 +411,7 @@ void Matriz::graficarC(string nombre) {
 	grafica.open(nombre + ".dot", ios::out);
 
 	if (!grafica.fail()) {
-		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
+		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=LR;" << endl;
 
 		Nodo *tempA = this->root->siguiente;
 		Nodo *temp = this->root;
@@ -426,7 +426,7 @@ void Matriz::graficarC(string nombre) {
 		while (tempA != NULL)
 		{
 			if (temp != NULL) {
-				grafica << "\"" << pos << "\"[label=\"(" << temp->x << "," << temp->y << ")"<< temp->codigo << "\"];" << endl;
+				grafica << "\"" << pos << "\"[label=\"(" << temp->x << "," << temp->y << ")\\n"<< temp->codigo << "\"];" << endl;
 				if (pos != 1)
 				{
 					int anterior = pos - 1;
@@ -465,7 +465,7 @@ void Matriz::graficarF(string nombre) {
 	grafica.open(nombre + ".dot", ios::out);
 
 	if (!grafica.fail()) {
-		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=TB;" << endl;
+		grafica << "digraph {" << endl << "node [shape = rectangle, height=0.5, width=1.2];" << endl << "graph [nodesep = 1];" << endl << "rankdir=LR;" << endl;
 
 		Nodo *tempA = this->root->abajo;
 		Nodo *temp = this->root;
@@ -479,7 +479,7 @@ void Matriz::graficarF(string nombre) {
 		while (tempA != NULL)
 		{
 			if (temp != NULL) {
-				grafica << "\"" << pos << "\"[label=\"(" << temp->x << "," << temp->y << ")" << temp->codigo << "\"];" << endl;
+				grafica << "\"" << pos << "\"[label=\"(" << temp->x << "," << temp->y << ")\\n" << temp->codigo << "\"];" << endl;
 				if (pos != 1)
 				{
 					int anterior = pos - 1;

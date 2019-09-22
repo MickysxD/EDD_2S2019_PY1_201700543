@@ -1,4 +1,9 @@
-﻿  ABB.cpp
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\abb.cpp(161): error C4716: 'ABB::postorderG': debe devolver un valor
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\abb.cpp(147): error C4716: 'ABB::preorderG': debe devolver un valor
-c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\abb.cpp(133): error C4716: 'ABB::inorderG': debe devolver un valor
+﻿  Proyecto1EDD.cpp
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(215): warning C4018: '<': no coinciden signed/unsigned
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(295): warning C4018: '<': no coinciden signed/unsigned
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(362): warning C4018: '<': no coinciden signed/unsigned
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(1107): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(1108): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(1109): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\micky\documents\codeblocks.git\edd_2s2019_py1_201700543\proyecto1edd\proyecto1edd\proyecto1edd.cpp(1118): warning C4101: 'x': variable local sin referencia
+  Proyecto1EDD.vcxproj -> C:\Users\Micky\Documents\CodeBlocks.git\EDD_2S2019_PY1_201700543\Proyecto1EDD\Debug\Proyecto1EDD.exe
