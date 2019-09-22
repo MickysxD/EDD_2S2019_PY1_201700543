@@ -7,6 +7,9 @@
 #include "ABB.h"
 #include "NodoABB.h"
 #include "Filtros.h"
+//#include "ShellAPI.h"
+#include <windows.h>
+#include <Winuser.h>
 
 using namespace std;
 
@@ -43,7 +46,7 @@ void filtrosR();
 void listaFiltros();
 void filtroCapa();
 NodoCapa* exportar();
-string RGB(string codigo);
+string RGBM(string codigo);
 string RGBToHex(int rNum, int gNum, int bNum);
 string cx, cy;
 
@@ -364,7 +367,7 @@ void agregarCapa(NodoABB *actual, string ncapa, string direccion) {
 
 					for (int i = 0; i < lista.size(); i++)
 					{
-						if (lista[i].compare("x") != 0)
+						if (lista[i].compare("x") != 0 && lista[i].compare("X") != 0)
 						{
 							nueva->agregarNodo(i + 1, fila + 1, lista[i]);
 						}
@@ -691,8 +694,7 @@ void exportarHTML() {
 	{
 		cout << "ERROR: Error con el html\n";
 	}
-
-	system(nombre.c_str());
+	
 }
 
 void exportarCSS(NodoCapa *primero) {
@@ -745,12 +747,12 @@ void exportarCSS(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}
@@ -1207,7 +1209,7 @@ void filtroCapa() {
 	}
 }
 
-string RGB(string codigo) {
+string RGBM(string codigo) {
 	int r, g, b;
 	string cadena = codigo;
 	size_t found;
@@ -1656,7 +1658,6 @@ void exportarHTMLC() {
 		cout << "ERROR: Error con el html\n";
 	}
 
-	system(nombre.c_str());
 }
 
 void exportarCSSC(NodoCapa *primero) {
@@ -1728,12 +1729,12 @@ void exportarCSSC(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}
@@ -1801,7 +1802,6 @@ void exportarHTMLM(NodoCapa *primero) {
 		cout << "ERROR: Error con el html\n";
 	}
 
-	system(nombre.c_str());
 }
 
 void exportarCSSM(NodoCapa *primero) {
@@ -1875,12 +1875,12 @@ void exportarCSSM(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixel:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}
@@ -1923,12 +1923,12 @@ void exportarCSSM(NodoCapa *primero) {
 						if (col->abajo == NULL && fila->siguiente == NULL)
 						{
 							lectura << ".pixelG:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						else
 						{
 							lectura << ".pixelG:nth-child(" << pos << ") ";
-							lectura << "{background: rgb(" << RGB(col->codigo) << ");}\n\n";
+							lectura << "{background: rgb(" << RGBM(col->codigo) << ");}\n\n";
 						}
 						col = col->abajo;
 					}
